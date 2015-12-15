@@ -30,8 +30,7 @@ body {
   font: 700 1em "News Cycle", sans-serif;
   letter-spacing:.15em;
     color: #ff6;
-    background-image: url('images/bg.jpg');
-    background-repeat: repeat;
+    background: url('images/stars.jpg') repeat;
     overflow: hidden;
   margin: 0;
 }
@@ -51,7 +50,7 @@ body {
     width: $start-width;
     margin: -4em 0 0 (- $start-width / 2);
     text-align: center;
-    cursor: pointer;
+    top: 30%;
     
     span {
       color: rgb(75, 213, 238); 
@@ -73,7 +72,7 @@ body {
     opacity: 0;
     animation: logo 9s ease-out 9s; 
     
-    svg {
+    img {
       width: inherit;
     }
   }
@@ -174,4 +173,59 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+#play{
+  font-family: StarWars;
+  cursor: pointer;
+  font-size: 50px;
+  margin-top: 10px;
+  border: 0;
+  background: transparent;
+  color: #ff6;
+  &:focus {
+    outline:none;
+  }
+}
+
+#form-starwars{
+  display: none;
+  width: 500px;
+
+  input,textarea{
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ff6;
+    background: black;
+    color: #ff6;
+  }
+
+  textarea{
+    height: 230px;
+  }
+}
+
+#loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#pageTitle{
+  font-family: StarWars;
+}
+
+.star-wars-alert{
+  background-color: black !important; 
+  
+  border: 2px solid #ff6;
+  h2, p{
+    color: #ff6 !important;
+  }
+
+  button{
+    border: 2px solid #ff6 !important;
+    color: #ff6 !important;
+    background-color: black !important; 
+  }
 }

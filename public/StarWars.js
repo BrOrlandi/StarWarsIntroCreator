@@ -51,11 +51,6 @@ StarWarsOpening = (function() {
     
     // Remove animation and shows the start screen
     this.reset();
-
-    // Start the animation on click
-    this.start.bind('click', $.proxy(function() {
-      this.play();
-    }, this));
     
     // Reset the animation and shows the start screen
     $(this.audio).bind('ended', $.proxy(function() {
@@ -72,6 +67,11 @@ StarWarsOpening = (function() {
     this.cloned = this.animation.clone(true);
     this.animation.remove();
     this.animation = this.cloned;
+  };
+
+  StarWarsOpening.prototype.resetAudio = function() {
+    this.audio.pause();
+    this.audio.currentTime = 0;
   };
 
   StarWarsOpening.prototype.play = function(){
