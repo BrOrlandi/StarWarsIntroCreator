@@ -1,0 +1,22 @@
+{
+  "name": "star-wars-opening",
+  "description": "A Star Wars Opening Creator",
+  "main": "",
+  "authors": [
+    "Bruno Orlandi <brorlandi@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
