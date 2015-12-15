@@ -1,2 +1,0 @@
-# Star Wars Intro Creator
-
