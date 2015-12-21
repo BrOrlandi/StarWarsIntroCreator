@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700);
 @font-face {
   font-family: StarWars;
-  src: url("font/Starjedi.ttf"); }
+  src: url("Starjedi.ttf"); }
 
 html,
 body {
@@ -10,7 +10,7 @@ body {
   font: 700 1em "News Cycle", sans-serif;
   letter-spacing: .15em;
   color: #ff6;
-  background: url("images/stars.jpg") repeat;
+  background: url("stars.jpg") repeat;
   overflow: hidden;
   margin: 0; }
 
