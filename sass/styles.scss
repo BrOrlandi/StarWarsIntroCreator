@@ -46,11 +46,16 @@ body {
 
   .start {
     font-size: 200%;
-    $start-width: 14em;
+    $start-width: 100%;
     width: $start-width;
-    margin: -4em 0 0 (- $start-width / 2);
+    margin: 0 0 0 (- $start-width / 2);
     text-align: center;
-    top: 30%;
+    top: 0;
+
+    #config{
+        margin: 0 auto;
+        width: 500px;
+    }
 
     span {
       color: rgb(75, 213, 238);
@@ -179,7 +184,6 @@ body {
   font-family: StarWars;
   cursor: pointer;
   font-size: 50px;
-  margin-top: 10px;
   border: 0;
   background: transparent;
   color: #ff6;
@@ -212,6 +216,7 @@ body {
 }
 
 #pageTitle{
+    line-height: 100%;
   font-family: StarWars;
 }
 
