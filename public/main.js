@@ -85,8 +85,11 @@ $(window).on('hashchange', function() {
         }else{
             toggleLoading();
         }
-        
+
     }
+    ga('send', 'pageview', {
+        'page': location.pathname + location.search  + location.hash
+    });
 });
 
 $(document).ready(function() {
