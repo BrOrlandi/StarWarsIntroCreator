@@ -167,3 +167,17 @@ body {
     border: 2px solid #ff6 !important;
     color: #ff6 !important;
     background-color: black !important; }
+
+#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 1em;
+  text-align: center;
+  font-size: 0.7em;
+  color: #9e9e42; }
+  #footer a {
+    color: #ff6;
+    text-decoration: none; }
+    #footer a:hover {
+      color: #fff;
+      text-decoration: none; }

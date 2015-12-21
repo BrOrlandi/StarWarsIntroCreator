@@ -229,3 +229,21 @@ body {
     background-color: black !important;
   }
 }
+
+#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 1em;
+  text-align: center;
+  font-size: 0.7em;
+  color: #9e9e42;
+
+  a {
+    color: #ff6;
+    text-decoration: none;
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

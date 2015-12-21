@@ -4,6 +4,7 @@ swal.setDefaults({
 
 var notPlayed = true;
 var isLoading = false;
+var showFooter = true;
 
 function toggleLoading(){
     if(isLoading){
