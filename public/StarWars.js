@@ -56,6 +56,9 @@ StarWarsOpening = (function() {
     $(this.audio).bind('ended', $.proxy(function() {
       this.audio.currentTime = 0;
       this.reset();
+      setTimeout(function(){
+          $('body').removeClass('running');
+      },10000);
     }, this));
   }
 
@@ -78,6 +81,8 @@ StarWarsOpening = (function() {
   StarWarsOpening.prototype.play = function(){
       this.start.hide();
       $('.pageHide').hide();
+      $('body').removeClass('running');
+      $('body').addClass('running');
       this.audio.play();
       this.el.append(this.animation);
   }

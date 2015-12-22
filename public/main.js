@@ -36,6 +36,7 @@ $('#form-starwars').submit(function(event) {
 
 $(window).on('hashchange', function() {
     var key = location.hash.replace('#!/', '').split('/')[0];
+    $('body').removeClass('running');
     console.log(key);
     if(key != ""){
         try{
@@ -56,6 +57,7 @@ $(window).on('hashchange', function() {
                 var ps = opening.text.split('\n');
 
                 var div = StarWars.animation.find("#text");
+                div.text('');
                 for(var i in ps){
                     div.append($('<p>').text(ps[i]));
                 }
