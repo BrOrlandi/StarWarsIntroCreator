@@ -2,6 +2,16 @@ swal.setDefaults({
     customClass: 'star-wars-alert',
 });
 
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    var type = document.activeElement.type || '';
+    if(!type.startsWith('text')){
+        if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
+    }
+}, false);
+
 var notPlayed = true;
 var isLoading = false;
 var showFooter = true;
