@@ -1,19 +1,23 @@
-<html>
+<html lang="en_US">
 <head>
     <title>Star Wars Opening Creator</title>
     <meta charset="utf-8"/>
+    <meta name="description" content="Create your own Star Wars opening crawl." />
 
-    
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="http://brorlandi.github.io/StarWarsIntroCreator/">
+    <meta property="og:title" content="Star Wars Intro Creator">
+    <meta property="og:site_name" content="Star Wars Intro Creator">
+    <meta property="og:description" content="Create your own Star Wars opening crawl.">
+    <meta property="og:image" content="http://brorlandi.github.io/StarWarsIntroCreator/preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:type" content="website">
+
 
     <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="./styles.css">
 
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="spinner.css">
-    <link rel="stylesheet" type="text/css" href="sweetalert.css">
-
-    <script src="jquery.min.js"></script>
-    <script src='sweetalert.min.js'></script>
-    <script src='firebase.js'></script>
+    <script src="./vendor.js"></script>
 </head>
 <body>
 <article class="starwars">
@@ -43,6 +47,7 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
       </button>
     </form>
     </div>
+
   </section>
 
   <div class="animation">
@@ -66,8 +71,18 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
     </section>
   </div>
 </article>
+<div id="footer">
+    Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> based on <a href="http://timpietrusky.com/star-wars-opening-crawl-from-1977" target="2">Tim Pietrusky</a> work.
+</div>
 
-<script src="StarWars.js"></script>
-<script src="main.js"></script>
+<script src="./main.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71659114-1', 'auto');
+</script>
 </body>
 </html>
