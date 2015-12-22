@@ -252,3 +252,18 @@ body {
     }
   }
 }
+
+.socialButtons{
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    z-index: 10;
+
+    div {
+        margin-bottom: 0.33em;
+
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+    }
+}

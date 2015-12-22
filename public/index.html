@@ -12,6 +12,7 @@
     <meta property="og:image" content="http://brorlandi.github.io/StarWarsIntroCreator/preview.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:type" content="website">
+    <meta property="fb:app_id" content="966673750071792"/>
 
 
     <link rel="shortcut icon" href="favicon.ico">
@@ -79,7 +80,17 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
     </section>
   </div>
 </article>
-<div id="footer">
+<div class="socialButtons pageHide">
+    <div class="fb-like" data-href="http://brorlandi.github.io/StarWarsIntroCreator/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+    <div>
+        <a href="https://twitter.com/share" class="twitter-share-button"{count} data-text="Checkout this Star Wars Intro Creator!" data-hashtags="StarWars">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+    <div>
+        <iframe src="https://ghbtns.com/github-btn.html?user=BrOrlandi&repo=StarWarsIntroCreator&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+    </div>
+</div>
+<div id="footer" class="pageHide">
     Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> based on <a href="http://timpietrusky.com/star-wars-opening-crawl-from-1977" target="2">Tim Pietrusky</a> work.
 </div>
 
@@ -94,6 +105,23 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-71659114-1', 'auto');
+</script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '966673750071792',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 </script>
 </body>
 </html>

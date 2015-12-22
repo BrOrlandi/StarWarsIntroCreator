@@ -64,7 +64,7 @@ StarWarsOpening = (function() {
    */
   StarWarsOpening.prototype.reset = function() {
     this.start.show();
-    $('#footer').show();
+    $('.pageHide').show();
     this.cloned = this.animation.clone(true);
     this.animation.remove();
     this.animation = this.cloned;
@@ -77,7 +77,7 @@ StarWarsOpening = (function() {
 
   StarWarsOpening.prototype.play = function(){
       this.start.hide();
-      $('#footer').hide();
+      $('.pageHide').hide();
       this.audio.play();
       this.el.append(this.animation);
   }
