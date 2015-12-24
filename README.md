@@ -1,3 +1,9 @@
+<p align="center">
+  <a target="_blank" href="http://brorlandi.github.io/StarWarsIntroCreator/">
+    <img src="https://raw.githubusercontent.com/brorlandi/StarWarsIntroCreator/master/intro.gif"/>
+  </a>
+</p>
+
 # Star Wars Intro Creator
 
 Create your own Star Wars movie opening.  
