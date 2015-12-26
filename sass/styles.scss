@@ -34,6 +34,11 @@ body {
     margin: 0;
 }
 
+/* Remove dotted border on Firefox (http://stackoverflow.com/a/199319) */
+button::-moz-focus-inner {
+  border: 0;
+}
+
 .starwars {
 
   section {
@@ -185,9 +190,12 @@ body {
   font-size: 50px;
   border: 0;
   background: transparent;
-  color: #ff6;
-  &:focus {
-    outline:none;
+  color: transparentize(#ff6, 0.8);
+  transition: color 0.7s ease-out;
+  outline: none;
+
+  &:focus, &:hover {
+    color: #ff6;
   }
 }
 
@@ -195,12 +203,19 @@ body {
   display: none;
   width: 500px;
 
-  input,textarea{
+  input,textarea {
     width: 100%;
     margin-bottom: 10px;
-    border: 1px solid #ff6;
+    padding: 0.25em;
+    border: 0.25em solid transparentize(#ff6, 0.8);
+    border-radius: 0.2em;
     background: black;
     color: #ff6;
+    transition: border-color 0.7s ease-out;
+
+    &:active, &:focus {
+      border-color: #ff6;
+    }
   }
 
   textarea{
