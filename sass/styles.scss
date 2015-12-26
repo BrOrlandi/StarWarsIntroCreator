@@ -190,12 +190,13 @@ button::-moz-focus-inner {
   font-size: 50px;
   border: 0;
   background: transparent;
-  color: transparentize(#ff6, 0.8);
-  transition: color 0.7s ease-out;
+  color: #ff6;
+  text-shadow: none;
+  transition: text-shadow 0.5s ease-out;
   outline: none;
 
   &:focus, &:hover {
-    color: #ff6;
+    text-shadow: -1px 1px 8px #45f500, 1px -1px 8px #45f500;
   }
 }
 
