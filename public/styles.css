@@ -13,6 +13,10 @@ body {
   overflow: hidden;
   margin: 0; }
 
+/* Remove dotted border on Firefox (http://stackoverflow.com/a/199319) */
+button::-moz-focus-inner {
+  border: 0; }
+
 .starwars section {
   position: absolute;
   top: 45%;
@@ -135,9 +139,12 @@ body {
   font-size: 50px;
   border: 0;
   background: transparent;
-  color: #ff6; }
-  #play:focus {
-    outline: none; }
+  color: #ff6;
+  text-shadow: none;
+  transition: text-shadow 0.5s ease-out;
+  outline: none; }
+  #play:focus, #play:hover {
+    text-shadow: -1px 1px 8px #45f500, 1px -1px 8px #45f500; }
 
 #form-starwars {
   display: none;
@@ -145,9 +152,14 @@ body {
   #form-starwars input, #form-starwars textarea {
     width: 100%;
     margin-bottom: 10px;
-    border: 1px solid #ff6;
+    padding: 0.25em;
+    border: 0.25em solid rgba(255, 255, 102, 0.2);
+    border-radius: 0.2em;
     background: black;
-    color: #ff6; }
+    color: #ff6;
+    transition: border-color 0.7s ease-out; }
+    #form-starwars input:active, #form-starwars input:focus, #form-starwars textarea:active, #form-starwars textarea:focus {
+      border-color: #ff6; }
   #form-starwars textarea {
     height: 230px; }
 
