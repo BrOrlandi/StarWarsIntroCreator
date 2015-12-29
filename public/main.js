@@ -37,11 +37,17 @@ $('#form-starwars').submit(function(event) {
     title: $("#f-title").val(),
     text: $("#f-text").val(),
   };
-  var openings = new Firebase('https://starwarsopening.firebaseio.com/openings');
-  var obj = openings.push(opening);
-  console.log(obj.key().substring(1));
-  toggleLoading();
-  location.hash = '!/' + obj.key().substring(1);
+  $.ajax({
+      url: "https://starwarsopening.firebaseio.com/openings.json",
+      method: "POST",
+      data: JSON.stringify(opening),
+      dataType: "json",
+      success: function(data){
+          console.log(data);
+          toggleLoading();
+          location.hash = '!/' + data.name.substring(1);
+      }
+  });
 });
 
 $(window).on('hashchange', function() {
@@ -50,12 +56,15 @@ $(window).on('hashchange', function() {
     console.log(key);
     if(key != ""){
         try{
-            var fb = new Firebase('https://starwarsopening.firebaseio.com/openings/-'+key);
-            fb.on("value", function(snapshot) {
+            var url = 'https://starwarsopening.firebaseio.com/openings/-'+key+'.json';
+            console.log(url);
+            $.ajax({
+              url: url,
+              success: function(opening) {
                 toggleLoading();
-                var opening = snapshot.val();
                 console.log(opening);
                 if(opening == null){
+                    toggleLoading();
                     sweetAlert("Oops...", "Introduction not found!", "error");
                     return;
                 }
@@ -84,8 +93,7 @@ $(window).on('hashchange', function() {
                     });
                 }
 
-            }, function (errorObject) {
-              throw errorObject;
+            }
             });
         }catch(error){
             location.hash = "";

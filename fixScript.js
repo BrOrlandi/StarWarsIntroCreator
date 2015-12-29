@@ -20,3 +20,12 @@ p.then(function(data){
     }
     console.log(c);
 });
+
+// count script
+var p = fetch('https://starwarsopening.firebaseio.com/openings.json');
+p.then(function(data){
+    return data.json();
+}).then(function(data){
+    var keys = Object.keys(data);
+    console.log(keys.length);
+});
