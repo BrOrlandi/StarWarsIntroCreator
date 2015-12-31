@@ -23,6 +23,8 @@
     src: url('Starjedi.ttf');
 }
 
+$introColor: rgb(75, 213, 238);
+
 html,
 body {
     width: 100%;
@@ -65,16 +67,38 @@ button::-moz-focus-inner {
       color: rgb(75, 213, 238);
     }
   }
+  .introBg{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      animation: introBg 9s;
+      opacity: 0;
+  }
 
   .intro {
     $intro-width: 15em;
     width: $intro-width;
-    margin: 0 0 0 (- $intro-width / 2);
-      font-size: 200%;
-      font-weight: 400;
-    color: rgb(75, 213, 238);
+    margin: 0 0 0 -35%;
+    position: relative;
+    top: 0px;
+    font-size: 4.5em;
+    font-weight: 400;
+    color: $introColor;
     opacity: 0;
-      animation: intro 6s ease-out 1s;
+    animation: intro 6s ease-out 1s;
+  }
+
+  .introWrapper{
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
   }
 
   .logo {
@@ -132,6 +156,15 @@ button::-moz-focus-inner {
     100% {
     opacity: 0;
   }
+}
+
+@keyframes introBg {
+    0% {
+    opacity: 1;
+  }
+  100% {
+      opacity: 1;
+    }
 }
 
 @keyframes logo {
@@ -220,8 +253,19 @@ button::-moz-focus-inner {
   }
 
   textarea{
-    height: 230px;
+      resize: none;
   }
+}
+
+#f-intro{
+    color: $introColor !important;
+}
+#f-text{
+  height: 230px;
+}
+
+#f-title,#f-episode{
+    text-align: center;
 }
 
 #loader{
@@ -289,7 +333,7 @@ button::-moz-focus-inner {
   position: absolute;
   top: 0;
   left: 0;
-  background: url('stars.jpg') repeat;
+  background: url('bg-stars.png') repeat;
 }
 
 .running .bg{

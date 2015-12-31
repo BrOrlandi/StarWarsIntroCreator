@@ -35,14 +35,35 @@ button::-moz-focus-inner {
   .starwars .start span {
     color: #4bd5ee; }
 
+.starwars .introBg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  animation: introBg 9s;
+  opacity: 0; }
+
 .starwars .intro {
   width: 15em;
-  margin: 0 0 0 -7.5em;
-  font-size: 200%;
+  margin: 0 0 0 -35%;
+  position: relative;
+  top: 0px;
+  font-size: 4.5em;
   font-weight: 400;
   color: #4bd5ee;
   opacity: 0;
   animation: intro 6s ease-out 1s; }
+
+.starwars .introWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px; }
 
 .starwars .logo {
   opacity: 0;
@@ -90,6 +111,12 @@ button::-moz-focus-inner {
     opacity: 1; }
   100% {
     opacity: 0; } }
+
+@keyframes introBg {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
 
 @keyframes logo {
   0% {
@@ -161,7 +188,16 @@ button::-moz-focus-inner {
     #form-starwars input:active, #form-starwars input:focus, #form-starwars textarea:active, #form-starwars textarea:focus {
       border-color: #ff6; }
   #form-starwars textarea {
-    height: 230px; }
+    resize: none; }
+
+#f-intro {
+  color: #4bd5ee !important; }
+
+#f-text {
+  height: 230px; }
+
+#f-title, #f-episode {
+  text-align: center; }
 
 #loader {
   position: absolute;
@@ -212,7 +248,7 @@ button::-moz-focus-inner {
   position: absolute;
   top: 0;
   left: 0;
-  background: url("stars.jpg") repeat; }
+  background: url("bg-stars.png") repeat; }
 
 .running .bg {
   animation: scrolldown 7s 86s forwards; }

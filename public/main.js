@@ -69,7 +69,10 @@ $(window).on('hashchange', function() {
                     return;
                 }
 
-                StarWars.animation.find("#intro").text(opening.intro);
+                var intro = opening.intro.replace(/</g,"&lt;");
+                intro = intro.replace(/>/g,"&gt;");
+                intro = intro.replace(/\n/g,"<br>");
+                StarWars.animation.find("#intro").html(intro);
                 StarWars.animation.find("#episode").text(opening.episode);
                 StarWars.animation.find("#title").text(opening.title);
 
