@@ -79,16 +79,21 @@ button::-moz-focus-inner {
   }
 
   .intro {
-    $intro-width: 15em;
-    width: $intro-width;
-    margin: 0 0 0 -35%;
-    position: relative;
+    $intro-width: 100%;
+    //width: $intro-width;
+    margin: 0 auto;
+    padding: 0 100px;
+    position: static;
     top: 0px;
-    font-size: 4.5em;
+    left: 0px;
+    font-size: 500%;
     font-weight: 400;
     color: $introColor;
     opacity: 0;
     animation: intro 6s ease-out 1s;
+    @media (max-width: 1250px){
+        font-size: 350%;
+    }
   }
 
   .introWrapper{
@@ -104,6 +109,10 @@ button::-moz-focus-inner {
   .logo {
     opacity: 0;
     animation: logo 9s ease-out 9s;
+    //display: none;
+    $logo-width: 18em;
+    width: $logo-width;
+    margin: (- $logo-width / 2) 0 0 (- $logo-width / 2);
 
     img {
       width: inherit;
@@ -169,27 +178,15 @@ button::-moz-focus-inner {
 
 @keyframes logo {
     0% {
-    $logo-width: 18em;
-    width: $logo-width;
-    margin: (- $logo-width / 2) 0 0 (- $logo-width / 2);
-
     @include transform(scale(2.75));
     opacity: 1;
   }
     50% {
     opacity: 1;
-
-    $logo-width: 18em;
-    width: $logo-width;
-    margin: (- $logo-width / 2) 0 0 (- $logo-width / 2);
   }
     100% {
     @include transform(scale(.1));
     opacity: 0;
-
-    $logo-width: 18em;
-    width: $logo-width;
-    margin: (- $logo-width / 2) 0 0 (- $logo-width / 2);
   }
 }
 
@@ -329,7 +326,7 @@ button::-moz-focus-inner {
 
 .bg {
   width: 100%;
-  height: 3100px;
+  height: 4100px;
   position: absolute;
   top: 0;
   left: 0;
@@ -342,10 +339,10 @@ button::-moz-focus-inner {
 
 @keyframes scrolldown {
   0% {
-    transform: translateY(0);
+      transform: translateY(0);
   }
   100% {
-    transform: translateY(-68%);
+      transform: translateY(-2200px);
   }
 }
 
@@ -354,6 +351,6 @@ button::-moz-focus-inner {
   width: 655px;
   height: 663px;
   position: absolute;
-  bottom: 150px;
+  bottom: 1150px;
   right: 100px;
 }

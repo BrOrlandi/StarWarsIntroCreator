@@ -46,15 +46,19 @@ button::-moz-focus-inner {
   opacity: 0; }
 
 .starwars .intro {
-  width: 15em;
-  margin: 0 0 0 -35%;
-  position: relative;
+  margin: 0 auto;
+  padding: 0 100px;
+  position: static;
   top: 0px;
-  font-size: 4.5em;
+  left: 0px;
+  font-size: 500%;
   font-weight: 400;
   color: #4bd5ee;
   opacity: 0;
   animation: intro 6s ease-out 1s; }
+  @media (max-width: 1250px) {
+    .starwars .intro {
+      font-size: 350%; } }
 
 .starwars .introWrapper {
   display: flex;
@@ -67,7 +71,9 @@ button::-moz-focus-inner {
 
 .starwars .logo {
   opacity: 0;
-  animation: logo 9s ease-out 9s; }
+  animation: logo 9s ease-out 9s;
+  width: 18em;
+  margin: -9em 0 0 -9em; }
   .starwars .logo img {
     width: inherit; }
 
@@ -120,8 +126,6 @@ button::-moz-focus-inner {
 
 @keyframes logo {
   0% {
-    width: 18em;
-    margin: -9em 0 0 -9em;
     -moz-transform: scale(2.75);
     -o-transform: scale(2.75);
     -ms-transform: scale(2.75);
@@ -129,18 +133,14 @@ button::-moz-focus-inner {
     transform: scale(2.75);
     opacity: 1; }
   50% {
-    opacity: 1;
-    width: 18em;
-    margin: -9em 0 0 -9em; }
+    opacity: 1; }
   100% {
     -moz-transform: scale(0.1);
     -o-transform: scale(0.1);
     -ms-transform: scale(0.1);
     -webkit-transform: scale(0.1);
     transform: scale(0.1);
-    opacity: 0;
-    width: 18em;
-    margin: -9em 0 0 -9em; } }
+    opacity: 0; } }
 
 @keyframes titles {
   0% {
@@ -244,7 +244,7 @@ button::-moz-focus-inner {
 
 .bg {
   width: 100%;
-  height: 3100px;
+  height: 4100px;
   position: absolute;
   top: 0;
   left: 0;
@@ -257,12 +257,12 @@ button::-moz-focus-inner {
   0% {
     transform: translateY(0); }
   100% {
-    transform: translateY(-68%); } }
+    transform: translateY(-2200px); } }
 
 .deathstar {
   background: black url(deathstar.png) no-repeat;
   width: 655px;
   height: 663px;
   position: absolute;
-  bottom: 150px;
+  bottom: 1150px;
   right: 100px; }
