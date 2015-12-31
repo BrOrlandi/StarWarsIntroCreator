@@ -1,0 +1,52 @@
+#textHeightConfig {
+    position: absolute;
+    top: 200px;
+    left: -50px;
+    width: 200px;
+    -webkit-transform: rotate(90deg);
+}
+
+.starwars {
+
+  section {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    z-index: 1;
+  }
+
+  .titles {
+    $titles-width: 14.65em;
+    width: $titles-width;
+    margin: 0 0 0 (- $titles-width / 2);
+    top: auto;
+    bottom: 0;
+    height: 50em;
+    font-size: 350%;
+    text-align: justify;
+      overflow: hidden;
+    transform-origin: 50% 100%;
+
+    > div {
+        position: absolute;
+        top: 80%;
+        opacity: 1;
+        animation: titles 73s linear 13s;
+
+      > p {
+          margin: 1.35em 0 1.85em 0;
+        line-height: 1.35em;
+
+      }
+
+      .tcenter{
+        margin: 1.35em 0 -1em 0;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@keyframes titles {
+
+}

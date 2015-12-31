@@ -1,0 +1,65 @@
+<html lang="en_US">
+<head>
+    <title>Star Wars Intro Creator</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Create your own Star Wars opening crawl." />
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="http://brorlandi.github.io/StarWarsIntroCreator/">
+    <meta property="og:title" content="Star Wars Intro Creator">
+    <meta property="og:site_name" content="Star Wars Intro Creator">
+    <meta property="og:description" content="Create your own Star Wars opening crawl.">
+    <meta property="og:image" content="http://brorlandi.github.io/StarWarsIntroCreator/preview.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:type" content="website">
+    <meta property="fb:app_id" content="966673750071792"/>
+
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- build:css ./styles.css -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="textDisplay.css">
+    <link rel="stylesheet" type="text/css" href="spinner.css">
+    <link rel="stylesheet" type="text/css" href="libs/sweetalert/dist/sweetalert.css">
+    <!-- endbuild -->
+
+    <!-- build:js ./vendor.js -->
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src='libs/sweetalert/dist/sweetalert.min.js'></script>
+    <!-- endbuild -->
+</head>
+<body>
+<div class="bg">
+</div>
+<article class="starwars">
+ <input id="textHeightConfig" type="range" min="0" max="100" value="80" step="1" oninput="changeHeight(this.value)"/>
+  <div class="animation">
+    <section class="titles">
+      <div id="textTitles" style="width: 100%;">
+        <p id="episode" class="tcenter">
+            Episode IV
+        </p>
+        <p  id="title" class="tcenter">
+            A NEW HOPE
+        </p>
+        <div id="text">
+            <p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.</p>
+            <p>During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.</p>
+            <p>Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plan that can save her people and restore freedom to the galaxy....</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</article>
+
+<!-- build:js ./main.js -->
+
+<script>
+function changeHeight(val){
+    $("#textTitles").css('top',val+"%");
+}
+
+</script>
+<!-- endbuild -->
+</body>
+</html>
