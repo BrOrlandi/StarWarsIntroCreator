@@ -1,7 +1,21 @@
+// sweet alerts config
 swal.setDefaults({
     customClass: 'star-wars-alert',
 });
 
+// make audio load on mobile devices
+var audio = document.getElementsByTagName('audio')[0];
+var audioIsLoaded = false;
+var loadData = function () {
+    if(!audioIsLoaded){
+        audio.load();
+        audioIsLoaded = true;
+    }
+};
+document.body.addEventListener('touchstart', loadData);
+
+
+// prevent arrow scrolling in firefox
 window.addEventListener("keydown", function(e) {
     // space and arrow keys
     var type = document.activeElement.type || '';
