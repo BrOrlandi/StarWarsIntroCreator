@@ -32,8 +32,18 @@
 <div class="bg">
 </div>
 <article class="starwars">
+    <div id="showIntroDiv">
+    <input type="checkbox" name="showIntro" id="showIntro">
+    <label  for="showIntro">Intro</label>
+    </div>
  <input id="textHeightConfig" type="range" min="0" max="100" value="80" step="1" oninput="changeHeight(this.value)"/>
   <div class="animation">
+      <div class="introWrapper">  
+          <section id="intro" class="intro">
+              A long time ago, in a galaxy far,
+              <br>far away....
+          </section>
+      </div>
     <section class="titles">
       <div id="textTitles" style="width: 100%;">
         <p id="episode" class="tcenter">
@@ -58,6 +68,14 @@
 function changeHeight(val){
     $("#textTitles").css('top',val+"%");
 }
+
+$("#showIntro").bind('change', function(){
+    if($("#showIntro").prop('checked')){
+        $("#intro").show();
+    }else{
+        $("#intro").hide();
+    }
+});
 
 </script>
 <!-- endbuild -->

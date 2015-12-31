@@ -4,6 +4,14 @@
     left: -50px;
     width: 200px;
     -webkit-transform: rotate(90deg);
+    z-index: 20;
+}
+
+#showIntroDiv{
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    z-index: 20;
 }
 
 .starwars {
@@ -13,6 +21,12 @@
     top: 45%;
     left: 50%;
     z-index: 1;
+  }
+
+  .intro {
+      display: none;
+    opacity: 1;
+      animation: 0 !important;
   }
 
   .titles {

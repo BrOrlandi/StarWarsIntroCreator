@@ -3,13 +3,25 @@
   top: 200px;
   left: -50px;
   width: 200px;
-  -webkit-transform: rotate(90deg); }
+  -webkit-transform: rotate(90deg);
+  z-index: 20; }
+
+#showIntroDiv {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  z-index: 20; }
 
 .starwars section {
   position: absolute;
   top: 45%;
   left: 50%;
   z-index: 1; }
+
+.starwars .intro {
+  display: none;
+  opacity: 1;
+  animation: 0 !important; }
 
 .starwars .titles {
   width: 14.65em;
