@@ -24,6 +24,7 @@
 }
 
 $introColor: rgb(75, 213, 238);
+$titlesColor: #ffd54e;
 
 html,
 body {
@@ -31,7 +32,7 @@ body {
     height: 100%;
     font: 700 1em "News Cycle", sans-serif;
     letter-spacing:.15em;
-    color: #ff6;
+    color: $titlesColor;
     overflow: hidden;
     margin: 0;
 }
@@ -62,10 +63,6 @@ button::-moz-focus-inner {
         margin: 0 auto;
         width: 500px;
     }
-
-    span {
-      color: rgb(75, 213, 238);
-    }
   }
   .introBg{
       position: absolute;
@@ -79,8 +76,6 @@ button::-moz-focus-inner {
   }
 
   .intro {
-    $intro-width: 100%;
-    //width: $intro-width;
     margin: 0 auto;
     padding: 0 100px;
     position: static;
@@ -96,7 +91,7 @@ button::-moz-focus-inner {
     }
   }
 
-  .introWrapper{
+  .verticalWrapper{
       display: flex;
       align-items: center;
       height: 100%;
@@ -104,18 +99,20 @@ button::-moz-focus-inner {
       position: absolute;
       top: 0px;
       left: 0px;
+      right: 0px;
+      bottom: 0px;
   }
 
   .logo {
+    text-align:center;
+    position: static;
+
+    margin: 0 auto;
     opacity: 0;
     animation: logo 9s ease-out 9s;
-    //display: none;
-    $logo-width: 18em;
-    width: $logo-width;
-    margin: (- $logo-width / 2) 0 0 (- $logo-width / 2);
 
     img {
-      width: inherit;
+      width: 300px;
     }
   }
 
@@ -178,14 +175,14 @@ button::-moz-focus-inner {
 
 @keyframes logo {
     0% {
-    @include transform(scale(2.75));
+    @include transform(scale(1.0));
     opacity: 1;
   }
-    50% {
+    80% {
     opacity: 1;
   }
     100% {
-    @include transform(scale(.1));
+    @include transform(scale(.01));
     opacity: 0;
   }
 }
@@ -220,7 +217,7 @@ button::-moz-focus-inner {
   font-size: 50px;
   border: 0;
   background: transparent;
-  color: #ff6;
+  color: $titlesColor;
   text-shadow: none;
   transition: text-shadow 0.5s ease-out;
   outline: none;
@@ -238,14 +235,14 @@ button::-moz-focus-inner {
     width: 100%;
     margin-bottom: 10px;
     padding: 0.25em;
-    border: 0.25em solid transparentize(#ff6, 0.8);
+    border: 0.25em solid transparentize($titlesColor, 0.8);
     border-radius: 0.2em;
     background: black;
-    color: #ff6;
+    color: $titlesColor;
     transition: border-color 0.7s ease-out;
 
     &:active, &:focus {
-      border-color: #ff6;
+      border-color: $titlesColor;
     }
   }
 
@@ -279,14 +276,14 @@ button::-moz-focus-inner {
 .star-wars-alert{
   background-color: black !important;
 
-  border: 2px solid #ff6;
+  border: 2px solid $titlesColor;
   h2, p{
-    color: #ff6 !important;
+    color: $titlesColor !important;
   }
 
   button{
-    border: 2px solid #ff6 !important;
-    color: #ff6 !important;
+    border: 2px solid $titlesColor !important;
+    color: $titlesColor !important;
     background-color: black !important;
   }
 }
@@ -300,7 +297,7 @@ button::-moz-focus-inner {
   color: #9e9e42;
 
   a {
-    color: #ff6;
+    color: $titlesColor;
     text-decoration: none;
     &:hover {
       color: #fff;

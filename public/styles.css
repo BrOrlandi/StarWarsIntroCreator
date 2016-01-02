@@ -9,7 +9,7 @@ body {
   height: 100%;
   font: 700 1em "News Cycle", sans-serif;
   letter-spacing: .15em;
-  color: #ff6;
+  color: #ffd54e;
   overflow: hidden;
   margin: 0; }
 
@@ -32,8 +32,6 @@ button::-moz-focus-inner {
   .starwars .start #config {
     margin: 0 auto;
     width: 500px; }
-  .starwars .start span {
-    color: #4bd5ee; }
 
 .starwars .introBg {
   position: absolute;
@@ -60,22 +58,25 @@ button::-moz-focus-inner {
     .starwars .intro {
       font-size: 350%; } }
 
-.starwars .introWrapper {
+.starwars .verticalWrapper {
   display: flex;
   align-items: center;
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0px;
-  left: 0px; }
+  left: 0px;
+  right: 0px;
+  bottom: 0px; }
 
 .starwars .logo {
+  text-align: center;
+  position: static;
+  margin: 0 auto;
   opacity: 0;
-  animation: logo 9s ease-out 9s;
-  width: 18em;
-  margin: -9em 0 0 -9em; }
+  animation: logo 9s ease-out 9s; }
   .starwars .logo img {
-    width: inherit; }
+    width: 300px; }
 
 .starwars .titles {
   width: 14.65em;
@@ -126,20 +127,20 @@ button::-moz-focus-inner {
 
 @keyframes logo {
   0% {
-    -moz-transform: scale(2.75);
-    -o-transform: scale(2.75);
-    -ms-transform: scale(2.75);
-    -webkit-transform: scale(2.75);
-    transform: scale(2.75);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
     opacity: 1; }
-  50% {
+  80% {
     opacity: 1; }
   100% {
-    -moz-transform: scale(0.1);
-    -o-transform: scale(0.1);
-    -ms-transform: scale(0.1);
-    -webkit-transform: scale(0.1);
-    transform: scale(0.1);
+    -moz-transform: scale(0.01);
+    -o-transform: scale(0.01);
+    -ms-transform: scale(0.01);
+    -webkit-transform: scale(0.01);
+    transform: scale(0.01);
     opacity: 0; } }
 
 @keyframes titles {
@@ -166,7 +167,7 @@ button::-moz-focus-inner {
   font-size: 50px;
   border: 0;
   background: transparent;
-  color: #ff6;
+  color: #ffd54e;
   text-shadow: none;
   transition: text-shadow 0.5s ease-out;
   outline: none; }
@@ -180,13 +181,13 @@ button::-moz-focus-inner {
     width: 100%;
     margin-bottom: 10px;
     padding: 0.25em;
-    border: 0.25em solid rgba(255, 255, 102, 0.2);
+    border: 0.25em solid rgba(255, 213, 78, 0.2);
     border-radius: 0.2em;
     background: black;
-    color: #ff6;
+    color: #ffd54e;
     transition: border-color 0.7s ease-out; }
     #form-starwars input:active, #form-starwars input:focus, #form-starwars textarea:active, #form-starwars textarea:focus {
-      border-color: #ff6; }
+      border-color: #ffd54e; }
   #form-starwars textarea {
     resize: none; }
 
@@ -210,12 +211,12 @@ button::-moz-focus-inner {
 
 .star-wars-alert {
   background-color: black !important;
-  border: 2px solid #ff6; }
+  border: 2px solid #ffd54e; }
   .star-wars-alert h2, .star-wars-alert p {
-    color: #ff6 !important; }
+    color: #ffd54e !important; }
   .star-wars-alert button {
-    border: 2px solid #ff6 !important;
-    color: #ff6 !important;
+    border: 2px solid #ffd54e !important;
+    color: #ffd54e !important;
     background-color: black !important; }
 
 #footer {
@@ -226,7 +227,7 @@ button::-moz-focus-inner {
   font-size: 0.7em;
   color: #9e9e42; }
   #footer a {
-    color: #ff6;
+    color: #ffd54e;
     text-decoration: none; }
     #footer a:hover {
       color: #fff;

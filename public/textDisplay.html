@@ -33,12 +33,16 @@
 </div>
 <article class="starwars">
     <div id="showIntroDiv">
-    <input type="checkbox" name="showIntro" id="showIntro">
-    <label  for="showIntro">Intro</label>
+        <input type="checkbox" name="showIntro" id="showIntro">
+        <label  for="showIntro">Intro</label>
     </div>
- <input id="textHeightConfig" type="range" min="0" max="100" value="80" step="1" oninput="changeHeight(this.value)"/>
+    <input type="checkbox" id="showLogo">
+    <span class="configRanges">Logo</span>
+    <input id="logoConfig" type="range" min="0" max="100" value="80" step="1" oninput="changeLogo(this.value)"/>
+    <span class="configRanges second">Titles</span>
+    <input id="textHeightConfig" type="range" min="0" max="100" value="50" step="1" oninput="changeHeight(this.value)"/>
   <div class="animation">
-      <div class="introWrapper">  
+      <div class="verticalWrapper">
           <section id="intro" class="intro">
               A long time ago, in a galaxy far,
               <br>far away....
@@ -59,6 +63,12 @@
         </div>
       </div>
     </section>
+    <div class="verticalWrapper">
+        <section class="logo noselect">
+          <img src="logo.svg" />
+          </div>
+      </section>
+    </div>
   </div>
 </article>
 
@@ -69,6 +79,10 @@ function changeHeight(val){
     $("#textTitles").css('top',val+"%");
 }
 
+function changeLogo(val){
+    $(".logo").css('transform',"scale("+val/100+")");
+}
+
 $("#showIntro").bind('change', function(){
     if($("#showIntro").prop('checked')){
         $("#intro").show();
@@ -76,6 +90,19 @@ $("#showIntro").bind('change', function(){
         $("#intro").hide();
     }
 });
+
+$("#showLogo").bind('change', function(){
+    if($("#showLogo").prop('checked')){
+        $(".logo").show();
+    }else{
+        $(".logo").hide();
+    }
+});
+
+$(window).resize(function() {
+    $('.logo img').css('width',$(window).width()+'px');
+});
+$(window).trigger('resize');
 
 </script>
 <!-- endbuild -->

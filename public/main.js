@@ -78,7 +78,6 @@ $(window).on('hashchange', function() {
                 toggleLoading();
                 console.log(opening);
                 if(opening == null){
-                    toggleLoading();
                     sweetAlert("Oops...", "Introduction not found!", "error");
                     return;
                 }

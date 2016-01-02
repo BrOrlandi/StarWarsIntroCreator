@@ -1,4 +1,19 @@
-#textHeightConfig {
+#showIntroDiv{
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    z-index: 20;
+}
+
+#showLogo{
+    position: absolute;
+    top: 80px;
+    left: -60px;
+    width: 200px;
+    z-index: 20;
+}
+
+#logoConfig {
     position: absolute;
     top: 200px;
     left: -50px;
@@ -7,21 +22,27 @@
     z-index: 20;
 }
 
-#showIntroDiv{
+#textHeightConfig {
     position: absolute;
-    top: 20px;
-    left: 50px;
+    top: 500px;
+    left: -50px;
+    width: 200px;
+    -webkit-transform: rotate(90deg);
     z-index: 20;
 }
 
-.starwars {
-
-  section {
+.configRanges{
     position: absolute;
-    top: 45%;
-    left: 50%;
-    z-index: 1;
-  }
+    $first: 80px;
+    top: $first;
+    left: 50px;
+    &.second{
+        top: $first + 300px;
+    }
+}
+
+
+.starwars {
 
   .intro {
       display: none;
@@ -30,37 +51,23 @@
   }
 
   .titles {
-    $titles-width: 14.65em;
-    width: $titles-width;
-    margin: 0 0 0 (- $titles-width / 2);
-    top: auto;
-    bottom: 0;
-    height: 50em;
-    font-size: 350%;
-    text-align: justify;
-      overflow: hidden;
-    transform-origin: 50% 100%;
 
     > div {
-        position: absolute;
         top: 80%;
         opacity: 1;
-        animation: titles 73s linear 13s;
-
-      > p {
-          margin: 1.35em 0 1.85em 0;
-        line-height: 1.35em;
-
-      }
-
-      .tcenter{
-        margin: 1.35em 0 -1em 0;
-        text-align: center;
-      }
     }
+  }
+
+  .logo {
+      display: none;
+    opacity: 1;
   }
 }
 
 @keyframes titles {
+
+}
+
+@keyframes logo {
 
 }
