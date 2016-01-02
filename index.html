@@ -60,9 +60,9 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
   <div class="animation">
 
       <div class="introBg">
-          
+
       </div>
-    <div class="introWrapper">
+    <div class="verticalWrapper">
         <section id="intro" class="intro noselect">
         </section>
     </div>
@@ -78,9 +78,11 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
       </div>
     </section>
 
-    <section class="logo noselect">
-      <img src="logo.svg" />
-    </section>
+    <div class="verticalWrapper">
+        <section class="logo noselect">
+          <img src="logo.svg" />
+      </section>
+    </div>
   </div>
 </article>
 <div class="socialButtons pageHide">
@@ -103,7 +105,13 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
 <div id="footer" class="pageHide">
     Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> based on <a href="http://timpietrusky.com/star-wars-opening-crawl-from-1977" target="2">Tim Pietrusky</a> work.
 </div>
-
+<script>
+// logo size calc
+$(window).resize(function() {
+    $('.logo img').css('width',$(window).width()+'px');
+});
+$(window).trigger('resize');
+</script>
 <script src="./main.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
