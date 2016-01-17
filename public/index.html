@@ -45,12 +45,15 @@
     <div id="config">
     <form id="form-starwars">
       <h2 id="pageTitle">Star wars<br>intro CReator</h2>
-      <textarea id="f-intro" rows="2">
+      <textarea id="f-intro" rows="2" spellcheck="false">
 A long time ago, in a galaxy far,
 far away....</textarea><br>
-      <input id="f-episode" type="text" value="Episode IV"> <br>
-      <input id="f-title" type="text" value="A NEW HOPE"> <br>
-      <textarea id="f-text" >
+      <textarea id="f-logo" rows="2" spellcheck="false">
+Star
+wars</textarea><br>
+      <input id="f-episode" type="text" value="Episode IV" spellcheck="false"> <br>
+      <input id="f-title" type="text" value="A NEW HOPE" spellcheck="false"> <br>
+      <textarea id="f-text" spellcheck="false">
 It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
 During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.
 Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plan that can save her people and restore freedom to the galaxy....
@@ -87,7 +90,11 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
 
     <div class="verticalWrapper">
         <section class="logo noselect">
-          <img src="logo.svg" />
+          <img id="logoimg" src="logo.svg" />
+          <svg id="logosvg" viewBox="0 0 750 500">
+              <text letter-spacing="15px" x="50%" y="50%" text-anchor="middle" fill="none" stroke-width="8px" stroke="#ffd54e"></text>
+              <text letter-spacing="15px" x="50%" y="85%" text-anchor="middle" fill="none" stroke-width="8px" stroke="#ffd54e"></text>
+          </svg>
       </section>
     </div>
   </div>
@@ -115,9 +122,27 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
 <script>
 // logo size calc
 $(window).resize(function() {
-    $('.logo img').css('width',$(window).width()+'px');
+    $('#logoimg').css('width',$(window).width()+'px');
+    $('#logosvg').css('width',$(window).width()+'px');
+
+    if($(window).height() < $("#config").height()+50){ // allow scroll if the form doesn't fit on the window
+        $("body").css("overflow","auto");
+    }else{
+        $("body").css("overflow","hidden");
+        $('body').scrollTop(0);
+    }
 });
-$(window).trigger('resize');
+$(window).load(function () {
+    $(window).trigger('resize');
+})
+$(document).scroll(function (e) {
+    var max_height = $("#config").height()+50 - $(window).height();
+    var height = $('body').scrollTop();
+    if(height > max_height+200){ // prevent scrolling to much and reaching the deathstar befor the time.
+        var val = max_height+200;
+        $('body').scrollTop(val);
+    }
+})
 </script>
 <!-- build:js ./main.js -->
 <script src="StarWars.js"></script>

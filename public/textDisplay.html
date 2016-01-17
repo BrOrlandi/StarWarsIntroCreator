@@ -38,7 +38,7 @@
     </div>
     <input type="checkbox" id="showLogo">
     <span class="configRanges">Logo</span>
-    <input id="logoConfig" type="range" min="0" max="100" value="80" step="1" oninput="changeLogo(this.value)"/>
+    <input id="logoConfig" type="range" min="0" max="130" value="80" step="1" oninput="changeLogo(this.value)"/>
     <span class="configRanges second">Titles</span>
     <input id="textHeightConfig" type="range" min="0" max="100" value="50" step="1" oninput="changeHeight(this.value)"/>
   <div class="animation">
@@ -65,13 +65,16 @@
     </section>
     <div class="verticalWrapper">
         <section class="logo noselect">
-          <img src="logo.svg" />
-          </div>
+          <img id="logoimg" src="logo.svg" />
+          <svg id="logosvg" viewBox="0 0 750 500">
+              <text letter-spacing="15px" x="50%" y="50%" text-anchor="middle" fill="none" stroke-width="8px" stroke="#ffd54e">star</text>
+              <text letter-spacing="15px" x="50%" y="85%" text-anchor="middle" fill="none" stroke-width="8px" stroke="#ffd54e">wars</text>
+          </svg>
+      </div>
       </section>
     </div>
   </div>
 </article>
-
 <!-- build:js ./main.js -->
 
 <script>
@@ -100,7 +103,8 @@ $("#showLogo").bind('change', function(){
 });
 
 $(window).resize(function() {
-    $('.logo img').css('width',$(window).width()+'px');
+    $('#logoimg').css('width',$(window).width()+'px');
+    $('#logosvg').css('width',$(window).width()+'px');
 });
 $(window).trigger('resize');
 

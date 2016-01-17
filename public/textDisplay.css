@@ -1,3 +1,10 @@
+#logoimg {
+  display: none;
+  display: block; }
+
+#logosvg {
+  display: block; }
+
 #showIntroDiv {
   position: absolute;
   top: 20px;

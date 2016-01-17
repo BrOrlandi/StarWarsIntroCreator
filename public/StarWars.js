@@ -66,11 +66,13 @@ StarWarsOpening = (function() {
    * Resets the animation and shows the start screen.
    */
   StarWarsOpening.prototype.reset = function() {
-    this.start.show();
-    $('.pageHide').show();
+    this.start.show(); // show config form
+    $('.pageHide').show(); // show footer and social buttons
+    // reset the animation
     this.cloned = this.animation.clone(true);
     this.animation.remove();
     this.animation = this.cloned;
+    $(window).trigger('resize'); // trigger resize to allow scrol in the config form
   };
 
   StarWarsOpening.prototype.resetAudio = function() {
@@ -83,6 +85,7 @@ StarWarsOpening = (function() {
       $('.pageHide').hide();
       $('body').removeClass('running');
       $('body').addClass('running');
+      $('body').scrollTop(0);
       this.audio.play();
       this.el.append(this.animation);
   }
