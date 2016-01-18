@@ -57,17 +57,6 @@ button::-moz-focus-inner {
     .starwars .intro {
       font-size: 350%; } }
 
-.starwars .verticalWrapper {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px; }
-
 .starwars .logo {
   font-family: StarWars;
   text-align: center;
@@ -108,6 +97,17 @@ button::-moz-focus-inner {
     .starwars .titles > div .tcenter {
       margin: 1.35em 0 -1em 0;
       text-align: center; }
+
+.verticalWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px; }
 
 @keyframes intro {
   0% {
@@ -161,7 +161,7 @@ button::-moz-focus-inner {
   -ms-user-select: none;
   user-select: none; }
 
-#play {
+.playButton {
   font-family: StarWars;
   cursor: pointer;
   font-size: 50px;
@@ -171,7 +171,7 @@ button::-moz-focus-inner {
   text-shadow: none;
   transition: text-shadow 0.5s ease-out;
   outline: none; }
-  #play:focus, #play:hover {
+  .playButton:focus, .playButton:hover {
     text-shadow: -1px 1px 8px #45f500, 1px -1px 8px #45f500; }
 
 #form-starwars {
@@ -210,10 +210,9 @@ button::-moz-focus-inner {
 #f-logo, #f-title, #f-episode {
   text-align: center; }
 
-#loader {
-  position: absolute;
-  top: 50%;
-  left: 50%; }
+#loader .inner {
+  width: 100%;
+  text-align: center; }
 
 #pageTitle {
   line-height: 100%;
@@ -284,3 +283,8 @@ button::-moz-focus-inner {
   width: 900px;
   display: none;
   font-size: 210px; }
+
+.playAudio {
+  width: 100%;
+  text-align: center;
+  font-size: 50px; }

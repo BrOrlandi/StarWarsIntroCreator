@@ -65,6 +65,7 @@ $('#form-starwars').submit(function(event) {
 });
 
 $(window).on('hashchange', function() {
+    $("#playBut").remove();
     var key = location.hash.replace('#!/', '').split('/')[0];
     $('body').removeClass('running');
     if(key != ""){
@@ -73,7 +74,6 @@ $(window).on('hashchange', function() {
             $.ajax({
               url: url,
               success: function(opening) {
-                toggleLoading();
                 if(opening == null){
                     sweetAlert("Oops...", "Introduction not found!", "error");
                     return;
@@ -117,15 +117,36 @@ $(window).on('hashchange', function() {
                     $('#logoimg',StarWars.animation).show();
                 }
 
-
-                if(document.hasFocus()){
-                        StarWars.play();
-                        notPlayed = false;
-                }else{
-                    $(window).focus(function(){
-                        if(notPlayed){
-                            StarWars.play();
+                var play = function(){
+                    $.when(StarWars.audioDefer).then(function(){
+                        var buffered = StarWars.audio.buffered.end(StarWars.audio.buffered.length-1);
+                        if(buffered == 0 && !audioIsLoaded){
+                            $('#loader').hide();
+                            playbutton = $('<div class="verticalWrapper"><div class="playAudio"><button id="playBut" class="playButton" style="font-size: 80px">Play</button></div></div>');
+                            $('body').append(playbutton);
+                            $('#playBut',playbutton).click(function(){
+                                $('#loader').show();
+                                playbutton.remove();
+                            });
+                            StarWars.audio.oncanplaythrough = function () {
+                                toggleLoading();
+                                notPlayed = false;
+                                StarWars.play();
+                            };
+                        }else{
+                            toggleLoading();
                             notPlayed = false;
+                            StarWars.play();
+                        }
+                    });
+                };
+
+                if(document.hasFocus()){ // play if has focus
+                        play();
+                }else{
+                    $(window).focus(function(){ // play when got focus
+                        if(notPlayed){
+                            play();
                         }
                     });
                 }

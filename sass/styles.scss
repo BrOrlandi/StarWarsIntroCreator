@@ -90,18 +90,6 @@ button::-moz-focus-inner {
     }
   }
 
-  .verticalWrapper{
-      display: flex;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-  }
-
   .logo {
     font-family: StarWars;
     text-align:center;
@@ -149,6 +137,18 @@ button::-moz-focus-inner {
       }
     }
   }
+}
+
+.verticalWrapper{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
 }
 
 @keyframes intro {
@@ -213,7 +213,7 @@ button::-moz-focus-inner {
     user-select: none;
 }
 
-#play{
+.playButton{
   font-family: StarWars;
   cursor: pointer;
   font-size: 50px;
@@ -299,9 +299,10 @@ button::-moz-focus-inner {
 }
 
 #loader{
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    .inner {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 #pageTitle{
@@ -399,4 +400,10 @@ button::-moz-focus-inner {
   width: 900px;
   display: none;
   font-size: 210px;
+}
+
+.playAudio{
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
 }

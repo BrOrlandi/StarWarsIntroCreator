@@ -43,6 +43,12 @@ StarWarsOpening = (function() {
     // Audio to play the opening crawl
     this.audio = this.el.find('audio').get(0);
 
+    this.audioDefer = $.Deferred();
+    var that = this;
+    this.audio.oncanplaythrough = function() {
+      that.audioDefer.resolve();
+    };
+
     // Start the animation
     this.start = this.el.find('.start');
 
@@ -83,6 +89,7 @@ StarWarsOpening = (function() {
   StarWarsOpening.prototype.play = function(){
       this.start.hide();
       $('.pageHide').hide();
+      $('#loader').hide(); // grants the loader to hide. Sometimes doesn't hide, maybe due to history navigation in browser.
       $('body').removeClass('running');
       $('body').addClass('running');
       $('body').scrollTop(0);
