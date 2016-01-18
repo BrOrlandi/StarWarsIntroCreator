@@ -52,6 +52,11 @@ $('#form-starwars').submit(function(event) {
     title: $("#f-title").val(),
     text: $("#f-text").val(),
   };
+  var aLogo = opening.logo.split('\n');
+  if(aLogo.length > 2){
+      sweetAlert("Oops...", "Logo can't have more than 2 lines.", "warning");
+      return;
+  }
   $.ajax({
       url: "https://starwarsopening.firebaseio.com/openings.json",
       method: "POST",
