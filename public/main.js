@@ -83,6 +83,7 @@ $(window).on('hashchange', function() {
                     sweetAlert("Oops...", "Introduction not found!", "error");
                     return;
                 }
+                StarWars.opening = opening;
 
                 var intro = opening.intro.replace(/</g,"&lt;");
                 intro = intro.replace(/>/g,"&gt;");
@@ -105,7 +106,7 @@ $(window).on('hashchange', function() {
                 var logoText = opening.logo ? opening.logo : "star\nwars";
                 var aLogo = logoText.split('\n'); // breaks logo text in 2 lines
                 var logo1 = aLogo[0];
-                var logo2 = aLogo[1];
+                var logo2 = aLogo[1] || "";
                 if(logoText.toLowerCase() != "star\nwars"){
                     var texts = $('#logosvg text',StarWars.animation);
                     texts[0].textContent = logo1;
