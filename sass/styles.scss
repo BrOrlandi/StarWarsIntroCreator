@@ -349,6 +349,10 @@ button::-moz-focus-inner {
     left: 1em;
     z-index: 10;
 
+    form {
+        margin-bottom: 5px;
+    }
+
     div {
         margin-bottom: 0.33em;
 

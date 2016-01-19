@@ -247,6 +247,8 @@ button::-moz-focus-inner {
   bottom: 1em;
   left: 1em;
   z-index: 10; }
+  .socialButtons form {
+    margin-bottom: 5px; }
   .socialButtons div {
     margin-bottom: 0.33em; }
     .socialButtons div:last-of-type {
