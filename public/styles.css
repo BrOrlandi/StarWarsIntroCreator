@@ -290,3 +290,31 @@ button::-moz-focus-inner {
   width: 100%;
   text-align: center;
   font-size: 50px; }
+
+#videoButton {
+  display: none;
+  margin-bottom: 30px;
+  font-size: 60px; }
+
+.sweet-alert fieldset input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0.25em;
+  border: 0.25em solid rgba(255, 213, 78, 0.2);
+  border-radius: 0.2em;
+  background: black;
+  color: #ffd54e;
+  transition: border-color 0.7s ease-out; }
+  .sweet-alert fieldset input:active, .sweet-alert fieldset input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 0.25em solid #ffd54e; }
+
+.sweet-alert .icon, .sweet-alert .sa-input-error::before, .sweet-alert .sa-input-error::after {
+  background-color: #C31D00 !important; }
+
+.sa-error-container {
+  background-color: #3c3808 !important; }
+
+iframe {
+  border: none; }

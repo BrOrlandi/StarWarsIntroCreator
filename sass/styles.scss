@@ -412,3 +412,41 @@ button::-moz-focus-inner {
     text-align: center;
     font-size: 50px;
 }
+
+#videoButton{
+    display: none;
+    margin-bottom: 30px;
+    font-size: 60px;
+}
+
+.sweet-alert {
+    fieldset{
+        input {
+          width: 100%;
+          margin-bottom: 10px;
+          padding: 0.25em;
+          border: 0.25em solid transparentize($titlesColor, 0.8);
+          border-radius: 0.2em;
+          background: black;
+          color: $titlesColor;
+          transition: border-color 0.7s ease-out;
+
+          &:active, &:focus {
+            outline: none;
+            box-shadow: none;
+            border: 0.25em solid $titlesColor;
+          }
+        }
+    }
+    .icon, .sa-input-error::before, .sa-input-error::after{
+        background-color: #C31D00 !important;
+    }
+}
+
+.sa-error-container{
+    background-color: #3c3808 !important;
+}
+
+iframe{
+    border: none;
+}

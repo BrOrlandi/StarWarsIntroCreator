@@ -3,6 +3,8 @@ swal.setDefaults({
     customClass: 'star-wars-alert',
 });
 
+var OpeningKey = null;
+
 // make audio load on mobile devices
 var audio = document.getElementsByTagName('audio')[0];
 var audioIsLoaded = false;
@@ -84,6 +86,8 @@ $(window).on('hashchange', function() {
                     return;
                 }
                 StarWars.opening = opening;
+                OpeningKey = key;
+                $("#videoButton").show();
 
                 var intro = opening.intro.replace(/</g,"&lt;");
                 intro = intro.replace(/>/g,"&gt;");
@@ -179,5 +183,102 @@ $(window).on('hashchange', function() {
 
 $(document).ready(function() {
   window.dispatchEvent(new Event('hashchange'));
+});
 
+var generateAlert = {
+    html: true,
+    title: '<h2 style="font-family: StarWars;">Generate video</h2>',
+    text: '<p style="text-align: justify">'+
+    'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready'+
+    '</p>',
+    type: 'input',
+    showCancelButton: true,
+    inputPlaceholder: "Your e-mail...",
+    closeOnConfirm: false,
+    showLoaderOnConfirm: true,
+};
+
+var calcTime = function(queue){
+    var minutes = (queue+1)*40;
+    if(minutes > 60){
+        var hours = Math.floor(minutes/60);
+        return hours + " hours and "+minutes%60+" minutes";
+    }else{
+        return minutes+" minutes";
+    }
+};
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+var requestVideo = function(email){
+    if(email === false) return false;
+    if (!validateEmail(email)) {
+        swal.showInputError("You need to type an e-mail!");
+        return false;
+    }
+
+    var url = "http://nihey.duckdns.org:1977/video/"+ OpeningKey +"?email=" + email;
+    $.ajax({
+        url: url,
+        type: 'GET',
+        crossDomain: true,
+        success: function(data){
+            var queue = data.queue;
+            swal({
+                html: true,
+                title: '<h2 style="font-family: StarWars;">video request sent</h2>',
+                text:'<p style="text-align: justify">'+
+                'Your video has been queued. The current size of the queue is <b>'+
+                queue + '</b>, which will take up to <b>'+ calcTime(queue) +'</b>.<br>'+
+                'The link to download the video will be sent to the e-mail:<br>'+
+                '</p><span style="text-align: center; font-weight: bold">'+email+'</span>'
+            });
+        }
+    });
+
+};
+
+var VideoQueue = 0;
+
+var getVideoQueue = function(){
+    var url = "http://nihey.duckdns.org:1977/status";
+    $.ajax({
+        url: url,
+        type: 'GET',
+        crossDomain: true,
+        success: function(data){
+            VideoQueue = data.queue;
+        }
+    });
+};
+getVideoQueue();
+
+$("#videoButton").click(function(){
+    swal({
+        html: true,
+        title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
+        text: '<p style="text-align: justify">'+
+        'The download functionality is experimental. It takes a server to process the video, which costs money.<br>'+
+        'There are videos in the processing queue, it will take some time to be processed.<br>'+
+        'Consider donating at least <b>5 dollars</b> and we will provide your video as soon as possible.</p>',
+          showCancelButton: true,
+          confirmButtonText: "Yes, donate!",
+          confirmButtonColor: "#807300",
+          cancelButtonText: "No, I'll get in the queue!",
+          closeOnConfirm: false,
+          closeOnCancel: false,
+          animation: "slide-from-top"
+    },function(donate){
+        if(donate){
+            generateAlert.title = '<h2 style="font-family: StarWars;">Donate</h2>';
+            generateAlert.text = 'Click on the button bellow:'
+            +'<br><iframe src="./donateButtons.html" height="100"></iframe>'+generateAlert.text;
+            swal(generateAlert,requestVideo);
+        }else{
+            swal(generateAlert,requestVideo);
+        }
+    });
 });
