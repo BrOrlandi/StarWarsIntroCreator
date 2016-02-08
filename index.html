@@ -15,7 +15,7 @@
     <meta property="fb:app_id" content="966673750071792"/>
 
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.png">
     <link rel="stylesheet" href="./styles.css">
 
     <script src="./vendor.js"></script>
@@ -69,6 +69,7 @@
     <div id="config">
     <form id="form-starwars">
       <h2 id="pageTitle">Star wars<br>intro CReator</h2>
+      <button id="videoButton" class="playButton" type="button">download</button>
       <textarea id="f-intro" rows="2" spellcheck="false">
 A long time ago, in a galaxy far,
 far away....</textarea><br>
@@ -124,17 +125,17 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
   </div>
 </article>
 <div class="socialButtons pageHide">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="AU6WSD3YHLGHY">
-    <input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-    </form>
-
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="EA3ESE322GAJA">
         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+    <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="AU6WSD3YHLGHY">
+        <input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
         <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
     </form>
 
@@ -146,6 +147,9 @@ Pursued by the Empire's sinister agents, Princess Leia races home aboard her sta
     <div>
         <iframe src="https://ghbtns.com/github-btn.html?user=BrOrlandi&repo=StarWarsIntroCreator&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
     </div>
+</div>
+<div class="newFeatureRight pageHide">
+    New feature: <br>Generate your video at the end.
 </div>
 <div id="footer" class="pageHide">
     Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> based on <a href="http://timpietrusky.com/star-wars-opening-crawl-from-1977" target="2">Tim Pietrusky</a> work.
