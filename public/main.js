@@ -241,17 +241,7 @@ $("#videoButton").click(function(){
                         'This video has already been generated, click the link below to download.<br><br>'+
                         '<a style="color: #ffd54e;" href="'+data.url+'">'+data.url+'</a></p>',
                     });
-                }else if(data.isQueued){
-                    swal({
-                        html: true,
-                        title: '<h2 style="font-family: StarWars;">video is being processed</h2>',
-                        text: '<p style="text-align: justify">'+
-                        'This video is being processed and you should receive an email when it\'s ready.<br>'+
-                        'The link to download will be shown here too.<br>'+
-                        'This video position in queue is <b>'+(data.queue+1)+'</b> and should be ready in <b>'+calcTime(data.queue)+'</b>.'+
-                        '</p>',
-                    });
-                }else if(!data.isQueued){
+                }else{
                     swal({
                         html: true,
                         title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',

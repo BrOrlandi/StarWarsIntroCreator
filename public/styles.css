@@ -318,3 +318,10 @@ button::-moz-focus-inner {
 
 iframe {
   border: none; }
+
+.newFeatureRight {
+  text-align: center;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: 10; }
