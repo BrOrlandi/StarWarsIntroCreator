@@ -185,19 +185,6 @@ $(document).ready(function() {
   window.dispatchEvent(new Event('hashchange'));
 });
 
-var generateAlert = {
-    html: true,
-    title: '<h2 style="font-family: StarWars;">Generate video</h2>',
-    text: '<p style="text-align: justify">'+
-    'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready'+
-    '</p>',
-    type: 'input',
-    showCancelButton: true,
-    inputPlaceholder: "Your e-mail...",
-    closeOnConfirm: false,
-    showLoaderOnConfirm: true,
-};
-
 var calcTime = function(queue){
     var minutes = (queue+1)*40;
     if(minutes > 60){
@@ -220,7 +207,7 @@ var requestVideo = function(email){
         return false;
     }
 
-    var url = "http://nihey.duckdns.org:1977/video/"+ OpeningKey +"?email=" + email;
+    var url = "http://nihey.duckdns.org:1977/video-request?code="+ OpeningKey +"&email=" + email;
     $.ajax({
         url: url,
         type: 'GET',
@@ -232,7 +219,7 @@ var requestVideo = function(email){
                 title: '<h2 style="font-family: StarWars;">video request sent</h2>',
                 text:'<p style="text-align: justify">'+
                 'Your video has been queued. The current size of the queue is <b>'+
-                queue + '</b>, which will take up to <b>'+ calcTime(queue) +'</b>.<br>'+
+                (queue+1) + '</b>, which will take up to <b>'+ calcTime(queue) +'</b>.<br>'+
                 'The link to download the video will be sent to the e-mail:<br>'+
                 '</p><span style="text-align: center; font-weight: bold">'+email+'</span>'
             });
@@ -241,44 +228,68 @@ var requestVideo = function(email){
 
 };
 
-var VideoQueue = 0;
-
-var getVideoQueue = function(){
-    var url = "http://nihey.duckdns.org:1977/status";
-    $.ajax({
-        url: url,
-        type: 'GET',
-        crossDomain: true,
-        success: function(data){
-            VideoQueue = data.queue;
-        }
-    });
-};
-getVideoQueue();
-
 $("#videoButton").click(function(){
-    swal({
-        html: true,
-        title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
-        text: '<p style="text-align: justify">'+
-        'The download functionality is experimental. It takes a server to process the video, which costs money.<br>'+
-        'There are videos in the processing queue, it will take some time to be processed.<br>'+
-        'Consider donating at least <b>5 dollars</b> and we will provide your video as soon as possible.</p>',
-          showCancelButton: true,
-          confirmButtonText: "Yes, donate!",
-          confirmButtonColor: "#807300",
-          cancelButtonText: "No, I'll get in the queue!",
-          closeOnConfirm: false,
-          closeOnCancel: false,
-          animation: "slide-from-top"
-    },function(donate){
-        if(donate){
-            generateAlert.title = '<h2 style="font-family: StarWars;">Donate</h2>';
-            generateAlert.text = 'Click on the button bellow:'
-            +'<br><iframe src="./donateButtons.html" height="100"></iframe>'+generateAlert.text;
-            swal(generateAlert,requestVideo);
-        }else{
-            swal(generateAlert,requestVideo);
+    $.ajax({
+            url: "http://nihey.duckdns.org:1977/status?code="+OpeningKey,
+            crossDomain: true,
+            success: function(data){
+                if(data.url){
+                    swal({
+                        html: true,
+                        title: '<h2 style="font-family: StarWars;">Download</h2>',
+                        text: '<p style="text-align: justify">'+
+                        'This video has already been generated, click the link below to download.<br><br>'+
+                        '<a style="color: #ffd54e;" href="'+data.url+'">'+data.url+'</a></p>',
+                    });
+                }else if(data.isQueued){
+                    swal({
+                        html: true,
+                        title: '<h2 style="font-family: StarWars;">video is being processed</h2>',
+                        text: '<p style="text-align: justify">'+
+                        'This video is being processed and you should receive an email when it\'s ready.<br>'+
+                        'The link to download will be shown here too.<br>'+
+                        'This video position in queue is <b>'+(data.queue+1)+'</b> and should be ready in <b>'+calcTime(data.queue)+'</b>.'+
+                        '</p>',
+                    });
+                }else if(!data.isQueued){
+                    swal({
+                        html: true,
+                        title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
+                        text: '<p style="text-align: justify">'+
+                        'The download functionality is experimental. It takes a server to process the video, which costs money.<br>'+
+                        'There are videos in the processing queue, it will take some time to be processed.<br>'+
+                        'Consider donating at least <b>5 dollars</b> and we will provide your video as soon as possible.</p>',
+                          showCancelButton: true,
+                          confirmButtonText: "Yes, donate!",
+                          confirmButtonColor: "#807300",
+                          cancelButtonText: "No, I'll get in the queue!",
+                          closeOnConfirm: false,
+                          closeOnCancel: false,
+                          animation: "slide-from-top"
+                    },function(donate){
+
+                        var generateAlert = {
+                            html: true,
+                            title: '<h2 style="font-family: StarWars;">Generate video</h2>',
+                            text: '<p style="text-align: justify">'+
+                            'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready'+
+                            '</p>',
+                            type: 'input',
+                            showCancelButton: true,
+                            inputPlaceholder: "Your e-mail...",
+                            closeOnConfirm: false,
+                            showLoaderOnConfirm: true,
+                        };
+
+                        if(donate){
+                            generateAlert.title = '<h2 style="font-family: StarWars;">Donate</h2>';
+                            generateAlert.text = 'Click on the button bellow:'
+                            +'<br><iframe src="./donateButtons.html" height="100"></iframe>'+generateAlert.text;
+                        }
+                        swal(generateAlert,requestVideo);
+                    });
+            }
         }
     });
+
 });
