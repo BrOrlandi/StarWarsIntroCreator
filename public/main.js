@@ -207,7 +207,7 @@ var requestVideo = function(email){
         return false;
     }
 
-    var url = "http://nihey.duckdns.org:1977/video-request?code="+ OpeningKey +"&email=" + email;
+    var url = "https://nihey.duckdns.org:1980/video-request?code="+ OpeningKey +"&email=" + email;
     $.ajax({
         url: url,
         type: 'GET',
@@ -230,7 +230,7 @@ var requestVideo = function(email){
 
 $("#videoButton").click(function(){
     $.ajax({
-            url: "http://nihey.duckdns.org:1977/status?code="+OpeningKey,
+            url: "https://nihey.duckdns.org:1980/status?code="+OpeningKey,
             crossDomain: true,
             success: function(data){
                 if(data.url){
