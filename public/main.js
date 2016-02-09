@@ -200,7 +200,7 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-var requestVideo = function(email){
+var requestVideo = function(donate, email){
     if(email === false) return false;
     if (!validateEmail(email)) {
         swal.showInputError("You need to type an e-mail!");
@@ -218,10 +218,18 @@ var requestVideo = function(email){
                 html: true,
                 title: '<h2 style="font-family: StarWars;">video request sent</h2>',
                 text:'<p style="text-align: justify">'+
-                'Your video has been queued. The current size of the queue is <b>'+
+                'Your video has been queued. Your current position on the queue is <b>'+
                 (queue+1) + '</b>, which will take up to <b>'+ calcTime(queue) +'</b>.<br>'+
                 'The link to download the video will be sent to the e-mail:<br>'+
-                '</p><span style="text-align: center; font-weight: bold">'+email+'</span>'
+                '</p><span style="text-align: center; font-weight: bold">'+email+'</span>'+
+                (
+                  donate ?
+                  (
+                   '<p style="margin-top: 15px">But as you donated, we will bump you up on the queue as' +
+                   ' soon as we confirm your donation.</p>'
+                  ) :
+                  ''
+                )
             });
         }
     });
@@ -276,7 +284,7 @@ $("#videoButton").click(function(){
                             generateAlert.text = 'Click on the button bellow:'
                             +'<br><iframe src="./donateButtons.html" height="100"></iframe>'+generateAlert.text;
                         }
-                        swal(generateAlert,requestVideo);
+                        swal(generateAlert, requestVideo.bind(window, donate));
                     });
             }
         }
