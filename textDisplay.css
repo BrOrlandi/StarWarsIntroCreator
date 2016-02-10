@@ -1,0 +1,57 @@
+#logoimg {
+  display: none;
+  display: block; }
+
+#logosvg {
+  display: block; }
+
+#showIntroDiv {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  z-index: 20; }
+
+#showLogo {
+  position: absolute;
+  top: 80px;
+  left: -60px;
+  width: 200px;
+  z-index: 20; }
+
+#logoConfig {
+  position: absolute;
+  top: 200px;
+  left: -50px;
+  width: 200px;
+  -webkit-transform: rotate(90deg);
+  z-index: 20; }
+
+#textHeightConfig {
+  position: absolute;
+  top: 500px;
+  left: -50px;
+  width: 200px;
+  -webkit-transform: rotate(90deg);
+  z-index: 20; }
+
+.configRanges {
+  position: absolute;
+  top: 80px;
+  left: 50px; }
+  .configRanges.second {
+    top: 380px; }
+
+.starwars .intro {
+  display: none;
+  opacity: 1;
+  animation: 0 !important; }
+
+.starwars .titles > div {
+  top: 80%;
+  opacity: 1; }
+
+.starwars .logo {
+  display: none;
+  opacity: 1; }
+
+@keyframes titles {}@keyframes logo {}
