@@ -187,12 +187,21 @@ $(document).ready(function() {
 
 var calcTime = function(queue){
     var minutes = (queue+1)*40;
-    if(minutes > 60){
-        var hours = Math.floor(minutes/60);
-        return hours + " hours and "+minutes%60+" minutes";
-    }else{
-        return minutes+" minutes";
+    var hours = Math.floor(minutes/60);
+    var days = Math.floor(hours/24);
+    var time = "";
+    if(days > 0){
+        time += days + " days";
     }
+    hours = hours%24;
+    minutes = minutes%60;
+    if(hours > 0){
+        time += " " +hours + " hours";
+    }
+    if(minutes > 0){
+        time += " " +minutes + " minutes";
+    }
+    return time;
 };
 
 function validateEmail(email) {
@@ -241,6 +250,7 @@ $("#videoButton").click(function(){
             url: "https://nihey.duckdns.org:1980/status?code="+OpeningKey,
             crossDomain: true,
             success: function(data){
+                var queue = data.queue;
                 if(data.url){
                     swal({
                         html: true,
@@ -255,7 +265,7 @@ $("#videoButton").click(function(){
                         title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
                         text: '<p style="text-align: justify">'+
                         'The download functionality is experimental. It takes a server to process the video, which costs money.<br>'+
-                        'There are videos in the processing queue, it will take some time to be processed.<br>'+
+                        'There are <b>'+(queue+1)+' videos</b> in the processing queue, it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
                         'Consider donating at least <b>5 dollars</b> and we will provide your video as soon as possible.</p>',
                           showCancelButton: true,
                           confirmButtonText: "Yes, donate!",
