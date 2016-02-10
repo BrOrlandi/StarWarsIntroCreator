@@ -266,7 +266,8 @@ $("#videoButton").click(function(){
                         text: '<p style="text-align: justify">'+
                         'The download functionality is experimental. It takes a server to process the video, which costs money.<br>'+
                         'There are <b>'+(queue+1)+' videos</b> in the processing queue, it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
-                        'Consider donating at least <b>5 dollars</b> and we will provide your video as soon as possible.</p>',
+                        'Consider donating at least <b>5 dollars</b> and we will provide your video as soon as possible.</p>'+
+                        '<iframe src="./atat.html" height="200px"></iframe>',
                           showCancelButton: true,
                           confirmButtonText: "Yes, donate!",
                           confirmButtonColor: "#807300",
