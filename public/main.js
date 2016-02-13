@@ -216,7 +216,7 @@ var requestVideo = function(donate, email){
         return false;
     }
 
-    var url = "https://nihey.duckdns.org:1980/video-request?code="+ OpeningKey +"&email=" + email;
+    var url = "https://coruscant.nihey.org/request?code="+ OpeningKey +"&email=" + email;
     $.ajax({
         url: url,
         type: 'GET',
@@ -247,7 +247,7 @@ var requestVideo = function(donate, email){
 
 $("#videoButton").click(function(){
     $.ajax({
-            url: "https://nihey.duckdns.org:1980/status?code="+OpeningKey,
+            url: "https://coruscant.nihey.org/status?code="+OpeningKey,
             crossDomain: true,
             success: function(data){
                 var queue = data.queue;
