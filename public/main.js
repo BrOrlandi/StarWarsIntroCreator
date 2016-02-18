@@ -282,7 +282,14 @@ $("#videoButton").click(function(){
                             title: '<h2 style="font-family: StarWars;">Generate video</h2>',
                             text: '<p style="text-align: justify">'+
                             'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready'+
-                            '</p>',
+                            '</p>' + (donate ? [
+                              '<p style="text-align: justify">',
+                              '  Please, use the same e-mail from you PayPal account.',
+                              "  You'll be able to add as many e-mails as you want to",
+                              '  <b>this video</b> without having to donate again. Just add',
+                              '  your other e-mails after the first one, without donating',
+                              '</p>',
+                            ].join('') : ''),
                             type: 'input',
                             showCancelButton: true,
                             inputPlaceholder: "Your e-mail...",
