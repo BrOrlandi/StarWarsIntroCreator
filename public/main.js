@@ -193,13 +193,15 @@ var calcTime = function(queue){
     if(days > 0){
         time += days + " days";
     }
-    hours = hours%24;
-    minutes = minutes%60;
-    if(hours > 0){
-        time += " " +hours + " hours";
-    }
-    if(minutes > 0){
-        time += " " +minutes + " minutes";
+    if(days < 3){
+        hours = hours%24;
+        minutes = minutes%60;
+        if(hours > 0){
+            time += " " +hours + " hours";
+        }
+        if(minutes > 0){
+            time += " " +minutes + " minutes";
+        }
     }
     return time;
 };
@@ -266,7 +268,10 @@ $("#videoButton").click(function(){
                         text: '<p style="text-align: justify">'+
                         'The download functionality is experimental. It takes a server to process the video, which costs money.<br>'+
                         'There are <b>'+(queue+1)+' videos</b> in the processing queue, it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
-                        'Consider donating at least <b>5 dollars</b> and we will provide your video as soon as possible.</p>'+
+                        'Consider donating at least <b>5 dollars</b> and we will provide your video in a few hours.<br>'+
+                        'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
+                        '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>.'+
+                        '</p>'+
                         '<iframe src="./atat.html" height="200px"></iframe>',
                           showCancelButton: true,
                           confirmButtonText: "Yes, donate!",
