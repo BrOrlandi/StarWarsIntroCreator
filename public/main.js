@@ -60,24 +60,36 @@ $('#form-starwars').submit(function(event) {
       return;
   }
   $.ajax({
-      url: "https://starwarsopening.firebaseio.com/openings.json",
+      url: "https://starwarsopeninga.firebaseio.com/openings.json",
       method: "POST",
       data: JSON.stringify(opening),
       dataType: "json",
       success: function(data){
           toggleLoading();
-          location.hash = '!/' + data.name.substring(1);
+          location.hash = '!/A' + data.name.substring(1);
       }
   });
 });
 
 $(window).on('hashchange', function() {
+
+    var urlByKey = function(key){
+        var code = key.charAt(0);
+        if(code === "A"){
+            key = key.substr(1);
+            return 'https://starwarsopeninga.firebaseio.com/openings/-'+key+'.json';
+        }else{
+            return 'https://starwarsopening.firebaseio.com/openings/-'+key+'.json';
+        }
+    };
+
+
     $("#playBut").remove();
     var key = location.hash.replace('#!/', '').split('/')[0];
     $('body').removeClass('running');
     if(key != ""){
         try{
-            var url = 'https://starwarsopening.firebaseio.com/openings/-'+key+'.json';
+            var url = urlByKey(key);
             $.ajax({
               url: url,
               success: function(opening) {
