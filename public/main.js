@@ -290,7 +290,8 @@ $("#videoButton").click(function(){
                         'There are <b>'+(queue+1)+' videos</b> in the processing queue, it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
                         'Consider donating at least <b>5 dollars</b> and we will provide your video in a few hours.<br>'+
                         'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
-                        '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>.'+
+                        '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>. '+
+                        'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.'+
                         '</p>'+
                         '<iframe src="./atat.html" height="200px"></iframe>',
                           showCancelButton: true,
@@ -312,7 +313,8 @@ $("#videoButton").click(function(){
                               '  Please, use the same e-mail from you PayPal account.',
                               "  You'll be able to add as many e-mails as you want to",
                               '  <b>this video</b> without having to donate again. Just add',
-                              '  your other e-mails after the first one, without donating',
+                              '  your other e-mails after the first one, without donating.',
+                              '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.',
                               '</p>',
                             ].join('') : ''),
                             type: 'input',
