@@ -85,7 +85,12 @@ $(window).on('hashchange', function() {
 
 
     $("#playBut").remove();
-    var key = location.hash.replace('#!/', '').split('/')[0];
+    var params = location.hash.replace('#!/', '').split('/');
+    var key = params[0];
+    var edit = false;
+    try{
+        edit = params[1] === "edit";
+    }catch(e){}
     $('body').removeClass('running');
     if(key != ""){
         try{
@@ -159,6 +164,9 @@ $(window).on('hashchange', function() {
                             toggleLoading();
                             notPlayed = false;
                             StarWars.play();
+                        }
+                        if(edit){
+                            StarWars.audio.currentTime = 97;
                         }
                     });
                 };
