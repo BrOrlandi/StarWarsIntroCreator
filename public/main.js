@@ -286,9 +286,9 @@ $("#videoButton").click(function(){
                         html: true,
                         title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
                         text: '<p style="text-align: justify">'+
-                        'The download functionality is experimental. It takes a server to process the video, which costs money.<br>'+
-                        'There are <b>'+(queue+1)+' videos</b> in the processing queue, it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
-                        'Consider donating at least <b>5 dollars</b> and we will provide your video in a few hours.<br>'+
+                        'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>'+
+                        'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
+                        'Can\'t wait for it? Donate at least <b>5 dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
                         'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
                         '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>. '+
                         'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.'+
