@@ -5,7 +5,8 @@
   "author": "Bruno Orlandi <brorlandi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "install": "bower install"
+    "install": "bower install",
+    "start": "gulp"
   },
   "devDependencies": {
     "del": "^2.2.0",

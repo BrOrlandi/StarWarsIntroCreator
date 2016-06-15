@@ -268,6 +268,43 @@ var requestVideo = function(donate, email){
 };
 
 $("#videoButton").click(function(){
+    var now = {
+      intro: $("#f-intro").val(),
+      logo: $("#f-logo").val(),
+      episode: $("#f-episode").val(),
+      title: $("#f-title").val(),
+      text: $("#f-text").val(),
+    };
+    var before = StarWars.opening;
+    var changes =[];
+    changes.push(now.intro !== before.intro);
+    changes.push(now.logo !== before.logo);
+    changes.push(now.episode !== before.episode);
+    changes.push(now.title !== before.title);
+    changes.push(now.text !== before.text);
+
+    var modified = changes.reduce(function(c,e){
+        return c || e;
+    },false);
+
+    if(modified){
+        swal({
+            html: true,
+            title: '<h2 style="font-family: StarWars;">Text modified</h2>',
+            text: '<p style="text-align: justify">'+
+            'You have changed some of the text inputs. You need to play the new intro to save and request a download.',
+            showCancelButton: true,
+            confirmButtonText: "Ok, play it!",
+            confirmButtonColor: "#807300",
+            animation: "slide-from-top"
+        },function(ok){
+            if(ok){
+                $('#form-starwars').submit();
+            }
+        });
+        return;
+    }
+
     $.ajax({
             url: "https://coruscant.nihey.org/status?code="+OpeningKey,
             crossDomain: true,
