@@ -509,7 +509,6 @@ iframe{
                 text-decoration: none;
                 &.link{
                     width: 250px;
-                    margin-left: 10px;
                     &:hover{
                         text-decoration: underline;
                     }
@@ -517,8 +516,9 @@ iframe{
             }
             .circCont{
               display:inline-block;
-              float: left;
+              float: right;
               margin-top: 4px;
+              margin-left: 5px;
               .circle {
                   width: 20px;
                   height: 20px;

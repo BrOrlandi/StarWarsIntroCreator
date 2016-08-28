@@ -361,14 +361,14 @@ iframe {
       color: #ffd54e;
       text-decoration: none; }
       #createdIntros #box div a.link {
-        width: 250px;
-        margin-left: 10px; }
+        width: 250px; }
         #createdIntros #box div a.link:hover {
           text-decoration: underline; }
     #createdIntros #box div .circCont {
       display: inline-block;
-      float: left;
-      margin-top: 4px; }
+      float: right;
+      margin-top: 4px;
+      margin-left: 5px; }
       #createdIntros #box div .circCont .circle {
         width: 20px;
         height: 20px;
