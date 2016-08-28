@@ -25,6 +25,7 @@
     <!-- build:js ./vendor.js -->
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src='libs/sweetalert/dist/sweetalert.min.js'></script>
+    <script src='libs/handlebars/handlebars.min.js'></script>
     <!-- endbuild -->
 
     <meta name="theme-color" content="#000">
@@ -145,6 +146,9 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
     </div>
   </div>
 </article>
+<div id="createdIntros" class="pageHide">
+
+</div>
 <div class="socialButtons pageHide">
     <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
@@ -202,6 +206,23 @@ $(document).scroll(function (e) {
 </script>
 <!-- build:js ./main.js -->
 <script src="StarWars.js"></script>
+<script id="created-intros-template" type="text/x-handlebars-template">
+    {{#if intros.length}}
+    <div id="box">
+        {{#each intros}}
+        <div>
+            <div class="circCont">
+                <button data-id="{{@index}}" class="removeButton circle fromMiddle">
+                    <span></span>
+                  </button>
+            </div>
+            <a href="#!/{{this.key}}" class="link">{{this.title}}</a>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+</script>
+<script src="createdIntros.js"></script>
 <script src="main.js"></script>
 <!-- endbuild -->
 <script>

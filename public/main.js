@@ -73,8 +73,10 @@ $('#form-starwars').submit(function(event) {
       data: JSON.stringify(opening),
       dataType: "json",
       success: function(data){
+          var key = 'A'+data.name.substring(1);
+          CreatedIntros.save(key,opening);
           toggleLoading();
-          location.hash = '!/A' + data.name.substring(1);
+          location.hash = '!/'+key;
       }
   });
 });
