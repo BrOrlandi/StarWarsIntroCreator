@@ -161,7 +161,7 @@ button::-moz-focus-inner {
   -ms-user-select: none;
   user-select: none; }
 
-.playButton {
+.playButton, .downloadButton {
   font-family: StarWars;
   cursor: pointer;
   font-size: 50px;
@@ -171,7 +171,7 @@ button::-moz-focus-inner {
   text-shadow: none;
   transition: text-shadow 0.5s ease-out;
   outline: none; }
-  .playButton:focus, .playButton:hover {
+  .playButton:focus, .downloadButton:focus, .playButton:hover, .downloadButton:hover {
     text-shadow: -1px 1px 8px #45f500, 1px -1px 8px #45f500; }
 
 #form-starwars {
@@ -325,3 +325,19 @@ iframe {
   bottom: 1em;
   right: 1em;
   z-index: 10; }
+
+@keyframes pulseDownload {
+  0% {
+    text-shadow: none; }
+  40% {
+    text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500; }
+  60% {
+    text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500; }
+  100% {
+    text-shadow: none; } }
+
+.downloadButton {
+  animation: pulseDownload 3s ease 0s infinite; }
+  .downloadButton:hover {
+    text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+    animation: none; }

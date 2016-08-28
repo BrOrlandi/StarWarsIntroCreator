@@ -458,3 +458,31 @@ iframe{
     right: 1em;
     z-index: 10;
 }
+
+@keyframes pulseDownload {
+    0%{
+        text-shadow: none;
+    }
+
+    40%{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+    }
+
+    60%{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+    }
+
+    100%{
+        text-shadow: none;
+    }
+}
+
+.downloadButton{
+    @extend .playButton;
+    animation: pulseDownload 3s ease 0s infinite;
+
+    &:hover{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+        animation: none;
+    }
+}
