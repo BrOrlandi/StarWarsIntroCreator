@@ -175,6 +175,7 @@ $(window).on('hashchange', function() {
                         }
                         if(edit){
                             StarWars.audio.currentTime = 97;
+                            $('#form-starwars').show();
                         }
                     });
                 };
