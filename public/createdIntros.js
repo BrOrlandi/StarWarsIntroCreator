@@ -1,5 +1,18 @@
 function createdIntros(){
-    var source = $("#created-intros-template").html();
+    var source = '{{#if intros.length}}' +
+    '<div id="box">'+
+        '{{#each intros}}'+
+        '<div>'+
+            '<div class="circCont">'+
+                '<button data-id="{{@index}}" class="removeButton circle fromMiddle">'+
+                    '<span></span>'+
+                  '</button>'+
+            '</div>'+
+            '<a href="#!/{{this.key}}" class="link">{{this.title}}</a>'+
+        '</div>'+
+        '{{/each}}'+
+    '</div>'+
+    '{{/if}}';
     this.template = Handlebars.compile(source);
 
     this.element = $('#createdIntros');
