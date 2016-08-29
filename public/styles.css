@@ -319,12 +319,17 @@ button::-moz-focus-inner {
 iframe {
   border: none; }
 
-.newFeatureRight {
+.termsOfService {
   text-align: center;
   position: fixed;
   bottom: 1em;
   right: 1em;
   z-index: 10; }
+  .termsOfService a {
+    color: #ffd54e;
+    text-decoration: none; }
+    .termsOfService a:hover {
+      text-decoration: underline; }
 
 @keyframes pulseDownload {
   0% {
