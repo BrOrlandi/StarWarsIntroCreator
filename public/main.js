@@ -267,11 +267,13 @@ var requestVideo = function(donate, email){
                 (
                   donate ?
                   (
-                   '<p style="margin-top: 15px">But as you donated, we will bump you up on the queue as' +
-                   ' soon as we confirm your donation.</p>'
+                   '<p style="margin-top: 15px;text-align: justify">But as you donated, we will bump you up on the queue.'+
+                    '  Thank you so much for supporting us! You should receive the confirmation email within a few minutes.'+
+                   '</p>'
                   ) :
                   ''
-                )
+              ) +
+              '<p style="text-align: justify;margin-top: 15px;">By using this website you are agreeing to our <a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.</p>'
             });
         }
     });
@@ -339,7 +341,8 @@ $("#videoButton").click(function(){
                         'Can\'t wait for it? Donate at least <b>5 dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
                         'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
                         '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>. '+
-                        'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.'+
+                        'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.<br>'+
+                        'By using this website you are agreeing to our <a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.'+
                         '</p>'+
                         '<iframe src="./atat.html" height="200px"></iframe>',
                           showCancelButton: true,
@@ -358,11 +361,12 @@ $("#videoButton").click(function(){
                             'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready'+
                             '</p>' + (donate ? [
                               '<p style="text-align: justify">',
-                              '  Please, use the same e-mail from you PayPal account.',
+                              '  Please, use the same email from you PayPal account.',
                               "  You'll be able to add as many e-mails as you want to",
                               '  <b>this video</b> without having to donate again. Just add',
-                              '  your other e-mails after the first one, without donating.',
+                              '  your other emails after the first one, without donating.',
                               '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.',
+                              '  By using this website you are agreeing to our <a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.',
                               '</p>',
                             ].join('') : ''),
                             type: 'input',
