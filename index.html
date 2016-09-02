@@ -83,7 +83,7 @@
     <div id="config">
     <form id="form-starwars">
       <h2 id="pageTitle">Star wars<br>intro CReator</h2>
-      <button id="videoButton" class="playButton" type="button">download</button>
+      <button id="videoButton" class="downloadButton" type="button">download</button>
       <textarea id="f-intro" rows="2" spellcheck="false" maxlength="300">
 A long time ago, in a galaxy far,
 far away....</textarea><br>
@@ -101,6 +101,8 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
       <button id="play" class="playButton" type="submit">
         Play
       </button>
+      <br/>
+      <span id="videoRequestAdvise">and request your video to download</span>
     </form>
     </div>
 
@@ -138,6 +140,9 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
     </div>
   </div>
 </article>
+<div id="createdIntros" class="pageHide">
+
+</div>
 <div class="socialButtons pageHide">
     <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
@@ -162,8 +167,8 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
         <iframe src="https://ghbtns.com/github-btn.html?user=BrOrlandi&repo=StarWarsIntroCreator&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
     </div>
 </div>
-<div class="newFeatureRight pageHide">
-    New feature: <br>Generate your video at the end.
+<div class="termsOfService pageHide">
+    <a id="termsOfServiceButton" href="termsOfService.html">Terms of Service</a>
 </div>
 <div id="footer" class="pageHide">
     Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> and <a href="https://github.com/nihey" target="2">Nihey Takizawa</a> based on <a href="http://timpietrusky.com/star-wars-opening-crawl-from-1977" target="2">Tim Pietrusky</a> work.
