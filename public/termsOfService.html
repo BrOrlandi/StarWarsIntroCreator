@@ -21,7 +21,7 @@
 </style>
 </head>
 <body>
-    <a id="blackWhiteButton" href="#">Black and White</a>
+    <a id="themeButton" href="#">Black and White</a>
   <h2 id="pageTitle">Star Wars Intro Creator<br />Terms of Service</h2>
   <p>Last updated: September 1, 2016.</p>
   <p>These Terms of Service (“Terms”, “Terms of Service”) refers to the Star Wars Intro Creator website (<a href="http://brorlandi.github.io/StarWarsIntroCreator">brorlandi.github.io/StarWarsIntroCreator</a>) (the “Service”) operated by Bruno Orlandi and Nihey Takizawa (“us”, “we”, or “our”).
@@ -50,11 +50,30 @@
   <p>If you have any questions about these Terms, please contact us via <a href="mailto:brorlandi@gmail.com">brorlandi@gmail.com</a> and <a href="mailto:nihey.takizawa@gmail.com">nihey.takizawa@gmail.com</a> .</p>
 
 <script>
-    document.querySelector('#blackWhiteButton').addEventListener('click',function(e){
+    var currentThemeIndex = 0;
+    var themes = [
+        {
+            background: 'black',
+            color: '#ffd54e',
+            text: 'Black and White',
+        },
+        {
+            background: 'white',
+            color: 'black',
+            text: 'Star Wars',
+        },
+    ];
+
+    document.querySelector('#themeButton').addEventListener('click',function(e){
         e.preventDefault();
+        currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+        var currentTheme = themes[currentThemeIndex];
+
         var body = document.querySelector('body');
-        body.style.backgroundColor='white';
-        body.style.color = "black";
+        body.style.backgroundColor = currentTheme.background;
+        body.style.color = currentTheme.color;
+
+        e.currentTarget.innerHTML = currentTheme.text;
     });
 </script>
 <script>
