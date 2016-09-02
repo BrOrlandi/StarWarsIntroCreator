@@ -455,3 +455,6 @@ iframe {
         -webkit-transform: scale(1);
         transform: scale(1);
         opacity: 1; }
+
+#videoRequestAdvise {
+  font-size: 50%; }
