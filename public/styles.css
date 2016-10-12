@@ -260,6 +260,7 @@ button::-moz-focus-inner {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: black;
   background: url("bg-stars.png") repeat; }
 
 .running {
