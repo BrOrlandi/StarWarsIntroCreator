@@ -103,6 +103,7 @@ $(window).on('hashchange', function() {
     }catch(e){}
     $('body').removeClass('running');
     if(key != ""){
+        $('[name=custom]').val(key);
         try{
             var url = urlByKey(key);
             $.ajax({
