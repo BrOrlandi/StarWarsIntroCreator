@@ -405,7 +405,7 @@ $("#videoButton").click(function(){
                         if(donate){
                             generateAlert.title = '<h2 style="font-family: StarWars;">Donate</h2>';
                             generateAlert.text = 'Click on the button bellow:'
-                            +'<br><iframe src="./donateButtons.html" height="100"></iframe>'+generateAlert.text;
+                            +'<br><iframe src="./donateButtons.html#!/' + OpeningKey + '" height="100"></iframe>'+generateAlert.text;
                         }
                         swal(generateAlert, requestVideo.bind(window, donate));
                     });
