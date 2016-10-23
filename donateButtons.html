@@ -3,6 +3,7 @@
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="EA3ESE322GAJA">
     <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <input type="hidden" name="custom" value="">
     <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
 </form>
 
@@ -10,6 +11,15 @@
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="AU6WSD3YHLGHY">
     <input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+    <input type="hidden" name="custom" value="">
     <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
 </form>
 </div>
+<script>
+  var code = location.hash.split('#!/')[1];
+  if (code) {
+    Array.prototype.map.call(document.querySelectorAll('[name=custom]'), function(element) {
+      element.value = code;
+    });
+  }
+</script>
