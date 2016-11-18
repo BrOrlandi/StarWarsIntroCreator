@@ -46,4 +46,4 @@ gulp.task('build',['sass','clean-build'],function(){
         .pipe(gulp.dest('./dist'));
 });
 
- gulp.task('default', ['sass','connect','watch']);
+gulp.task('default', ['sass','connect','watch']);
