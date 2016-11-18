@@ -28,11 +28,13 @@ Sharing the rendered video on services like Facebook and YouTube may violate cop
 
 Donations are used to maintain the video rendering servers up.
 
-As a reward for donors who donate at least 5 US Dollars we will provide the video before the entire queue. The donation must be in the exact value or greater than 5 US Dollars. Multiple donations that add up to the value of $ 5 will not be accepted to get the video earlier.
+As a reward for donors who donate at least 5 US Dollars we will provide the video before the entire queue. The donation must be in the exact value or greater than 5 US Dollars. Multiple donations that add up to the value of 5 US Dollars will not be accepted to get the video earlier.
 
 You must use the same email you have used in your PayPal account used to donate to ask for the video rendering. We are not responsible for misspelled emails, user inbox is full, inactivate user account and spam filters.
 
 Donators will generally get their video within 2-4 hours, but the time it takes for a given video to be ready may vary on how many video requests were made recently. You should receive a confirmation email about your donation and your video being processed, if not, contact us.
+
+Only donations made via the website buttons will be processed. If you make a donation directly to our PayPal account it will not be processed automatically, please contact us if it's the case.
 
 If you want to donate a greater value to get more videos, you can, contact us for further details.
 
