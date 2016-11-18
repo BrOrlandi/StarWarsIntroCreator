@@ -16,7 +16,7 @@ The videos are rendered on a 1280 x 720 pixel resolution, thus, we do not guaran
 
 The videos are rendered in our servers and takes 50 minutes on average to be rendered. To deliver this feature for free we have a queue of videos to be rendered. You will be prompted to put your email in. Your email will be only used to send a link to download the video when it’s ready. We don’t send spam and we don’t share your email address with third parties.
 
-We are not responsible for any errors (typos, misspellings) made when rendering the video, the rendered video is reproduced exactly how it was received. Any fix(es) requested in a rendered text will be subject to the our current availability.
+We are not responsible for any errors (typos, misspellings) made when rendering the video, the rendered video is reproduced exactly how it was received. Any fix(es) requested in a rendered text will be subject to our current availability.
 
 We cannot ensure the video will be properly delivered when it was caused by any issues that are beyond the domains of Star Wars Intro Creator (misspelled email, user inbox is full, inactive user account,  the email service sent the video notification e-mail to spam).
 
