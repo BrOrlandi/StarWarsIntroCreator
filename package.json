@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "install": "bower install",
+    "build": "gulp build",
     "start": "gulp"
   },
   "devDependencies": {
