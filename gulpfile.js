@@ -42,7 +42,7 @@ gulp.task('build',['sass','clean-build'],function(){
         .pipe(gulpif('styles.css', minifyCss()))
         .pipe(gulp.dest('dist'));
 
-    gulp.src(['./public/*.*','!public/index.html','!public/styles.css','!public/bb8.css','!public/*.js'])
+    gulp.src(['./public/*.*','./public/.nojekyll','!public/index.html','!public/styles.css','!public/bb8.css','!public/*.js'])
         .pipe(gulp.dest('./dist'));
 });
 
