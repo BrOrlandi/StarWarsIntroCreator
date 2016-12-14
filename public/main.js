@@ -275,7 +275,7 @@ var requestVideo = function(donate, email){
         return false;
     }
 
-    var url = "https://coruscant.nihey.org/request?code="+ OpeningKey +"&email=" + email;
+    var url = "https://endor.nihey.org/request?code="+ OpeningKey +"&email=" + email;
     $.ajax({
         url: url,
         type: 'GET',
@@ -345,7 +345,7 @@ $("#videoButton").click(function(){
     }
 
     $.ajax({
-            url: "https://coruscant.nihey.org/status?code="+OpeningKey,
+            url: "https://endor.nihey.org/status?code="+OpeningKey,
             crossDomain: true,
             success: function(data){
                 var queue = data.queue;
