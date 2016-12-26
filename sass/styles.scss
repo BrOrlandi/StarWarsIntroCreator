@@ -283,6 +283,7 @@ button::-moz-focus-inner {
         font-weight: normal;
         height: 125px;
         line-height: 86%;
+        width: 481.66px;
         @include stroke(2,$titlesColor);
       }
   }
@@ -396,10 +397,6 @@ button::-moz-focus-inner {
   position: absolute;
   bottom: 1150px;
   right: 100px;
-}
-
-#logoimg{
-    // display: none;
 }
 
 #logosvg{
