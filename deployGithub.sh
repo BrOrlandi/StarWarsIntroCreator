@@ -7,6 +7,7 @@ fi
 git checkout master
 npm run build
 git checkout gh-pages
+git pull
 mv dist/* ./
 mv dist/.* ./
 git add .
