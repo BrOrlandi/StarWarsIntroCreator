@@ -59,6 +59,12 @@ $('#form-starwars').submit(function(event) {
       sweetAlert("Oops...", "Logo can't have more than 2 lines.", "warning");
       return;
   }
+  var aIntro = opening.intro.split('\n');
+  if(aIntro.length > 2){
+      sweetAlert("Oops...", "Intro text can't have more than 2 lines.", "warning");
+      return;
+  }
+
 
     for(var key in opening){
         if(opening[key].indexOf("??") > -1){
