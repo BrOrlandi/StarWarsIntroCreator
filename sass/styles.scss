@@ -86,7 +86,7 @@ button::-moz-focus-inner {
     color: $introColor;
     opacity: 0;
     animation: intro 6s * $timeFactor ease-out 1s * $timeFactor;
-    @media (max-width: 1250px){
+    @media (max-height: 720px){
         font-size: 350%;
     }
   }
