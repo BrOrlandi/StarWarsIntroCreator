@@ -40,14 +40,7 @@ StarWarsOpening = (function() {
     // Context wrapper
     this.el = $(args.el);
 
-    // Audio to play the opening crawl
-    this.audio = this.el.find('audio').get(0);
-
-    this.audioDefer = $.Deferred();
     var that = this;
-    this.audio.oncanplaythrough = function() {
-      that.audioDefer.resolve();
-    };
 
     // Start the animation
     this.start = this.el.find('.start');
@@ -58,23 +51,6 @@ StarWarsOpening = (function() {
     // Remove animation and shows the start screen
     this.reset();
 
-    // Reset the animation and shows the start screen
-    $(this.audio).bind('ended', $.proxy(function() {
-      this.audio.currentTime = 0;
-      this.reset();
-
-      var o = this.opening;
-      // set data on form
-      $("#f-intro").val(o.intro);
-      $("#f-logo").val(o.logo || "Star\nwars");
-      $("#f-episode").val(o.episode);
-      $("#f-title").val(o.title);
-      $("#f-text").val(o.text);
-
-      setTimeout(function(){
-          $('body').removeClass('running');
-      },10000);
-    }, this));
   }
 
   /*
@@ -90,11 +66,6 @@ StarWarsOpening = (function() {
     $(window).trigger('resize'); // trigger resize to allow scrol in the config form
   };
 
-  StarWarsOpening.prototype.resetAudio = function() {
-    this.audio.pause();
-    this.audio.currentTime = 0;
-  };
-
   StarWarsOpening.prototype.play = function(){
       this.start.hide();
       $('.pageHide').hide();
@@ -102,7 +73,6 @@ StarWarsOpening = (function() {
       $('body').removeClass('running');
       $('body').addClass('running');
       $('body').scrollTop(0);
-      this.audio.play();
       this.el.append(this.animation);
 
       // adjust animation speed

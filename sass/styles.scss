@@ -24,6 +24,7 @@
 }
 
 $timeFactor: 1;
+$extraTime: 0;
 $introColor: rgb(75, 213, 238);
 $titlesColor: #ffd54e;
 
@@ -123,7 +124,7 @@ button::-moz-focus-inner {
     > div {
         position: absolute;
         top: 100%;
-        animation: titles 73s * $timeFactor linear 13s * $timeFactor;
+        animation: titles ((73s + $extraTime) * $timeFactor) linear 13s * $timeFactor;
 
       > p {
           margin: 1.35em 0 1.85em 0;
@@ -375,7 +376,7 @@ button::-moz-focus-inner {
 .running {
     overflow: hidden;
     .bg{
-      animation: scrolldown 7s * $timeFactor 86s * $timeFactor forwards;
+      animation: scrolldown 7s * $timeFactor (86s + $extraTime) * $timeFactor forwards;
     }
 }
 
