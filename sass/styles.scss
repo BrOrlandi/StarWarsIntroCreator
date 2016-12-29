@@ -87,7 +87,7 @@ button::-moz-focus-inner {
     color: $introColor;
     opacity: 0;
     animation: intro 6s * $timeFactor ease-out 1s * $timeFactor;
-    @media (max-width: 1250px){
+    @media (max-height: 720px){
         font-size: 350%;
     }
   }
@@ -284,6 +284,7 @@ button::-moz-focus-inner {
         font-weight: normal;
         height: 125px;
         line-height: 86%;
+        width: 481.66px;
         @include stroke(2,$titlesColor);
       }
   }
@@ -370,6 +371,7 @@ button::-moz-focus-inner {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: black;
   background: url('bg-stars.png') repeat;
 }
 
@@ -396,10 +398,6 @@ button::-moz-focus-inner {
   position: absolute;
   bottom: 1150px;
   right: 100px;
-}
-
-#logoimg{
-    // display: none;
 }
 
 #logosvg{
@@ -450,4 +448,180 @@ button::-moz-focus-inner {
 
 iframe{
     border: none;
+}
+
+.termsOfService{
+    text-align: center;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    z-index: 10;
+
+    a{
+        color: $titlesColor;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+@keyframes pulseDownload {
+    0%{
+        text-shadow: none;
+    }
+
+    40%{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+    }
+
+    60%{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+    }
+
+    100%{
+        text-shadow: none;
+    }
+}
+
+.downloadButton{
+    @extend .playButton;
+    animation: pulseDownload 3s ease 0s infinite;
+
+    &:hover{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+        animation: none;
+    }
+}
+
+#createdIntros{
+    #box{
+        position: fixed;
+        top: 1em;
+        left: 1em;
+        z-index: 10;
+        border: $titlesColor 3px solid;
+        border-radius: 7px;
+        padding: 10px;
+        color: $titlesColor;
+        max-width: 20%;
+
+        div{
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            a{
+                color: $titlesColor;
+                text-decoration: none;
+                &.link{
+                    width: 250px;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .circCont{
+              display:inline-block;
+              float: right;
+              margin-top: 4px;
+              margin-left: 5px;
+              .circle {
+                  width: 20px;
+                  height: 20px;
+                  background: transparent;
+                  border: 2px solid $titlesColor;
+                  -moz-border-radius: 50%;
+                  -webkit-border-radius: 50%;
+                  border-radius: 50%;
+                  position: relative;
+                  cursor: pointer;
+                  display: inline-block;
+                }
+                .circle:after {
+                  width: 12px;
+                  height: 2px;
+                  background-color: $titlesColor;
+                  content: "";
+                  left: 50%;
+                  top: 50%;
+                  margin-left: -6px;
+                  margin-top: -1px;
+                  position: absolute;
+                  -moz-transform: rotate(-45deg);
+                  -ms-transform: rotate(-45deg);
+                  -webkit-transform: rotate(-45deg);
+                  transform: rotate(-45deg);
+                  /*@include transform-origin(100%,100%);*/
+                }
+                .circle:before {
+                  left: 50%;
+                  top: 50%;
+                  margin-left: -6px;
+                  margin-top: -1px;
+                  width: 12px;
+                  height: 2px;
+                  background-color: $titlesColor;
+                  content: "";
+                  position: absolute;
+                  -moz-transform: rotate(45deg);
+                  -ms-transform: rotate(45deg);
+                  -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg);
+                  /*@include transform-origin(0%,0%);*/
+                }
+                .fromMiddle:before, .fromMiddle:after {
+  z-index: 9999;
+  -moz-transition-delay: 150ms;
+  -o-transition-delay: 150ms;
+  -webkit-transition-delay: 150ms;
+  transition-delay: 150ms;
+  -moz-transition: ease-in-out 400ms;
+  -o-transition: ease-in-out 400ms;
+  -webkit-transition: ease-in-out 400ms;
+  transition: ease-in-out 400ms;
+}
+.fromMiddle span {
+  width: 18px;
+  height: 18px;
+  background-color: $titlesColor;
+  display: inline-block;
+  position: absolute;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  left: -1px;
+  top: -1px;
+  z-index: -9999;
+  -moz-transform: scale(0.3);
+  -ms-transform: scale(0.3);
+  -webkit-transform: scale(0.3);
+  transform: scale(0.3);
+  opacity: 0;
+  -moz-transition: ease-in-out 300ms;
+  -o-transition: ease-in-out 300ms;
+  -webkit-transition: ease-in-out 300ms;
+  transition: ease-in-out 300ms;
+}
+
+.fromMiddle:hover:before, .fromMiddle:hover:after {
+  position: absolute;
+  background-color: black;
+}
+.fromMiddle:hover span {
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+            }
+
+        }
+    }
+}
+
+#videoRequestAdvise{
+    font-size: 50%;
 }
