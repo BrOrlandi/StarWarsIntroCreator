@@ -249,7 +249,7 @@ $(document).ready(function() {
 });
 
 var calcTime = function(queue){
-    var minutes = (queue+1)*50;
+    var minutes = (queue+1)*30;
     var hours = Math.floor(minutes/60);
     var days = Math.floor(hours/24);
     var time = "";
