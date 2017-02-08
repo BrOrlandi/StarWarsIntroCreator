@@ -5,6 +5,8 @@ swal.setDefaults({
 
 var OpeningKey = null;
 
+var defaultOpening = null; // to check if user not edited the default opening
+
 // make audio load on mobile devices
 var audio = document.getElementsByTagName('audio')[0];
 var audioIsLoaded = false;
@@ -47,13 +49,24 @@ toggleLoading();
 
 $('#form-starwars').submit(function(event) {
   event.preventDefault();
-  var opening = {
-    intro: $("#f-intro").val(),
-    logo: $("#f-logo").val(),
-    episode: $("#f-episode").val(),
-    title: $("#f-title").val(),
-    text: $("#f-text").val(),
-  };
+  var opening = getOpeningFormValues();
+  var before = StarWars.opening;
+  if(!isOpeningsDifferents(opening, before)){ // User replay the same intro without modification, doesn't need to create a new one
+      var hashbefore = location.hash;
+      var hashnow = '!/'+OpeningKey;
+      location.hash = hashnow;
+      if(hashbefore !== hashnow){ // if user is in edit form but not in /edit url, force hashchange because the hash will be the same.
+          window.dispatchEvent(new Event('hashchange'));
+      }
+    return;
+  }
+
+  if(!isOpeningsDifferents(opening,defaultOpening)){
+      toggleLoading();
+      location.hash = '!/Episode7'; // the default is Episode7 opening, TODO change this in 2018 after Episode 8
+      return;
+  }
+  
   var aLogo = opening.logo.split('\n');
   if(aLogo.length > 2){
       sweetAlert("Oops...", "Logo can't have more than 2 lines.", "warning");
@@ -111,6 +124,7 @@ $(window).on('hashchange', function() {
     if(key != ""){
         $('[name=custom]').val(key);
         try{
+            key = parseSpecialKeys(key);
             var url = urlByKey(key);
             $.ajax({
               url: url,
@@ -245,6 +259,7 @@ $(document).ready(function() {
         $('#loader').hide();
         return;
     }
+    defaultOpening = getOpeningFormValues(); // get the default opening from the default form values
   window.dispatchEvent(new Event('hashchange'));
 });
 
@@ -313,26 +328,10 @@ var requestVideo = function(donate, email){
 };
 
 $("#videoButton").click(function(){
-    var now = {
-      intro: $("#f-intro").val(),
-      logo: $("#f-logo").val(),
-      episode: $("#f-episode").val(),
-      title: $("#f-title").val(),
-      text: $("#f-text").val(),
-    };
+    var now = getOpeningFormValues();
     var before = StarWars.opening;
-    var changes =[];
-    changes.push(now.intro !== before.intro);
-    changes.push(now.logo !== before.logo);
-    changes.push(now.episode !== before.episode);
-    changes.push(now.title !== before.title);
-    changes.push(now.text !== before.text);
 
-    var modified = changes.reduce(function(c,e){
-        return c || e;
-    },false);
-
-    if(modified){
+    if(isOpeningsDifferents(now, before)){ // prevent user to request download without save the edited intro
         swal({
             html: true,
             title: '<h2 style="font-family: StarWars;">Text modified</h2>',
@@ -421,3 +420,39 @@ $("#videoButton").click(function(){
     });
 
 });
+
+function getOpeningFormValues(){ // read the opening from form and create the object
+    return {
+        intro: $("#f-intro").val(),
+        logo: $("#f-logo").val(),
+        episode: $("#f-episode").val(),
+        title: $("#f-title").val(),
+        text: $("#f-text").val(),
+    };
+};
+
+function isOpeningsDifferents(a,b){ // compare two openings texts to see if they are different
+    var changes =[];
+    if(a === null || b == null ){
+        return true;
+    }
+    changes.push(a.intro !== b.intro);
+    changes.push(a.logo !== b.logo);
+    changes.push(a.episode !== b.episode);
+    changes.push(a.title !== b.title);
+    changes.push(a.text !== b.text);
+
+    return changes.reduce(function(c,e){
+        return c || e;
+    },false);
+};
+
+function parseSpecialKeys(key){ 
+    switch (key) {
+        case "Episode7": // Episode7 is a special key for URL, it plays the Episode 7 opening
+            return "AKcKeYMPogupSU_r1I_g";
+        // TODO other eps
+        default:
+            return key;
+    }
+}
