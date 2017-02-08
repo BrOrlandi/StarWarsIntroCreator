@@ -29,7 +29,7 @@ Sharing the rendered video on services like Facebook and YouTube may violate cop
 
 Donations are used to maintain the video rendering servers up.
 
-As a reward for donors who donate at least 5 US Dollars we will provide the video before the entire queue. The donation must be in the exact value or greater than 5 US Dollars. Multiple donations that add up to the value of 5 US Dollars will not be accepted to get the video earlier.
+As a reward for donors who donate at least 5 US Dollars we will provide the video before the entire queue. The donation must be in the exact value or greater than 5 US Dollars. Multiple donations that add up to the value of 5 US Dollars will not be accepted to get the video earlier. For 10 US Dollars or more the video will be rendered in Full HD resolution (1920x1080).
 
 You must use the same email you have used in your PayPal account used to donate to ask for the video rendering. We are not responsible for misspelled emails, user inbox is full, inactivate user account and spam filters.
 

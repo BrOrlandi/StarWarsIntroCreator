@@ -359,7 +359,7 @@ $("#videoButton").click(function(){
                     swal({
                         html: true,
                         title: '<h2 style="font-family: StarWars;">Download</h2>',
-                        text: '<p style="text-align: justify">'+
+                        text: '<p style="text-align: left">'+
                         'This video has already been generated, click the link below to download.<br><br>'+
                         '<a style="color: #ffd54e;" href="'+data.url+'">'+data.url+'</a></p>',
                     });
@@ -367,13 +367,14 @@ $("#videoButton").click(function(){
                     swal({
                         html: true,
                         title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
-                        text: '<p style="text-align: justify">'+
+                        text: '<p style="text-align: left">'+
                         'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>'+
-                        'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br>'+
-                        'Can\'t wait for it? Donate at least <b>5 dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
+                        'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br><br>'+
+                        'Can\'t wait for it? Donate at least <b>5 US Dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
                         'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
-                        '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>. '+
-                        'Attention! Make sure there are no typos in your text, there will be no correction after the video rendering.<br>'+
+                        '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>.'+
+                        'Donate at least <b>10 US Dollars</b> and you will get the video in <b>Full HD resolution (1920x1080)</b><br><br>'+
+                        '<b>Attention!</b> Make sure there are no typos in your text, there will be no correction after the video rendering.<br>'+
                         'By using this website you are agreeing to our <a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.'+
                         '</p>'+
                         '<iframe src="./atat.html" height="200px"></iframe>',
