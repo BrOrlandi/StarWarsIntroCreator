@@ -1,6 +1,6 @@
 <p align="center">
   <a target="_blank" href="http://brorlandi.github.io/StarWarsIntroCreator/">
-    <img src="https://raw.githubusercontent.com/brorlandi/StarWarsIntroCreator/master/intro.gif"/>
+    <img src="./intro.gif"/>
   </a>
 </p>
 
