@@ -1,4 +1,4 @@
-Last updated: December 23, 2016.
+Last updated: February 25, 2017.
 
 These Terms of Service ("Terms", "Terms of Service") refers to the Star Wars Intro Creator website (brorlandi.github.io/StarWarsIntroCreator) (the "Service") operated by Bruno Orlandi and Nihey Takizawa ("us", "we", or "our").
 Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
@@ -9,7 +9,7 @@ This website is not related or  to Lucasfilm Ltd., Walt Disney, or Twentieth Cen
 
 We are not responsible for the content inserted in our service. This service should not be used to publish content to suggest violence, discrimination, illegal acts, transgression and hatred.
 You must not defame, stalk, bully, abuse, harass, threaten, impersonate or intimidate people or entities via the Service.
-The content published in the service is registered by a unique key available in the URL. The content of this service is publicly available to anyone who knows the URL. You can not prevent others from accessing your content if it was published to the service. If you want your content removed from the site, please contact us via email.
+The content published in the service is registered by a unique key available in the URL. The content of this service is publicly available to anyone who knows the URL. You can not prevent others from accessing your content if it was published to the service. If you want your content removed from the site, please contact us via email. We don't share users' personal information with anyone.
 
 #### About Download Videos
 
