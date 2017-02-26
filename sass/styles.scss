@@ -116,7 +116,8 @@ button::-moz-focus-inner {
     height: 50em;
     font-size: 350%;
     text-align: justify;
-      overflow: hidden;
+    overflow: hidden;
+    word-wrap: break-word;
     transform-origin: 50% 100%;
     @include transform(perspective(300px) rotateX(25deg));
 
@@ -254,12 +255,12 @@ button::-moz-focus-inner {
 }
 
 #form-starwars{
-  display: none;
+  // display: none;
   width: 500px;
 
   input,textarea {
-    width: 100%;
-    margin-bottom: 10px;
+    width: 97%;
+    margin-bottom: 0px;
     padding: 0.25em;
     border: 0.25em solid transparentize($titlesColor, 0.8);
     border-radius: 0.2em;
@@ -270,6 +271,7 @@ button::-moz-focus-inner {
     &:active, &:focus {
       border-color: $titlesColor;
     }
+
   }
 
   textarea{
@@ -281,10 +283,16 @@ button::-moz-focus-inner {
         font-family: StarWars;
         font-size: 50px;
         font-weight: normal;
-        height: 125px;
+        height: 92px;
         line-height: 86%;
-        width: 481.66px;
+        // width: 481.66px;
+        width: 93%;
         @include stroke(2,$titlesColor);
+        margin-bottom: -20px;
+      }
+
+      &#f-text{
+        margin-top: 10px;
       }
   }
 }
@@ -293,7 +301,7 @@ button::-moz-focus-inner {
     color: $introColor !important;
 }
 #f-text{
-  height: 230px;
+  height: 200px;
 }
 
 #f-logo,#f-title,#f-episode{
@@ -623,4 +631,48 @@ iframe{
 
 #videoRequestAdvise{
     font-size: 50%;
+}
+
+#flabel{
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: normal;
+  display: inline;
+  vertical-align: middle;
+
+}
+
+.regular-checkbox {
+	display: none;
+}
+
+.regular-checkbox + label {
+	background-color: black;
+	// border: 1px solid #cacece;
+  border: 3px solid transparentize($titlesColor, 0.8);
+	// box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+  top: 3px;
+}
+
+.regular-checkbox + label:active, .regular-checkbox:checked + label:active {
+	// box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.regular-checkbox:checked + label {
+	// border: 1px solid #adb8c0;
+	// box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: #99a1a7;
+}
+
+.regular-checkbox:checked + label:after {
+	content: '\2714';
+	font-size: 14px;
+	position: absolute;
+	bottom: -2px;
+	left: 3px;
+	color: $titlesColor;
 }

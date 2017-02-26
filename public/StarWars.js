@@ -70,9 +70,12 @@ StarWarsOpening = (function() {
       $("#f-episode").val(o.episode);
       $("#f-title").val(o.title);
       $("#f-text").val(o.text);
+      $("#f-center").prop('checked',o.center || false);
+      $('#f-text').css('text-align', o.center? 'center' : 'initial');
 
       setTimeout(function(){
-          $('body').removeClass('running');
+        if($('.start').css('display') === 'block')
+            $('body').removeClass('running');
       },10000);
     }, this));
   }
@@ -98,7 +101,7 @@ StarWarsOpening = (function() {
   StarWarsOpening.prototype.play = function(){
       this.start.hide();
       $('.pageHide').hide();
-      $('#loader').hide(); // grants the loader to hide. Sometimes doesn't hide, maybe due to history navigation in browser.
+      unsetLoading(); // grants the loader to hide. Sometimes doesn't hide, maybe due to history navigation in browser.
       $('body').removeClass('running');
       $('body').addClass('running');
       $('body').scrollTop(0);

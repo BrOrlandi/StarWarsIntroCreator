@@ -31,21 +31,18 @@ window.addEventListener("keydown", function(e) {
 }, false);
 
 var notPlayed = true;
-var isLoading = false;
 var showFooter = true;
+window.setLoading = function (){
+    $('#loader').show();
+    $('#form-starwars').hide();
+}
 
-function toggleLoading(){
-    if(isLoading){
-        $('#loader').hide();
-        $('#form-starwars').show();
-    }else{
-        $('#loader').show();
-        $('#form-starwars').hide();
-    }
-    isLoading = !isLoading;
-};
+window.unsetLoading = function (){
+    $('#loader').hide();
+    $('#form-starwars').show();
+}
 
-toggleLoading();
+setLoading();
 
 $('#form-starwars').submit(function(event) {
   event.preventDefault();
@@ -62,7 +59,7 @@ $('#form-starwars').submit(function(event) {
   }
 
   if(!isOpeningsDifferents(opening,defaultOpening)){
-      toggleLoading();
+      setLoading();
       location.hash = '!/Episode7'; // the default is Episode7 opening, TODO change this in 2018 after Episode 8
       return;
   }
@@ -80,12 +77,13 @@ $('#form-starwars').submit(function(event) {
 
 
     for(var key in opening){
-        if(opening[key].indexOf("??") > -1){
+        if(opening[key] == "string" && opening[key].indexOf("??") > -1){
             sweetAlert("Oops...", "Your text can't contain the sequence \"??\", please fix it and submit again.", "error");
             return;
         }
     }
 
+  setLoading();
   $.ajax({
       url: "https://starwarsopeninga.firebaseio.com/openings.json",
       method: "POST",
@@ -94,7 +92,6 @@ $('#form-starwars').submit(function(event) {
       success: function(data){
           var key = 'A'+data.name.substring(1);
           CreatedIntros.save(key,opening);
-          toggleLoading();
           location.hash = '!/'+key;
       }
   });
@@ -152,6 +149,8 @@ $(window).on('hashchange', function() {
                     div.append($('<p>').text(ps[i]));
                 }
 
+                div.css('text-align',opening.center ? 'center':'');
+
                 $('#logosvg',StarWars.animation).css('width',$(window).width()+'px'); // set width of the logo
                 $('#logoimg',StarWars.animation).css('width',$(window).width()+'px');
 
@@ -179,20 +178,18 @@ $(window).on('hashchange', function() {
                     $.when(StarWars.audioDefer).then(function(){
                         var buffered = StarWars.audio.buffered.end(StarWars.audio.buffered.length-1);
                         if(buffered == 0 && !audioIsLoaded){
-                            $('#loader').hide();
+                            unsetLoading();
                             playbutton = $('<div class="verticalWrapper"><div class="playAudio"><button id="playBut" class="playButton" style="font-size: 80px">Play</button></div></div>');
                             $('body').append(playbutton);
                             $('#playBut',playbutton).click(function(){
-                                $('#loader').show();
+                                setLoading();
                                 playbutton.remove();
                             });
                             StarWars.audio.oncanplaythrough = function () {
-                                toggleLoading();
                                 notPlayed = false;
                                 StarWars.play();
                             };
                         }else{
-                            toggleLoading();
                             notPlayed = false;
                             StarWars.play();
                         }
@@ -217,14 +214,14 @@ $(window).on('hashchange', function() {
             });
         }catch(error){
             location.hash = "";
-            toggleLoading();
+            setLoading();
         }
     }else{
         if(!notPlayed){
             StarWars.reset();
             StarWars.resetAudio();
         }else{
-            toggleLoading();
+            unsetLoading();
         }
 
     }
@@ -256,11 +253,16 @@ function getInternetExplorerVersion()
 $(document).ready(function() {
     if(getInternetExplorerVersion() !== -1){
         sweetAlert("Internet Explorer Detected", "This website is not compatible with Internet Explorer, please use Chrome. Sorry for the inconvenience.", "error");
-        $('#loader').hide();
+        unsetLoading();
         return;
     }
     defaultOpening = getOpeningFormValues(); // get the default opening from the default form values
-  window.dispatchEvent(new Event('hashchange'));
+    window.dispatchEvent(new Event('hashchange'));
+
+    $('#f-center').change(function(){
+        var center = $(this).is(':checked');
+        $('#f-text').css('text-align', center == true ? 'center' : 'initial');
+    });
 });
 
 var calcTime = function(queue){
@@ -428,6 +430,7 @@ function getOpeningFormValues(){ // read the opening from form and create the ob
         episode: $("#f-episode").val(),
         title: $("#f-title").val(),
         text: $("#f-text").val(),
+        center: $("#f-center").prop('checked')
     };
 };
 
@@ -441,6 +444,7 @@ function isOpeningsDifferents(a,b){ // compare two openings texts to see if they
     changes.push(a.episode !== b.episode);
     changes.push(a.title !== b.title);
     changes.push(a.text !== b.text);
+    changes.push(a.center !== b.center);
 
     return changes.reduce(function(c,e){
         return c || e;
