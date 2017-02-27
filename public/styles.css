@@ -10,7 +10,8 @@ body {
   font: 700 1em "News Cycle", sans-serif;
   letter-spacing: .15em;
   color: #ffd54e;
-  margin: 0; }
+  margin: 0;
+  background-color: black; }
 
 /* Remove dotted border on Firefox (http://stackoverflow.com/a/199319) */
 button::-moz-focus-inner {
