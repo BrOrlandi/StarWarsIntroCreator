@@ -13,6 +13,7 @@ function playIntro(opening) {
   for(var i in ps){
       div.append($('<p>').text(ps[i]));
   }
+  div.css('text-align',opening.center ? 'center':'');
 
   $('#logosvg',StarWars.animation).css('width',$(window).width()+'px'); // set width of the logo
   $('#logoimg',StarWars.animation).css('width',$(window).width()+'px');

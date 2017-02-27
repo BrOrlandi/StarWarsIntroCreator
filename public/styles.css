@@ -76,6 +76,7 @@ button::-moz-focus-inner {
   font-size: 350%;
   text-align: justify;
   overflow: hidden;
+  word-wrap: break-word;
   transform-origin: 50% 100%;
   -moz-transform: perspective(300px) rotateX(25deg);
   -o-transform: perspective(300px) rotateX(25deg);
@@ -175,11 +176,10 @@ button::-moz-focus-inner {
     text-shadow: -1px 1px 8px #45f500, 1px -1px 8px #45f500; }
 
 #form-starwars {
-  display: none;
   width: 500px; }
   #form-starwars input, #form-starwars textarea {
-    width: 100%;
-    margin-bottom: 10px;
+    width: 97%;
+    margin-bottom: 0px;
     padding: 0.25em;
     border: 0.25em solid rgba(255, 213, 78, 0.2);
     border-radius: 0.2em;
@@ -197,16 +197,19 @@ button::-moz-focus-inner {
       font-family: StarWars;
       font-size: 50px;
       font-weight: normal;
-      height: 125px;
+      height: 92px;
       line-height: 86%;
-      width: 481.66px;
-      text-shadow: -2px -2px 0 #ffd54e, -2px -1px 0 #ffd54e, -2px 0px 0 #ffd54e, -2px 1px 0 #ffd54e, -2px 2px 0 #ffd54e, -1px -2px 0 #ffd54e, -1px -1px 0 #ffd54e, -1px 0px 0 #ffd54e, -1px 1px 0 #ffd54e, -1px 2px 0 #ffd54e, 0px -2px 0 #ffd54e, 0px -1px 0 #ffd54e, 0px 0px 0 #ffd54e, 0px 1px 0 #ffd54e, 0px 2px 0 #ffd54e, 1px -2px 0 #ffd54e, 1px -1px 0 #ffd54e, 1px 0px 0 #ffd54e, 1px 1px 0 #ffd54e, 1px 2px 0 #ffd54e, 2px -2px 0 #ffd54e, 2px -1px 0 #ffd54e, 2px 0px 0 #ffd54e, 2px 1px 0 #ffd54e, 2px 2px 0 #ffd54e; }
+      width: 93%;
+      text-shadow: -2px -2px 0 #ffd54e, -2px -1px 0 #ffd54e, -2px 0px 0 #ffd54e, -2px 1px 0 #ffd54e, -2px 2px 0 #ffd54e, -1px -2px 0 #ffd54e, -1px -1px 0 #ffd54e, -1px 0px 0 #ffd54e, -1px 1px 0 #ffd54e, -1px 2px 0 #ffd54e, 0px -2px 0 #ffd54e, 0px -1px 0 #ffd54e, 0px 0px 0 #ffd54e, 0px 1px 0 #ffd54e, 0px 2px 0 #ffd54e, 1px -2px 0 #ffd54e, 1px -1px 0 #ffd54e, 1px 0px 0 #ffd54e, 1px 1px 0 #ffd54e, 1px 2px 0 #ffd54e, 2px -2px 0 #ffd54e, 2px -1px 0 #ffd54e, 2px 0px 0 #ffd54e, 2px 1px 0 #ffd54e, 2px 2px 0 #ffd54e;
+      margin-bottom: -20px; }
+    #form-starwars textarea#f-text {
+      margin-top: 10px; }
 
 #f-intro {
   color: #4bd5ee !important; }
 
 #f-text {
-  height: 230px; }
+  height: 200px; }
 
 #f-logo, #f-title, #f-episode {
   text-align: center; }
@@ -460,3 +463,33 @@ iframe {
 
 #videoRequestAdvise {
   font-size: 50%; }
+
+#flabel {
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: normal;
+  display: inline;
+  vertical-align: middle; }
+
+.regular-checkbox {
+  display: none; }
+
+.regular-checkbox + label {
+  background-color: black;
+  border: 3px solid rgba(255, 213, 78, 0.2);
+  padding: 9px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  top: 3px; }
+
+.regular-checkbox:checked + label {
+  color: #99a1a7; }
+
+.regular-checkbox:checked + label:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  bottom: -2px;
+  left: 3px;
+  color: #ffd54e; }
