@@ -392,7 +392,7 @@ $("#videoButton").click(function(){
                             html: true,
                             title: '<h2 style="font-family: StarWars;">Generate video</h2>',
                             text: '<p style="text-align: justify">'+
-                            'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready'+
+                            'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready. We promise not to send spam!'+
                             '</p>' + (donate ? [
                               '<p style="text-align: justify">',
                               '  Please, use the same email from you PayPal account.',
