@@ -444,7 +444,7 @@ function isOpeningsDifferents(a,b){ // compare two openings texts to see if they
     changes.push(a.episode !== b.episode);
     changes.push(a.title !== b.title);
     changes.push(a.text !== b.text);
-    changes.push(a.center !== b.center);
+    changes.push(a.center !== b.center && b.center !== undefined);
 
     return changes.reduce(function(c,e){
         return c || e;
