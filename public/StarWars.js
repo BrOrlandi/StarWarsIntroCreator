@@ -61,7 +61,7 @@ StarWarsOpening = (function() {
     // Reset the animation and shows the start screen
     $(this.audio).bind('ended', $.proxy(function() {
       this.audio.currentTime = 0;
-      this.reset();
+      // this.reset();
 
       var o = this.opening;
       // set data on form
@@ -74,8 +74,8 @@ StarWarsOpening = (function() {
       $('#f-text').css('text-align', o.center? 'center' : 'initial');
 
       setTimeout(function(){
-        if($('.start').css('display') === 'block')
-            $('body').removeClass('running');
+        // if($('.start').css('display') === 'block')
+            // $('body').removeClass('running');
       },10000);
     }, this));
   }

@@ -125,7 +125,8 @@ button::-moz-focus-inner {
     overflow: hidden;
     word-wrap: break-word;
     transform-origin: 50% 100%;
-    @include transform(perspective(300px) rotateX(25deg));
+    zoom: 2.4;
+    @include transform(perspective(300px) rotateX(30deg));
 
     @media screen and (min-width: 1920px) and (max-width: 1920px) {
               // and (min-height: 1080px) and (max-height: 1080px) {

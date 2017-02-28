@@ -197,7 +197,12 @@ $(window).on('hashchange', function() {
                             };
                         }else{
                             notPlayed = false;
-                            StarWars.play();
+                            $('.start').hide();
+                            $('.pageHide').hide();
+                            unsetLoading();
+                            setTimeout(() => {
+                                StarWars.play();
+                            },2000);
                         }
                         if(edit){
                             StarWars.audio.currentTime = 97;
@@ -232,9 +237,6 @@ $(window).on('hashchange', function() {
         }
 
     }
-    ga('send', 'pageview', {
-        'page': location.pathname + location.search  + location.hash
-    });
 });
 
 function getInternetExplorerVersion()
