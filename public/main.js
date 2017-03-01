@@ -4,7 +4,12 @@ function playIntro(opening) {
   intro = intro.replace(/\n/g,"<br>");
   StarWars.animation.find("#intro").html(intro);
   StarWars.animation.find("#episode").text(opening.episode);
-  StarWars.animation.find("#title").text(opening.title);
+
+  var title = StarWars.animation.find("#title")
+  if(checkCompatibleSWFont(opening.title)){
+      title.addClass('SWFont');
+  }
+  title.text(opening.title);
 
   var ps = opening.text.split('\n');
 
@@ -39,4 +44,16 @@ function playIntro(opening) {
   }
 
   StarWars.play();
+
+}
+
+function checkCompatibleSWFont(title){
+    var supportedChars = " qwertyuiopasdfghjklzxcvbnm0123456789!$".split(''); // all supported supported chars
+    var unique = title.toLowerCase().split('').filter(function(item, i, ar){ return ar.indexOf(item) === i; }); // get unique characters from the input string
+    for(var i=0;i<unique.length;i++){
+        if(supportedChars.indexOf(unique[i]) == -1){
+            return false;
+        }
+    }
+    return true;
 }

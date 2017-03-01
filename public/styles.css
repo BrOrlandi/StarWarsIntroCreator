@@ -3,6 +3,10 @@
   font-family: StarWars;
   src: url("Starjedi.ttf"); }
 
+@font-face {
+  font-family: StarWarsTitle;
+  src: url("SWCrawlTitle2.ttf"); }
+
 html,
 body {
   width: 100%;
@@ -10,7 +14,8 @@ body {
   font: 700 1em "News Cycle", sans-serif;
   letter-spacing: .15em;
   color: #ffd54e;
-  margin: 0; }
+  margin: 0;
+  background-color: black; }
 
 /* Remove dotted border on Firefox (http://stackoverflow.com/a/199319) */
 button::-moz-focus-inner {
@@ -493,3 +498,24 @@ iframe {
   bottom: -2px;
   left: 3px;
   color: #ffd54e; }
+
+#text {
+  line-height: 1.5em; }
+
+#episode {
+  margin-bottom: -2em; }
+
+#title.SWFont {
+  font-family: StarWarsTitle;
+  font-weight: normal;
+  font-size: 210%;
+  transform: scaleY(1);
+  margin-bottom: -0.1em;
+  margin-top: 1.35em;
+  text-transform: lowercase; }
+
+#title {
+  transform: scaleY(2);
+  margin-bottom: 1.6em;
+  margin-top: 3.5em;
+  text-transform: uppercase; }
