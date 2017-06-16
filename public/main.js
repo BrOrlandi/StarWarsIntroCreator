@@ -357,13 +357,13 @@ $("#videoButton").click(function(){
         });
         return;
     }
-    swal({
-        html: true,
-        title: '<h2 style="font-family: StarWars;">loading</h2>',
-        text: '<iframe src="./atat.html" height="200px"></iframe>',
-        animation: "slide-from-top",
-        showConfirmButton: false
-    });
+    // swal({
+    //     html: true,
+    //     title: '<h2 style="font-family: StarWars;">loading</h2>',
+    //     text: '<iframe src="./atat.html" height="200px"></iframe>',
+    //     animation: "slide-from-top",
+    //     showConfirmButton: false
+    // });
     $.ajax({
             url: "https://endor.nihey.org/status?code="+OpeningKey,
             crossDomain: true,
