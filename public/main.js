@@ -296,6 +296,8 @@ function validateEmail(email) {
     return re.test(email);
 }
 
+var termsOfServiceText = 'By using this website you are agreeing to our <a style="color: #ffd54e;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.';
+
 var requestVideo = function(donate, email){
     if(email === false) return false;
     if (!validateEmail(email)) {
@@ -327,7 +329,7 @@ var requestVideo = function(donate, email){
                   ) :
                   ''
               ) +
-              '<p style="text-align: justify;margin-top: 15px;">By using this website you are agreeing to our <a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.</p>'
+              '<p style="text-align: justify;margin-top: 15px;">'+termsOfServiceText+'</p>'
             });
         }
     });
@@ -355,7 +357,13 @@ $("#videoButton").click(function(){
         });
         return;
     }
-
+    swal({
+        html: true,
+        title: '<h2 style="font-family: StarWars;">loading</h2>',
+        text: '<iframe src="./atat.html" height="200px"></iframe>',
+        animation: "slide-from-top",
+        showConfirmButton: false
+    });
     $.ajax({
             url: "https://endor.nihey.org/status?code="+OpeningKey,
             crossDomain: true,
@@ -378,10 +386,10 @@ $("#videoButton").click(function(){
                         'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br><br>'+
                         'Can\'t wait for it? Donate at least <b>5 US Dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
                         'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
-                        '<a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>.'+
+                        '<a style="color: #ffd54e;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>.'+
                         'Donate at least <b>10 US Dollars</b> and you will get the video in <b>Full HD resolution (1920x1080)</b><br><br>'+
                         '<b>Attention!</b> Make sure there are no typos in your text, there will be no correction after the video rendering.<br>'+
-                        'By using this website you are agreeing to our <a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.'+
+                        termsOfServiceText+
                         '</p>'+
                         '<iframe src="./atat.html" height="200px"></iframe>',
                           showCancelButton: true,
@@ -390,7 +398,7 @@ $("#videoButton").click(function(){
                           cancelButtonText: "No, I'll get in the queue!",
                           closeOnConfirm: false,
                           closeOnCancel: false,
-                          animation: "slide-from-top"
+                          animation: false
                     },function(donate){
 
                         var generateAlert = {
@@ -399,13 +407,12 @@ $("#videoButton").click(function(){
                             text: '<p style="text-align: justify">'+
                             'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready. We promise not to send spam!'+
                             '</p>' + (donate ? [
-                              '<p style="text-align: justify">',
+                              '<br><p style="text-align: justify">',
                               '  Please, use the same email from you PayPal account.',
-                              "  You'll be able to add as many e-mails as you want to",
-                              '  <b>this video</b> without having to donate again. Just add',
-                              '  your other emails after the first one, without donating.',
-                              '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.',
-                              '  By using this website you are agreeing to our <a style="color: #ffd54e;text-decoration:none;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.',
+                              "  If you want to receive in another e-mail too, click on download button again and add more e-mails. You don't need to donate again.",
+                              '  <br><br>',
+                              '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.<br><br>',
+                              '  '+termsOfServiceText,
                               '</p>',
                             ].join('') : ''),
                             type: 'input',
@@ -423,6 +430,16 @@ $("#videoButton").click(function(){
                         swal(generateAlert, requestVideo.bind(window, donate));
                     });
             }
+        },
+        error: function(xhr, textStatus, error){
+            swal({
+                html: true,
+                title: '<h2 style="font-family: StarWars;">an error has occured</h2>',
+                text: '<p style="text-align: left">'+
+                        'Sorry for this! Please try again, if this error repeats please contact us: '+
+                        '<a style="color: #ffd54e;" href="mailto:brorlandi@gmail.com,nihey.takizawa@gmail.com" target="_blank">brorlandi@gmail.com , nihey.takizawa@gmail.com</a>.'+
+                        '</p>'
+            });
         }
     });
 
