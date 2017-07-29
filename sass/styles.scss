@@ -128,6 +128,12 @@ button::-moz-focus-inner {
     transform-origin: 50% 100%;
     @include transform(perspective(300px) rotateX(25deg));
 
+    @media screen and (min-device-width: 1920px) and (max-device-width: 1920px)
+              and (min-device-height: 1080px) and (max-device-height: 1080px) {
+        zoom: 1.9;
+        @include transform(perspective(266px) rotateX(29deg) scaleX(1.2));
+    }
+
     > div {
         position: absolute;
         top: 100%;
