@@ -88,6 +88,14 @@ button::-moz-focus-inner {
   -ms-transform: perspective(300px) rotateX(25deg);
   -webkit-transform: perspective(300px) rotateX(25deg);
   transform: perspective(300px) rotateX(25deg); }
+  @media screen and (min-device-width: 1920px) and (max-device-width: 1920px) and (min-device-height: 1080px) and (max-device-height: 1080px) {
+    .starwars .titles {
+      zoom: 1.9;
+      -moz-transform: perspective(266px) rotateX(29deg) scaleX(1.2);
+      -o-transform: perspective(266px) rotateX(29deg) scaleX(1.2);
+      -ms-transform: perspective(266px) rotateX(29deg) scaleX(1.2);
+      -webkit-transform: perspective(266px) rotateX(29deg) scaleX(1.2);
+      transform: perspective(266px) rotateX(29deg) scaleX(1.2); } }
   .starwars .titles > div {
     position: absolute;
     top: 100%;
@@ -519,3 +527,6 @@ iframe {
   margin-bottom: 1.6em;
   margin-top: 3.5em;
   text-transform: uppercase; }
+
+#playBut {
+  z-index: 1000; }
