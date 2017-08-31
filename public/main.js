@@ -93,7 +93,8 @@ $('#form-starwars').submit(function(event) {
           var key = 'A'+data.name.substring(1);
           CreatedIntros.save(key,opening);
           location.hash = '!/'+key;
-      }
+      },
+      error: ajaxErrorFunction('Error when creating the intro.')
   });
 });
 
@@ -215,7 +216,8 @@ $(window).on('hashchange', function() {
                     });
                 }
 
-            }
+            },
+            error: ajaxErrorFunction('Error when try to load the intro '+key)
             });
         }catch(error){
             location.hash = "";
@@ -331,7 +333,8 @@ var requestVideo = function(donate, email){
               ) +
               '<p style="text-align: justify;margin-top: 15px;">'+termsOfServiceText+'</p>'
             });
-        }
+        },
+        error: ajaxErrorFunction('Error when request video download.')
     });
 
 };
@@ -431,16 +434,7 @@ $("#videoButton").click(function(){
                     });
             }
         },
-        error: function(xhr, textStatus, error){
-            swal({
-                html: true,
-                title: '<h2 style="font-family: StarWars;">an error has occured</h2>',
-                text: '<p style="text-align: left">'+
-                        'Sorry for this! Please try again, if this error repeats please contact us: '+
-                        '<a style="color: #ffd54e;" href="mailto:brorlandi@gmail.com,nihey.takizawa@gmail.com" target="_blank">brorlandi@gmail.com , nihey.takizawa@gmail.com</a>.'+
-                        '</p>'
-            });
-        }
+        error: ajaxErrorFunction('Error when request video information to download.')
     });
 
 });
