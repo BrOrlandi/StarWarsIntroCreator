@@ -11,5 +11,3 @@ function ajaxErrorFunction(bodyMessage){
         });
     }
 }
-
-ajaxErrorFunction('asdasdasd')
