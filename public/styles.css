@@ -88,7 +88,7 @@ button::-moz-focus-inner {
   -ms-transform: perspective(300px) rotateX(25deg);
   -webkit-transform: perspective(300px) rotateX(25deg);
   transform: perspective(300px) rotateX(25deg); }
-  @media screen and (min-device-width: 1920px) and (max-device-width: 1920px) and (min-device-height: 1080px) and (max-device-height: 1080px) {
+  @media screen and (min-width: 1920px) and (max-width: 1920px) {
     .starwars .titles {
       zoom: 1.9;
       -moz-transform: perspective(266px) rotateX(29deg) scaleX(1.2);
