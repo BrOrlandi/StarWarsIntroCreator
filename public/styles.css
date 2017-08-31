@@ -96,6 +96,22 @@ button::-moz-focus-inner {
       -ms-transform: perspective(266px) rotateX(29deg) scaleX(1.2);
       -webkit-transform: perspective(266px) rotateX(29deg) scaleX(1.2);
       transform: perspective(266px) rotateX(29deg) scaleX(1.2); } }
+  @media screen and (min-width: 1366px) and (max-width: 1366px) {
+    .starwars .titles {
+      zoom: 1.5;
+      -moz-transform: perspective(216px) rotateX(26deg);
+      -o-transform: perspective(216px) rotateX(26deg);
+      -ms-transform: perspective(216px) rotateX(26deg);
+      -webkit-transform: perspective(216px) rotateX(26deg);
+      transform: perspective(216px) rotateX(26deg); } }
+  @media screen and (min-width: 1280px) and (max-width: 1280px) {
+    .starwars .titles {
+      zoom: 1.5;
+      -moz-transform: perspective(216px) rotateX(26deg);
+      -o-transform: perspective(216px) rotateX(26deg);
+      -ms-transform: perspective(216px) rotateX(26deg);
+      -webkit-transform: perspective(216px) rotateX(26deg);
+      transform: perspective(216px) rotateX(26deg); } }
   .starwars .titles > div {
     position: absolute;
     top: 100%;
