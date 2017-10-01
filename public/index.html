@@ -206,6 +206,8 @@ $(window).resize(function() {
         $("body").css("overflow","hidden");
         $('body').scrollTop(0);
     }
+
+    $(".sweet-alert").css("margin-top",-$(".sweet-alert").outerHeight()/2);
 });
 $(window).load(function () {
     $(window).trigger('resize');
