@@ -327,7 +327,7 @@ button::-moz-focus-inner {
 
 #videoButton {
   display: none;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   font-size: 60px; }
 
 .sweet-alert fieldset input {
@@ -559,3 +559,32 @@ iframe {
   display: block;
   height: 17px;
   width: 0; }
+
+.share-div {
+  display: none;
+  justify-content: center;
+  font-size: 0px;
+  margin: 0px 0px 30px; }
+
+.social-share {
+  width: 18px;
+  height: 18px;
+  padding: 10px;
+  margin: 0px 3px;
+  border-radius: 10%;}
+
+.social-share:hover {
+    opacity: 0.8;
+}
+
+.social-fill {
+  fill: #FFFFFF; }
+
+.social-facebook {
+  background: #4267b2; }
+  
+.social-twitter {
+  background: #1b95e0; }
+  
+.social-whatsapp {
+  background: #34af23; }

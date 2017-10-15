@@ -110,6 +110,15 @@ $(window).on('hashchange', function() {
         }
     };
 
+    var updateSocialShare = function(key){
+        var link = encodeURIComponent('https://brorlandi.github.io/StarWarsIntroCreator/#!/' + key);
+
+        $('#facebook-share-link').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + link);
+        $('#twitter-share-link').attr('href', 'https://twitter.com/share?url=' + link);
+        $('#whatsapp-share-link').attr('href', 'whatsapp://send?text=' + link);
+
+        $('.share-div').css('display', 'flex');
+    }
 
     $("#playBut").remove();
     var params = location.hash.replace('#!/', '').split('/');
@@ -121,6 +130,7 @@ $(window).on('hashchange', function() {
     $('body').removeClass('running');
     if(key != ""){
         $('[name=custom]').val(key);
+        updateSocialShare(key);
         try{
             key = parseSpecialKeys(key);
             var url = urlByKey(key);
