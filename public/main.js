@@ -94,7 +94,7 @@ $('#form-starwars').submit(function(event) {
           CreatedIntros.save(key,opening);
           location.hash = '!/'+key;
       },
-      error: ajaxErrorFunction('Error when creating the intro.')
+      error: ajaxErrorFunction('Error when creating the intro.\n\n'+JSON.stringify(opening))
   });
 });
 
