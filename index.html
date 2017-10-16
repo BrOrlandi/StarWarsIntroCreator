@@ -41,8 +41,8 @@
 </div>
 <article class="starwars">
   <audio preload="auto">
-    <source src="intro.ogg" type="audio/ogg" />
-    <source src="intro.mp3" type="audio/mpeg" />
+    <source src="tfa.ogg" type="audio/ogg" />
+    <source src="tfa.mp3" type="audio/mpeg" />
   </audio>
   <div id="loader" class="verticalWrapper" style="display:none">
     <div class="inner">
@@ -198,6 +198,8 @@ $(window).resize(function() {
         $("body").css("overflow","hidden");
         $('body').scrollTop(0);
     }
+
+    $(".sweet-alert").css("margin-top",-$(".sweet-alert").outerHeight()/2);
 });
 $(window).load(function () {
     $(window).trigger('resize');
