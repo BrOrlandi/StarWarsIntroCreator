@@ -83,11 +83,12 @@ button::-moz-focus-inner {
   overflow: hidden;
   word-wrap: break-word;
   transform-origin: 50% 100%;
-  -moz-transform: perspective(300px) rotateX(25deg);
-  -o-transform: perspective(300px) rotateX(25deg);
-  -ms-transform: perspective(300px) rotateX(25deg);
-  -webkit-transform: perspective(300px) rotateX(25deg);
-  transform: perspective(300px) rotateX(25deg); }
+  zoom: 2.4;
+  -moz-transform: perspective(300px) rotateX(30deg);
+  -o-transform: perspective(300px) rotateX(30deg);
+  -ms-transform: perspective(300px) rotateX(30deg);
+  -webkit-transform: perspective(300px) rotateX(30deg);
+  transform: perspective(300px) rotateX(30deg); }
   @media screen and (min-width: 1920px) and (max-width: 1920px) {
     .starwars .titles {
       zoom: 1.9;
@@ -308,12 +309,13 @@ button::-moz-focus-inner {
     transform: translateY(-2200px); } }
 
 .deathstar {
-  background: black url(deathstar.png) no-repeat;
-  width: 655px;
-  height: 663px;
+  background: black url(ultrasound.jpg);
+  width: 1100px;
+  height: 825px;
   position: absolute;
-  bottom: 1150px;
-  right: 100px; }
+  bottom: 984px;
+  right: 410px;
+  background-size: cover; }
 
 #logosvg {
   width: 900px;

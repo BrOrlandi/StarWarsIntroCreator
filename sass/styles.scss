@@ -422,12 +422,13 @@ button::-moz-focus-inner {
 }
 
 .deathstar {
-  background: black url(deathstar.png) no-repeat;
-  width: 655px;
-  height: 663px;
+  background: black url(ultrasound.jpg);
+  width: 1100px;
+  height: 825px;
   position: absolute;
-  bottom: 1150px;
-  right: 100px;
+  bottom: 984px;
+  right: 410px;
+  background-size: cover;
 }
 
 #logosvg{
