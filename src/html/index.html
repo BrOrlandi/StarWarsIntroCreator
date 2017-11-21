@@ -15,24 +15,9 @@
     <meta property="og:type" content="website">
     <meta property="fb:app_id" content="966673750071792"/>
 
+    <meta name="theme-color" content="#000">
 
     <link rel="shortcut icon" href="favicon.png">
-    <!-- build:css ./styles.css -->
-    <link rel="stylesheet" type="text/css" href="bb8.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="libs/sweetalert/dist/sweetalert.css">
-    <!-- endbuild -->
-
-    <!-- build:js ./vendor.js -->
-    <script src="libs/jquery/dist/jquery.min.js"></script>
-    <script src='libs/sweetalert/dist/sweetalert.min.js'></script>
-    <script src='libs/handlebars/handlebars.min.js'></script>
-    <!-- endbuild -->
-
-    <meta name="theme-color" content="#000">
-    <!-- Add to homescreen -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <!-- More info: https://developer.chrome.com/multidevice/android/installtohomescreen -->
 </head>
 <body>
 <div id="fb-root"></div>
@@ -108,7 +93,7 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
       </textarea>
 
       <div>
-        
+
         <input class="regular-checkbox" type="checkbox" id="f-center" /><label for="f-center"></label>
         <label for="f-center" id="flabel" class="noselect">Center text</label>
         </div><br>
@@ -194,39 +179,6 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
 <div id="footer" class="pageHide">
     Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> and <a href="https://github.com/nihey" target="2">Nihey Takizawa</a> based on <a href="http://timpietrusky.com/star-wars-opening-crawl-from-1977" target="2">Tim Pietrusky</a> work.
 </div>
-<script>
-// logo size calc
-$(window).resize(function() {
-    $('#logoimg').css('width',$(window).width()+'px');
-    $('#logosvg').css('width',$(window).width()+'px');
-
-    if($(window).height() < $("#config").height()+50){ // allow scroll if the form doesn't fit on the window
-        $("body").css("overflow","auto");
-    }else{
-        $("body").css("overflow","hidden");
-        $('body').scrollTop(0);
-    }
-
-    $(".sweet-alert").css("margin-top",-$(".sweet-alert").outerHeight()/2);
-});
-$(window).load(function () {
-    $(window).trigger('resize');
-})
-$(document).scroll(function (e) {
-    var max_height = $("#config").height()+50 - $(window).height();
-    var height = $('body').scrollTop();
-    if(height > max_height+200){ // prevent scrolling to much and reaching the deathstar befor the time.
-        var val = max_height+200;
-        $('body').scrollTop(val);
-    }
-})
-</script>
-<!-- build:js ./main.js -->
-<script src="StarWars.js"></script>
-<script src="createdIntros.js"></script>
-<script src="errorFunction.js"></script>
-<script src="main.js"></script>
-<!-- endbuild -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -20,12 +20,12 @@
 
 @font-face {
     font-family: StarWars;
-    src: url('Starjedi.ttf');
+    src: url('/Starjedi.ttf');
 }
 
 @font-face {
     font-family: StarWarsTitle;
-    src: url('SWCrawlTitle2.ttf');
+    src: url('/SWCrawlTitle2.ttf');
 }
 
 $timeFactor: 1;
@@ -401,7 +401,7 @@ button::-moz-focus-inner {
   top: 0;
   left: 0;
   background-color: black;
-  background: url('bg-stars.png') repeat;
+  background: url('/bg-stars.png') repeat;
 }
 
 .running {
@@ -421,7 +421,7 @@ button::-moz-focus-inner {
 }
 
 .deathstar {
-  background: black url(deathstar.png) no-repeat;
+  background: black url('/deathstar.png') no-repeat;
   width: 655px;
   height: 663px;
   position: absolute;
