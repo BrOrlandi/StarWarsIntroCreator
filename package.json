@@ -5,19 +5,26 @@
   "author": "Bruno Orlandi <brorlandi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "install": "bower install",
-    "build": "gulp build",
-    "start": "gulp"
+    "build": "webpack -p",
+    "start": "webpack-dev-server"
   },
   "devDependencies": {
-    "del": "^2.2.0",
-    "gulp": "^3.9.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-if": "^2.0.0",
-    "gulp-minify-css": "^1.2.2",
-    "gulp-sass": "^2.1.1",
-    "gulp-uglify": "^1.5.1",
-    "gulp-useref": "^3.0.4"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "copy-webpack-plugin": "^4.2.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "handlebars": "^4.0.11",
+    "jquery": "2.1.4",
+    "sweetalert2": "^7.0.2"
+  }
 }
