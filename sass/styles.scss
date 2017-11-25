@@ -741,3 +741,16 @@ iframe{
   height : 17px;
   width : 0;
 }
+
+#btcether {
+  &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+  }
+  font-weight: bold;
+  display: flex;
+  line-height: 25px;
+  span {
+      margin-left: 5px;
+  }
+}

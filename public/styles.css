@@ -559,3 +559,13 @@ iframe {
   display: block;
   height: 17px;
   width: 0; }
+
+#btcether {
+  font-weight: bold;
+  display: flex;
+  line-height: 25px; }
+  #btcether:hover {
+    text-decoration: underline;
+    cursor: pointer; }
+  #btcether span {
+    margin-left: 5px; }
