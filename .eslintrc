@@ -1,0 +1,27 @@
+{
+    "parser": "babel-eslint",
+    "rules": {
+      "import/no-extraneous-dependencies": 0,
+      "class-methods-use-this": 0,
+      "import/extensions": 0,
+      "import/no-unresolved": 0,
+      "yoda": ["error", "always", { "onlyEquality": true }],
+      "no-underscore-dangle": 0,
+    },
+    "extends": "airbnb",
+    "globals": {
+      "describe": true,
+      "it": true,
+      "expect": true,
+      "window": true,
+      "document": true,
+      "navigator": true,
+      "fetch": true,
+      "FormData": true,
+      "localStorage": true,
+      "beforeAll": true,
+      "beforeEach": true,
+      "jest": true,
+      "afterEach": true
+    }
+  }
