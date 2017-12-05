@@ -214,7 +214,8 @@ button::-moz-focus-inner {
     border-radius: 0.2em;
     background: black;
     color: #ffd54e;
-    transition: border-color 0.7s ease-out; }
+    transition: border-color 0.7s ease-out;
+    overflow-x: hidden; }
     #form-starwars input:active, #form-starwars input:focus, #form-starwars textarea:active, #form-starwars textarea:focus {
       border-color: #ffd54e; }
   #form-starwars textarea {
