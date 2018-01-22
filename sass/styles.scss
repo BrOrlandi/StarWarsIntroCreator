@@ -422,12 +422,10 @@ button::-moz-focus-inner {
 }
 
 .deathstar {
-  background: black url(deathstar.png) no-repeat;
-  width: 655px;
+  background: transparent url(digimind.png) no-repeat;
+  width: 1035px;
   height: 663px;
-  position: absolute;
-  bottom: 1150px;
-  right: 100px;
+  margin-bottom: 912px;
 }
 
 #logosvg{
@@ -741,4 +739,10 @@ iframe{
   display : block;
   height : 17px;
   width : 0;
+}
+
+.bg {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
