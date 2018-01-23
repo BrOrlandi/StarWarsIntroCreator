@@ -309,9 +309,9 @@ button::-moz-focus-inner {
     transform: translateY(-2200px); } }
 
 .deathstar {
-  background: transparent url(digimind.png) no-repeat;
-  width: 1035px;
-  height: 663px;
+  background: transparent url(glass.jpg) no-repeat;
+  width: 825px;
+  height: 637px;
   margin-bottom: 912px; }
 
 #logosvg {
