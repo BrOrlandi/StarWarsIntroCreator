@@ -422,7 +422,8 @@ button::-moz-focus-inner {
 }
 
 .deathstar {
-  background: black url(deathstar.png) no-repeat;
+  background: black url(planet.png) no-repeat;
+  background-size: cover;
   width: 655px;
   height: 663px;
   position: absolute;
