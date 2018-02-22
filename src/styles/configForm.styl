@@ -1,0 +1,84 @@
+$greenShadow = #45f500;
+
+$actionButtonStyle {
+  outline: 0;
+  border: 0;
+  background: transparent;
+  color: $titlesColor;
+  text-shadow: none;
+  font-size: 50px;
+  font-family: StarWars;
+  cursor: pointer;
+  transition: text-shadow .5s ease-out;
+
+  &:focus, &:hover {
+    text-shadow: -1px 1px 8px $greenShadow, 1px -1px 8px $greenShadow;
+  }
+}
+
+#configForm {
+  display: flex;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+  }
+
+  #pageTitle{
+    text-align: center;
+    font-size: 48px;
+    font-family: StarWars;
+    line-height: 100%;
+  }
+
+  #playButton {
+    @extend $actionButtonStyle;
+  }
+
+  #downloadButton {
+    @extend $actionButtonStyle;
+
+    display: none;
+    margin-bottom: 30px;
+    font-size: 60px;
+    animation: pulseDownloadButton 3s ease 0s infinite;
+
+    &:focus, &:hover {
+        text-shadow: -1px 1px 93px $greenShadow, 1px -1px 23px $greenShadow;
+        animation: none;
+    }
+  }
+
+  #f-intro {
+    color: $introColor;
+  }
+
+  #f-text {
+    height: 200px;
+  }
+
+  #f-logo,#f-title,#f-episode {
+    text-align: center;
+  }
+}
+
+@keyframes pulseDownloadButton {
+    0%{
+        text-shadow: none;
+    }
+
+    40%{
+        text-shadow: -1px 1px 93px $greenShadow, 1px -1px 23px $greenShadow;
+    }
+
+    60%{
+        text-shadow: -1px 1px 93px $greenShadow, 1px -1px 23px $greenShadow;
+    }
+
+    100%{
+        text-shadow: none;
+    }
+}

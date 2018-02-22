@@ -1,8 +1,7 @@
-import '../styles/main.scss';
+import '../styles/main.styl';
 
-import swal from 'sweetalert2';
+// import swal from 'sweetalert2';
 
-import './resizeWindow';
+// import './resizeWindow';
 
-
-console.log("AAAAEEEE!!!");
+console.log("AAAAEEEE! !!");

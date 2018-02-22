@@ -1,7 +1,51 @@
+// generic transform
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin backface-visibility ($arguments) {
+  -webkit-backface-visibility: $arguments;
+     -moz-backface-visibility: $arguments;
+      -ms-backface-visibility: $arguments;
+       -o-backface-visibility: $arguments;
+          backface-visibility: $arguments;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+
+@font-face {
+    font-family: StarWars;
+    src: url('/Starjedi.ttf');
+}
+
+@font-face {
+    font-family: StarWarsTitle;
+    src: url('/SWCrawlTitle2.ttf');
+}
+
+$timeFactor: 1;
+$introColor: rgb(75, 213, 238);
+$titlesColor: #ffd54e;
+
 html,
 body {
+    width: 100%;
+    height: 100%;
     font: 700 1em "News Cycle", sans-serif;
     letter-spacing:.15em;
+    color: $titlesColor;
+    margin: 0;
+    background-color: black;
+}
+
+/* Remove dotted border on Firefox (http://stackoverflow.com/a/199319) */
+button::-moz-focus-inner {
+  border: 0;
 }
 
 .starwars {
@@ -193,7 +237,21 @@ body {
     user-select: none;
 }
 
+.playButton{
+  font-family: StarWars;
+  cursor: pointer;
+  font-size: 50px;
+  border: 0;
+  background: transparent;
+  color: $titlesColor;
+  text-shadow: none;
+  transition: text-shadow 0.5s ease-out;
+  outline: none;
 
+  &:focus, &:hover {
+    text-shadow: -1px 1px 8px #45f500, 1px -1px 8px #45f500;
+  }
+}
 
 // Used only in the Form input. The text is a outlined SVG Text
 /// Stroke font-character
@@ -261,7 +319,16 @@ body {
   }
 }
 
+#f-intro{
+    color: $introColor !important;
+}
+#f-text{
+  height: 200px;
+}
 
+#f-logo,#f-title,#f-episode{
+    text-align: center;
+}
 
 #loader{
     .inner {
@@ -270,6 +337,10 @@ body {
     }
 }
 
+#pageTitle{
+    line-height: 100%;
+  font-family: StarWars;
+}
 
 .star-wars-alert{
   background-color: black !important;
@@ -370,6 +441,11 @@ body {
     font-size: 50px;
 }
 
+#videoButton{
+    display: none;
+    margin-bottom: 30px;
+    font-size: 60px;
+}
 
 .sweet-alert {
     fieldset{
@@ -417,6 +493,34 @@ iframe{
         &:hover{
             text-decoration: underline;
         }
+    }
+}
+
+@keyframes pulseDownload {
+    0%{
+        text-shadow: none;
+    }
+
+    40%{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+    }
+
+    60%{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+    }
+
+    100%{
+        text-shadow: none;
+    }
+}
+
+.downloadButton{
+    @extend .playButton;
+    animation: pulseDownload 3s ease 0s infinite;
+
+    &:hover{
+        text-shadow: -1px 1px 93px #45f500, 1px -1px 23px #45f500;
+        animation: none;
     }
 }
 
