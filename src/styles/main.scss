@@ -283,12 +283,13 @@ button::-moz-focus-inner {
   input,textarea {
     width: 97%;
     margin-bottom: 0px;
-    padding: 0.25em;
-    border: 0.25em solid transparentize($titlesColor, 0.8);
-    border-radius: 0.2em;
+    padding: 0.3em;
+    border: 3px solid transparentize($titlesColor, 0.8);
+    border-radius: 3px;
     background: black;
     color: $titlesColor;
     transition: border-color 0.7s ease-out;
+    overflow-x: hidden;
 
     &:active, &:focus {
       border-color: $titlesColor;
@@ -310,7 +311,6 @@ button::-moz-focus-inner {
         // width: 481.66px;
         width: 93%;
         @include stroke(2,$titlesColor);
-        margin-bottom: -20px;
       }
 
       &#f-text{
@@ -740,4 +740,17 @@ iframe{
   display : block;
   height : 17px;
   width : 0;
+}
+
+#btcether {
+  &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+  }
+  font-weight: bold;
+  display: flex;
+  line-height: 25px;
+  span {
+      margin-left: 5px;
+  }
 }

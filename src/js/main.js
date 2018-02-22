@@ -63,7 +63,7 @@ $('#form-starwars').submit(function(event) {
       location.hash = '!/Episode7'; // the default is Episode7 opening, TODO change this in 2018 after Episode 8
       return;
   }
-  
+
   var aLogo = opening.logo.split('\n');
   if(aLogo.length > 2){
       sweetAlert("Oops...", "Logo can't have more than 2 lines.", "warning");
@@ -140,7 +140,7 @@ $(window).on('hashchange', function() {
                 intro = intro.replace(/\n/g,"<br>");
                 StarWars.animation.find("#intro").html(intro);
                 StarWars.animation.find("#episode").text(opening.episode);
-                
+
                 var title = StarWars.animation.find("#title")
                 if(checkCompatibleSWFont(opening.title)){
                     title.addClass('SWFont');
@@ -408,7 +408,7 @@ $("#videoButton").click(function(){
                             html: true,
                             title: '<h2 style="font-family: StarWars;">Generate video</h2>',
                             text: '<p style="text-align: justify">'+
-                            'Type your email bellow and you will receive a message with the URL to download your video when it\'s ready. We promise not to send spam!'+
+                            'Type your email below and you will receive a message with the URL to download your video when it\'s ready. We promise not to send spam!'+
                             '</p>' + (donate ? [
                               '<br><p style="text-align: justify">',
                               '  Please, use the same email from you PayPal account.',
@@ -427,7 +427,7 @@ $("#videoButton").click(function(){
 
                         if(donate){
                             generateAlert.title = '<h2 style="font-family: StarWars;">Donate</h2>';
-                            generateAlert.text = 'Click on the button bellow:'
+                            generateAlert.text = 'Click on the button below:'
                             +'<br><iframe src="./donateButtons.html#!/' + OpeningKey + '" height="100"></iframe>'+generateAlert.text;
                         }
                         swal(generateAlert, requestVideo.bind(window, donate));
@@ -467,7 +467,7 @@ function isOpeningsDifferents(a,b){ // compare two openings texts to see if they
     },false);
 };
 
-function parseSpecialKeys(key){ 
+function parseSpecialKeys(key){
     switch (key) {
         case "Episode7": // Episode7 is a special key for URL, it plays the Episode 7 opening
             return "AKcKeYMPogupSU_r1I_g";
