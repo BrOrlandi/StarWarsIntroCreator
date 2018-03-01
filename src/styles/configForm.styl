@@ -1,5 +1,35 @@
 $greenShadow = #45f500;
 
+$formBackgroundColor = lighten(black, 2%)
+
+$inputBorderColor = alpha($titlesColor, .2);
+$inputBorderColorHover = alpha($titlesColor, .5);
+$inputBorderColorFocus = $titlesColor;
+
+inputStyle() {
+
+  $inputBorder = 3px solid $inputBorderColor;
+
+  transition: border-color .3s ease-out;
+  padding: .3em;
+  outline: 0;
+  border: $inputBorder;
+  border-radius: 3px;
+  background-color: $formBackgroundColor;
+
+
+  &:hover{
+    border-color: $inputBorderColorHover;
+  }
+
+  &:active, &:focus {
+    border-color: $inputBorderColorFocus;
+  }
+}
+
+$marginTopFormInput = 20px;
+
+
 $actionButtonStyle {
   outline: 0;
   border: 0;
@@ -16,16 +46,28 @@ $actionButtonStyle {
   }
 }
 
+// Used only in the Logo input. The text is a outlined SVG Text
+// Stroke font-character
+// @param  {Integer} $stroke - Stroke width
+// @param  {Color}   $color  - Stroke color
+// @return {List}            - text-shadow list
+stroke($stroke, $color) {
+  $shadow = ();
+  $from = $stroke * -1;
+  $range = ($from)..($stroke);
+  for $i in $range {
+    for $j in $range {
+      append($shadow, ($i)px ($j)px 0 $color);
+      append($shadow, \,);
+    }
+  }
+  pop($shadow)
+  $shadow;
+}
+
 #configForm {
   display: flex;
   justify-content: center;
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 500px;
-  }
 
   #pageTitle{
     text-align: center;
@@ -34,34 +76,104 @@ $actionButtonStyle {
     line-height: 100%;
   }
 
-  #playButton {
-    @extend $actionButtonStyle;
-  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    font-family: Arial, Helvetica, sans-serif;
 
-  #downloadButton {
-    @extend $actionButtonStyle;
+    input, textarea {
+      margin-top: $marginTopFormInput;
+      margin-bottom: 0;
+      overflow-x: hidden;
+      color: $titlesColor;
+      word-break: break-word;
+      width: 97%;
 
-    display: none;
-    margin-bottom: 30px;
-    font-size: 60px;
-    animation: pulseDownloadButton 3s ease 0s infinite;
-
-    &:focus, &:hover {
-        text-shadow: -1px 1px 93px $greenShadow, 1px -1px 23px $greenShadow;
-        animation: none;
+      inputStyle();
     }
-  }
 
-  #f-intro {
-    color: $introColor;
-  }
+    textarea {
+      resize: none;
+      font-family: Arial, Helvetica, sans-serif;
 
-  #f-text {
-    height: 200px;
-  }
+      &#f-logo {
+        color: black;
+        font-family: StarWars;
+        font-size: 50px;
+        line-height: 86%;
+        height: 92px;
+        width: calc(97% - 22px);
+        text-shadow: stroke(2, $titlesColor);
+        caret-color: $titlesColor; // partial support https://caniuse.com/#search=caret-color
+      }
+    }
 
-  #f-logo,#f-title,#f-episode {
-    text-align: center;
+    #playButton {
+      @extend $actionButtonStyle;
+    }
+
+    #downloadButton {
+      @extend $actionButtonStyle;
+
+      display: none;
+      margin-bottom: 30px;
+      font-size: 60px;
+      animation: pulseDownloadButton 3s ease 0s infinite;
+
+      &:focus, &:hover {
+          text-shadow: -1px 1px 93px $greenShadow, 1px -1px 23px $greenShadow;
+          animation: none;
+      }
+    }
+
+    #f-intro {
+      color: $introColor;
+    }
+
+    #f-text {
+      height: 200px;
+    }
+
+    #f-logo,#f-title,#f-episode {
+      text-align: center;
+    }
+
+    .center-checkbox {
+      margin-top: $marginTopFormInput;
+      user-select: none;
+
+      label {
+        font-size: 14px;
+        display: inline;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      .regular-checkbox {
+        display: none;
+
+        &+label {
+          inputStyle();
+          width: 9px;
+          height: 9px;
+          border-radius: 3px;
+          display: inline-block;
+        }
+
+        &:checked + label:after {
+          cursor: pointer;
+          content: '\274C';
+          font-size: 14px;
+          letter-spacing: 0;
+          color: $titlesColor;
+          position: relative;
+          top: -4px;
+        }
+      }
+
+    }
   }
 }
 

@@ -193,76 +193,6 @@ body {
     user-select: none;
 }
 
-
-
-// Used only in the Form input. The text is a outlined SVG Text
-/// Stroke font-character
-/// @param  {Integer} $stroke - Stroke width
-/// @param  {Color}   $color  - Stroke color
-/// @return {List}            - text-shadow list
-@function stroke($stroke, $color) {
-  $shadow: ();
-  $from: $stroke*-1;
-  @for $i from $from through $stroke {
-   @for $j from $from through $stroke {
-      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
-    }
-  }
-  @return $shadow;
-}
-/// Stroke font-character
-/// @param  {Integer} $stroke - Stroke width
-/// @param  {Color}   $color  - Stroke color
-/// @return {Style}           - text-shadow
-@mixin stroke($stroke, $color) {
-  text-shadow: stroke($stroke, $color);
-}
-
-#form-starwars{
-  // display: none;
-  width: 500px;
-
-  input,textarea {
-    width: 97%;
-    margin-bottom: 0px;
-    padding: 0.3em;
-    border: 3px solid transparentize($titlesColor, 0.8);
-    border-radius: 3px;
-    background: black;
-    color: $titlesColor;
-    transition: border-color 0.7s ease-out;
-    overflow-x: hidden;
-
-    &:active, &:focus {
-      border-color: $titlesColor;
-    }
-
-  }
-
-  textarea{
-      resize: none;
-      &#f-logo{
-          color: black;
-          border: 0.0666em solid transparentize($titlesColor, 0.8);
-          border-radius: 0.0533em;
-        font-family: StarWars;
-        font-size: 50px;
-        font-weight: normal;
-        height: 92px;
-        line-height: 86%;
-        // width: 481.66px;
-        width: 93%;
-        @include stroke(2,$titlesColor);
-      }
-
-      &#f-text{
-        margin-top: 10px;
-      }
-  }
-}
-
-
-
 #loader{
     .inner {
         width: 100%;
@@ -545,54 +475,6 @@ iframe{
 
         }
     }
-}
-
-#videoRequestAdvise{
-    font-size: 50%;
-}
-
-#flabel{
-  font-size: 13px;
-  font-family: Arial;
-  font-weight: normal;
-  display: inline;
-  vertical-align: middle;
-
-}
-
-.regular-checkbox {
-	display: none;
-}
-
-.regular-checkbox + label {
-	background-color: black;
-	// border: 1px solid #cacece;
-  border: 3px solid transparentize($titlesColor, 0.8);
-	// box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-	padding: 9px;
-	border-radius: 3px;
-	display: inline-block;
-	position: relative;
-  top: 3px;
-}
-
-.regular-checkbox + label:active, .regular-checkbox:checked + label:active {
-	// box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-}
-
-.regular-checkbox:checked + label {
-	// border: 1px solid #adb8c0;
-	// box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
-	color: #99a1a7;
-}
-
-.regular-checkbox:checked + label:after {
-	content: '\2714';
-	font-size: 14px;
-	position: absolute;
-	bottom: -2px;
-	left: 3px;
-	color: $titlesColor;
 }
 
 #text{
