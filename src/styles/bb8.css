@@ -428,3 +428,7 @@ div[class^=inset-]:after {
     margin-top: -13.8em;
   }
 }
+
+body.runningVideo .bb8 {
+  display: none;
+}

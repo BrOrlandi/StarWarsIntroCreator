@@ -65,9 +65,16 @@ stroke($stroke, $color) {
   $shadow;
 }
 
+body.runningVideo {
+  #configForm {
+    display: none;
+  }
+}
+
 #configForm {
   display: flex;
   justify-content: center;
+  color: $titlesColor;
 
   #pageTitle{
     text-align: center;

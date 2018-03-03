@@ -20,63 +20,58 @@
     <link rel="shortcut icon" href="./assets/favicon.png">
 </head>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=966673750071792";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+  <!-- Facebook -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=966673750071792";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
 
-
-<div id="configForm">
-  <form id="form-starwars">
-    <h2 id="pageTitle">Star wars<br>intro CReator</h2>
-    <button id="downloadButton" type="button">download</button>
-    <textarea id="f-intro" rows="2" spellcheck="false" maxlength="100">
+  <!-- Configuration Form -->
+  <div id="configForm">
+    <form id="form-starwars">
+      <h2 id="pageTitle">Star wars<br>intro CReator</h2>
+      <button id="downloadButton" type="button">download</button>
+      <textarea id="f-intro" rows="2" spellcheck="false" maxlength="100">
 A long time ago, in a galaxy far,
 far away....</textarea>
-    <textarea id="f-logo" rows="2" spellcheck="false" maxlength="100">
-Star
+      <textarea id="f-logo" rows="2" spellcheck="false" maxlength="100">Star
 wars</textarea>
-    <input id="f-episode" type="text" value="Episode VII" spellcheck="false" maxlength="100">
-    <input id="f-title" type="text" value="THE FORCE AWAKENS" spellcheck="false" maxlength="100">
-    <textarea id="f-text" spellcheck="false" maxlength="3000">
-Luke Skywalker has vanished. In his absence, the sinister FIRST ORDER has risen from the ashes of the Empire and will not rest until Skywalker, the last Jedi, has been destroyed.
-With the support of the REPUBLIC, General Leia Organa leads a brave RESISTANCE. She is desperate to find her brother Luke and gain his help in restoring peace and justice to the galaxy.
-Leia has sent her most daring pilot on a secret mission to Jakku, where an old ally has discovered a clue to Luke's whereabouts....
-    </textarea>
+      <input id="f-episode" type="text" value="Episode VIII" spellcheck="false" maxlength="100">
+      <input id="f-title" type="text" value="THE LAST JEDI" spellcheck="false" maxlength="100">
+      <textarea id="f-text" spellcheck="false" maxlength="3000">
+The FIRST ORDER reigns. Having decimated the peaceful Republic, Supreme Leader Snoke now deploys his merciless legions to seize military control of the galaxy.
+Only General Leia Organa's band of RESISTANCE fighters stand against the rising tyranny, certain that Jedi Master Luke Skywalker will return and restore a spark of hope to the fight.
+But the Resistance has been exposed. As the First Order speeds toward the rebel base, the brave heroes mount a desperate escape....
+      </textarea>
 
-    <div class="center-checkbox">
-      <input class="regular-checkbox" type="checkbox" id="f-center" /><label for="f-center"></label>
-      <label for="f-center" id="flabel" class="noselect">Center text</label>
-    </div>
+      <div class="center-checkbox">
+        <input class="regular-checkbox" type="checkbox" id="f-center" /><label for="f-center"></label>
+        <label for="f-center" id="flabel" class="noselect">Center text</label>
+      </div>
 
-    <br/>
+      <br/>
 
-    <button id="playButton" type="submit">
-      Play
-    </button>
-    <br/>
-    <span>and request your video to download</span>
+      <button id="playButton" type="submit">
+        Play
+      </button>
+      <br/>
+      <span>and request your video to download</span>
 
-  </form>
-</div>
+    </form>
+  </div>
 
-
-
-
-<div class="bg">
-    <div class="deathstar"></div>
-</div>
-<article class="starwars">
-  <audio preload="auto">
+  <audio id="themeAudio" preload="auto">
     <source src="./assets/tfa.ogg" type="audio/ogg" />
     <source src="./assets/tfa.mp3" type="audio/mpeg" />
   </audio>
-  <div id="loader" class="verticalWrapper" style="display:none">
+
+  <!-- BB8 Loading -->
+  <div id="bb8-loading" class="verticalWrapper hide">
     <div class="inner">
         <div class="bb8">
           <div class="bb8-top">
@@ -113,23 +108,34 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
     </div>
   </div>
 
+<article class="starwarsAnimation hide">
+  <div id="backgroundSpace">
+      <img id="deathstar" src="assets/deathstar.png"/>
+  </div>
+
   <div class="animation">
 
-      <div class="introBg">
+    <div class="introBg"></div>
 
-      </div>
     <div class="verticalWrapper">
         <section id="intro" class="intro noselect">
+          A long time ago, in a galaxy far,<br>
+          far away....
         </section>
     </div>
 
     <section class="titles noselect">
       <div style="width: 100%;">
         <p id="episode" class="tcenter">
+          Episode VIII
         </p>
         <p  id="title" class="tcenter">
+          THE LAST JEDI
         </p>
         <div id="text">
+            <p>The FIRST ORDER reigns. Having decimated the peaceful Republic, Supreme Leader Snoke now deploys his merciless legions to seize military control of the galaxy.</p>
+            <p>Only General Leia Organa's band of RESISTANCE fighters stand against the rising tyranny, certain that Jedi Master Luke Skywalker will return and restore a spark of hope to the fight.</p>
+            <p>But the Resistance has been exposed. As the First Order speeds toward the rebel base, the brave heroes mount a desperate escape....</p>
         </div>
       </div>
     </section>
@@ -145,9 +151,11 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
     </div>
   </div>
 </article>
-<div id="createdIntros" class="pageHide">
 
+<div id="createdIntros" class="pageHide">
 </div>
+
+<footer style="display:none;">
 <div class="socialButtons pageHide">
     <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
@@ -189,6 +197,8 @@ Leia has sent her most daring pilot on a secret mission to Jakku, where an old a
 <div id="footer" class="pageHide">
     Developed by <a href="https://github.com/BrOrlandi" target="2">Bruno Orlandi</a> and <a href="https://github.com/nihey" target="2">Nihey Takizawa</a> based on <a href="http://timpietrusky.com/star-wars-opening-crawl-from-1977" target="2">Tim Pietrusky</a> work.
 </div>
+</footer>
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

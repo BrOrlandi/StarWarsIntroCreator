@@ -17,17 +17,30 @@ $titlesColor = #ffd54e;
 
 html,
 body {
+    margin: 0;
     width: 100%;
     height: 100%;
-    // font: 700 1em "News Cycle", sans-serif;
-    letter-spacing:.15em;
-    color: $titlesColor;
-    margin: 0;
+    background: url('../assets/bg-stars.png') repeat;
     background-color: black;
+    color: $titlesColor;
 }
 
-
+.verticalWrapper{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 
 @import './configForm.styl';
-// @import './animation.styl';
+@import './bb8.css';
+@import './animation.styl';
 
+.hide {
+  display: none;
+}
