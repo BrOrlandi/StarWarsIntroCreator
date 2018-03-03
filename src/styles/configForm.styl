@@ -91,28 +91,28 @@ body.runningVideo {
     font-family: Arial, Helvetica, sans-serif;
 
     input, textarea {
+      overflow-x: hidden;
       margin-top: $marginTopFormInput;
       margin-bottom: 0;
-      overflow-x: hidden;
+      width: 97%;
       color: $titlesColor;
       word-break: break-word;
-      width: 97%;
 
       inputStyle();
     }
 
     textarea {
-      resize: none;
       font-family: Arial, Helvetica, sans-serif;
+      resize: none;
 
       &#f-logo {
-        color: black;
-        font-family: StarWars;
-        font-size: 50px;
-        line-height: 86%;
-        height: 92px;
         width: calc(97% - 22px);
+        height: 92px;
+        color: black;
         text-shadow: stroke(2, $titlesColor);
+        font-size: 50px;
+        font-family: StarWars;
+        line-height: 86%;
         caret-color: $titlesColor; // partial support https://caniuse.com/#search=caret-color
       }
     }
@@ -130,8 +130,8 @@ body.runningVideo {
       animation: pulseDownloadButton 3s ease 0s infinite;
 
       &:focus, &:hover {
-          text-shadow: -1px 1px 93px $greenShadow, 1px -1px 23px $greenShadow;
-          animation: none;
+        text-shadow: -1px 1px 93px $greenShadow, 1px -1px 23px $greenShadow;
+        animation: none;
       }
     }
 
@@ -144,7 +144,7 @@ body.runningVideo {
       height: 200px;
     }
 
-    #f-logo,#f-title,#f-episode {
+    #f-logo, #f-title, #f-episode {
       text-align: center;
     }
 
@@ -153,9 +153,9 @@ body.runningVideo {
       user-select: none;
 
       label {
-        font-size: 14px;
         display: inline;
         vertical-align: middle;
+        font-size: 14px;
         cursor: pointer;
       }
 
