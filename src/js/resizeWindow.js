@@ -2,15 +2,15 @@ import $ from 'jquery';
 
 // logo size calc
 $(window).resize(function() {
-    $('#logoimg').css('width',$(window).width()+'px');
-    $('#logosvg').css('width',$(window).width()+'px');
+    // $('#logoimg').css('width',$(window).width()+'px');
+    // $('#logosvg').css('width',$(window).width()+'px');
 
-    if($(window).height() < $("#config").height()+50){ // allow scroll if the form doesn't fit on the window
-        $("body").css("overflow","auto");
-    }else{
-        $("body").css("overflow","hidden");
-        $('body').scrollTop(0);
-    }
+    // if($(window).height() < $("#config").height()+50){ // allow scroll if the form doesn't fit on the window
+    //     $("body").css("overflow","auto");
+    // }else{
+    //     $("body").css("overflow","hidden");
+    //     $('body').scrollTop(0);
+    // }
 
     $(".sweet-alert").css("margin-top",-$(".sweet-alert").outerHeight()/2);
 });
