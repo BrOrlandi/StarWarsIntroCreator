@@ -119,18 +119,6 @@ body {
   }
 }
 
-.verticalWrapper{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-}
-
 @keyframes intro {
   0% {
     opacity: 0;
@@ -253,40 +241,9 @@ body {
     }
 }
 
-.bg {
-  width: 100%;
-  height: 4100px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: black;
-  background: url('/bg-stars.png') repeat;
-}
 
-.running {
-    overflow: hidden;
-    .bg{
-      animation: scrolldown 7s * $timeFactor 86s * $timeFactor forwards;
-    }
-}
 
-@keyframes scrolldown {
-  0% {
-      transform: translateY(0);
-  }
-  100% {
-      transform: translateY(-2200px);
-  }
-}
 
-.deathstar {
-  background: black url('/deathstar.png') no-repeat;
-  width: 655px;
-  height: 663px;
-  position: absolute;
-  bottom: 1150px;
-  right: 100px;
-}
 
 #logosvg{
   width: 900px;
