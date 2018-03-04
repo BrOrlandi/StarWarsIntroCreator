@@ -1,7 +1,8 @@
 .starwarsAnimation {
   display: none;
   letter-spacing:.15em;
-  // font: 700 1em 'News Cycle', sans-serif;
+  font: 700 1em 'News Cycle', sans-serif;
+  font-variant-ligatures: none;
 
   // intro text
   .introBackground {
@@ -22,8 +23,8 @@
         color: $introColor;
         font-weight: 400;
         font-size: 500%;
-        font-family: Arial;
         opacity: 0;
+        transform: scaleX(1.1);
         animation: introTextAnimation 6s * $timeFactor ease-out 1s * $timeFactor;
 
         @media $HD{
@@ -47,6 +48,60 @@
 
     #logosvg{
       font-size: 210px;
+    }
+  }
+
+  // titles animation
+  #titles {
+    $titles-width = 14.65em;
+    width: $titles-width;
+    margin: 0 0 0 (- $titles-width / 2);
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    height: 50em;
+    font-size: 350%;
+    text-align: justify;
+    overflow: hidden;
+    word-wrap: break-word;
+    transform-origin: 50% 100%;
+    transform: perspective(300px) rotateX(25deg);
+
+    @media screen and (min-width: 1920px) and (max-width: 1920px) {
+        zoom: 1.9;
+        transform: perspective(266px) rotateX(29deg) scaleX(1.2);
+        -moz-transform: perspective(300px) rotateX(19deg) scale(2.3);
+    }
+
+    @media screen and (min-width: 1366px) and (max-width: 1366px) {
+        zoom: 1.6;
+        transform: perspective(216px) rotateX(26deg);
+        -moz-transform: perspective(300px) rotateX(26deg) scale(1.6);
+    }
+
+    @media screen and (min-width: 1280px) and (max-width: 1280px) {
+        zoom: 1.5;
+        transform: perspective(216px) rotateX(26deg);
+        -moz-transform: perspective(300px) rotateX(26deg) scale(1.5);
+    }
+
+    > div {
+        position: absolute;
+        top: 100%;
+        animation: titlesAnimation 73s * $timeFactor linear 13s * $timeFactor forwards;
+
+      > p {
+        margin: 1.35em 0 1.85em 0;
+        line-height: 1.35em;
+
+        backface-visibility: hidden;
+      }
+
+      .tcenter{
+        margin: 1.35em 0 -1em 0;
+        text-align: center;
+      }
     }
   }
 
@@ -124,6 +179,20 @@ body.runningVideo {
   }
     100% {
     transform: scale(.01);
+    opacity: 0;
+  }
+}
+
+@keyframes titlesAnimation {
+  0% {
+    top: 100%;
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: 20%;
     opacity: 0;
   }
 }
