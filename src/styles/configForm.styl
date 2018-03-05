@@ -61,7 +61,7 @@ stroke($stroke, $color) {
       append($shadow, \,);
     }
   }
-  pop($shadow)
+  pop($shadow);
   $shadow;
 }
 
@@ -76,10 +76,11 @@ body.runningVideo {
   justify-content: center;
   color: $titlesColor;
 
-  #pageTitle{
+  #pageTitle {
     text-align: center;
     font-size: 48px;
     font-family: StarWars;
+    letter-spacing: 3px;
     line-height: 100%;
   }
 
@@ -102,7 +103,6 @@ body.runningVideo {
     }
 
     textarea {
-      font-family: Arial, Helvetica, sans-serif;
       resize: none;
 
       &#f-logo {
@@ -137,7 +137,6 @@ body.runningVideo {
 
     #f-intro {
       color: $introColor;
-      font-family: Arial;
     }
 
     #f-text {
@@ -160,7 +159,21 @@ body.runningVideo {
       }
 
       .regular-checkbox {
-        display: none;
+        display: block;
+        opacity: 0;
+        margin-top: 0;
+
+        &:hover {
+          &+label {
+            border-color: $inputBorderColorHover;
+          }
+        }
+
+        &:focus {
+          &+label {
+            border-color: $inputBorderColorFocus;
+          }
+        }
 
         &+label {
           inputStyle();
