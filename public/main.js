@@ -60,7 +60,7 @@ $('#form-starwars').submit(function(event) {
 
   if(!isOpeningsDifferents(opening,defaultOpening)){
       setLoading();
-      location.hash = '!/Episode7'; // the default is Episode7 opening, TODO change this in 2018 after Episode 8
+      location.hash = '!/Episode8';
       return;
   }
 
@@ -471,6 +471,8 @@ function parseSpecialKeys(key){
     switch (key) {
         case "Episode7": // Episode7 is a special key for URL, it plays the Episode 7 opening
             return "AKcKeYMPogupSU_r1I_g";
+        case "Episode8":
+            return "AL6yNfOxCGkHKBUi54xp";
         // TODO other eps
         default:
             return key;

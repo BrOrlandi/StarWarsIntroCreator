@@ -3,3 +3,4 @@ dist/*
 public/libs/
 /.project
 *.log
+.cache
