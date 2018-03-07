@@ -1,0 +1,87 @@
+$footerCreditsColor = #9e9e42;
+
+body.runningVideo {
+  footer {
+    display: none;
+  }
+}
+
+footer {
+  font-family: Arial;
+
+  .credits {
+    position: fixed;
+    bottom: 1em;
+    width: 100%;
+    color: $footerCreditsColor;
+    text-align: center;
+    font-size: .9em;
+
+    a {
+      color: $titlesColor;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .socialButtons {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    z-index: 10;
+
+    form {
+      margin-bottom: 5px;
+    }
+
+    div {
+      margin-bottom: .33em;
+
+      &:last-of-type{
+        margin-bottom: 0;
+      }
+    }
+
+    #btcether {
+      display: flex;
+      font-weight: bold;
+      line-height: 25px;
+
+      span {
+        margin-left: 5px;
+      }
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .termsOfService{
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    z-index: 10;
+    text-align: center;
+
+    a{
+      display: block;
+      margin-bottom: 5px;
+      color: $titlesColor;
+      text-decoration: none;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+
+    #anotherServiceLink {
+      position:fixed;
+      right: 20px;
+      bottom: 75px;
+    }
+  }
+}

@@ -13,44 +13,6 @@
   }
 }
 
-#footer {
-  position: fixed;
-  width: 100%;
-  bottom: 1em;
-  text-align: center;
-  font-size: 0.7em;
-  color: #9e9e42;
-
-  a {
-    color: $titlesColor;
-    text-decoration: none;
-    &:hover {
-      color: #fff;
-      text-decoration: none;
-    }
-  }
-}
-
-.socialButtons{
-    position: fixed;
-    bottom: 1em;
-    left: 1em;
-    z-index: 10;
-
-    form {
-        margin-bottom: 5px;
-    }
-
-    div {
-        margin-bottom: 0.33em;
-
-        &:last-of-type{
-            margin-bottom: 0;
-        }
-    }
-}
-
-
 .playAudio{
     width: 100%;
     text-align: center;
@@ -88,23 +50,6 @@
 
 iframe{
     border: none;
-}
-
-.termsOfService{
-    text-align: center;
-    position: fixed;
-    bottom: 1em;
-    right: 1em;
-    z-index: 10;
-
-    a{
-        color: $titlesColor;
-        text-decoration: none;
-
-        &:hover{
-            text-decoration: underline;
-        }
-    }
 }
 
 #createdIntros{
@@ -275,17 +220,4 @@ iframe{
   display : block;
   height : 17px;
   width : 0;
-}
-
-#btcether {
-  &:hover {
-      text-decoration: underline;
-      cursor: pointer;
-  }
-  font-weight: bold;
-  display: flex;
-  line-height: 25px;
-  span {
-      margin-left: 5px;
-  }
 }
