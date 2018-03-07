@@ -54,17 +54,18 @@
   // titles animation
   #titles {
     $titles-width = 14.65em;
-    width: $titles-width;
-    margin: 0 0 0 (- $titles-width / 2);
+
     position: absolute;
     top: auto;
     bottom: 0;
     left: 50%;
-    height: 50em;
-    font-size: 350%;
-    text-align: justify;
     overflow: hidden;
+    margin: 0 0 0 (- $titles-width / 2);
+    width: $titles-width;
+    height: 50em;
+    text-align: justify;
     word-wrap: break-word;
+    font-size: 350%;
     transform-origin: 50% 100%;
     transform: perspective(300px) rotateX(25deg);
 

@@ -10,12 +10,12 @@ inputStyle() {
 
   $inputBorder = 3px solid $inputBorderColor;
 
-  transition: border-color .3s ease-out;
   padding: .3em;
   outline: 0;
   border: $inputBorder;
   border-radius: 3px;
   background-color: $formBackgroundColor;
+  transition: border-color .3s ease-out;
 
 
   &:hover{
@@ -78,9 +78,9 @@ body.runningVideo {
 
   #pageTitle {
     text-align: center;
+    letter-spacing: 3px;
     font-size: 48px;
     font-family: StarWars;
-    letter-spacing: 3px;
     line-height: 100%;
   }
 
@@ -161,8 +161,8 @@ body.runningVideo {
 
       .regular-checkbox {
         display: block;
-        opacity: 0;
         margin-top: 0;
+        opacity: 0;
 
         &:hover {
           &+label {
@@ -178,20 +178,20 @@ body.runningVideo {
 
         &+label {
           inputStyle();
+          display: inline-block;
           width: 9px;
           height: 9px;
           border-radius: 3px;
-          display: inline-block;
         }
 
         &:checked + label:after {
-          cursor: pointer;
-          content: '\274C';
-          font-size: 14px;
-          letter-spacing: 0;
-          color: $titlesColor;
           position: relative;
           top: -4px;
+          color: $titlesColor;
+          content: '\274C';
+          letter-spacing: 0;
+          font-size: 14px;
+          cursor: pointer;
         }
       }
 
