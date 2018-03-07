@@ -98,10 +98,36 @@
         backface-visibility: hidden;
       }
 
-      .tcenter{
+      .tcenter {
         margin: 1.35em 0 -1em 0;
         text-align: center;
       }
+    }
+
+    #title {
+      transform: scaleY(2);
+      margin-top: 3.5em;
+      margin-bottom: 1.6em;
+      text-transform: uppercase;
+
+      &.SWFont {
+        margin-top: 1.35em;
+        margin-bottom: -.1em;
+        transform: scaleY(1);
+        font-weight: normal;
+        font-size: 210%;
+        font-family: StarWarsTitle;
+        text-transform: lowercase;
+      }
+    }
+
+    #episode {
+      margin-bottom: -2em;
+    }
+
+    #text {
+      // line-height: 1.5em; // old version
+      line-height: 1.4em;
     }
   }
 

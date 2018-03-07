@@ -179,31 +179,6 @@ iframe{
     }
 }
 
-#text{
-  line-height: 1.5em;
-}
-
-#episode{
-  margin-bottom: -2em;
-}
-
-#title.SWFont{
-  font-family: StarWarsTitle;
-  font-weight: normal;
-  font-size: 210%;
-  transform: scaleY(1);
-  margin-bottom: -0.1em;
-  margin-top: 1.35em;
-  text-transform: lowercase;
-}
-
-#title{
-  transform: scaleY(2);
-  margin-bottom: 1.6em;
-  margin-top: 3.5em;
-  text-transform: uppercase;
-}
-
 #playBut{
   z-index: 1000;
 }
