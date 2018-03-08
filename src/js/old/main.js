@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // sweet alerts config
 swal.setDefaults({
     customClass: 'star-wars-alert',

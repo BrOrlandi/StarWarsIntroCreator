@@ -31,6 +31,7 @@ http://codepen.io/TimPietrusky/pen/eHGfj
  * timpietrusky.com
  *
  */
+/* eslint-disable */
 StarWarsOpening = (function() {
 
   /*

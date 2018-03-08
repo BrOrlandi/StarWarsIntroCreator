@@ -1,3 +1,4 @@
+/* eslint-disable */
 document.querySelector('#btcether').addEventListener("click", function(e) {
     e.preventDefault();
     swal({

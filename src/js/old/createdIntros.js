@@ -1,3 +1,4 @@
+/* eslint-disable */
 function createdIntros(){
     var source = '{{#if intros.length}}' +
     '<div id="box">'+

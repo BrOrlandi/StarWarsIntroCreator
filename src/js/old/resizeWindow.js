@@ -1,5 +1,5 @@
 import $ from 'jquery';
-
+/* eslint-disable */
 // logo size calc
 $(window).resize(function() {
     // $('#logoimg').css('width',$(window).width()+'px');
