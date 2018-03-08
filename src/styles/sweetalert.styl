@@ -1,0 +1,45 @@
+$buttonHoverColor = lighten($formBackgroundColor, 20%);
+$buttonFocusColor = lighten($formBackgroundColor, 40%);
+
+$errorRed = #ab0000;
+
+.starwars-sweetalert {
+  border: 2px solid $titlesColor;
+  background-color: $formBackgroundColor;
+
+  .swal2-title {
+    starWarsFontStyle();
+    margin-bottom: 1em;
+  }
+
+  .swal2-content{
+    margin-bottom: 1em;
+    color: $titlesColor;
+    font-family: $defaultFontFamily;
+  }
+
+  button {
+    border: 2px solid $titlesColor !important;
+    background-color: $formBackgroundColor !important;
+    color: $titlesColor !important;
+
+    &:hover, &:active {
+      background-color: $buttonHoverColor !important;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px $buttonFocusColor  !important;
+    }
+  }
+
+  .swal2-icon {
+    &.swal2-error {
+      border-color: $errorRed;
+      .swal2-x-mark {
+        span {
+          background-color: $errorRed;
+        }
+      }
+    }
+  }
+}
