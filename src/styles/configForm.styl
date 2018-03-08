@@ -31,13 +31,12 @@ $marginTopFormInput = 20px;
 
 
 $actionButtonStyle {
+  starWarsFontStyle();
   outline: 0;
   border: 0;
   background: transparent;
-  color: $titlesColor;
   text-shadow: none;
   font-size: 50px;
-  font-family: StarWars;
   cursor: pointer;
   transition: text-shadow .5s ease-out;
 
@@ -77,11 +76,9 @@ body.runningVideo {
   color: $titlesColor;
 
   #pageTitle {
+    starWarsFontStyle();
     text-align: center;
-    letter-spacing: 3px;
     font-size: 48px;
-    font-family: StarWars;
-    line-height: 100%;
   }
 
   form {
@@ -89,7 +86,7 @@ body.runningVideo {
     flex-direction: column;
     align-items: center;
     width: 500px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $defaultFontFamily;
 
     input, textarea {
       overflow-x: hidden;
