@@ -1,7 +1,19 @@
+import swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 import '../styles/main.styl';
 
-// import swal from 'sweetalert2';
+import { documentReady } from './utils';
+import { verifyIE } from './auxiliar';
 
-// import './resizeWindow';
+swal.setDefaults({
+  customClass: 'starwars-sweetalert',
+});
 
-console.log("AAAAEEEE! !!");
+
+documentReady(() => {
+  if(verifyIE()){
+    // unsetLoading();
+    return;
+  }
+});
