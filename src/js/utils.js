@@ -1,8 +1,8 @@
-export const documentReady = (callback) => {
+export const documentReady = (handler) => {
   if (document.attachEvent ? 'complete' === document.readyState : 'loading' !== document.readyState) {
-    callback();
+    handler();
   } else {
-    document.addEventListener('DOMContentLoaded', callback);
+    document.addEventListener('DOMContentLoaded', handler);
   }
 };
 
@@ -25,3 +25,7 @@ export const getIEVersion = () => {
   }
   return rv;
 };
+
+export const urlHashChange = (handler) => {
+  window.addEventListener('hashchange', handler);
+}

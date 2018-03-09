@@ -6,14 +6,13 @@ import '../styles/main.styl';
 import { documentReady } from './utils';
 import { verifyIE } from './auxiliar';
 
+import './Router';
+
 swal.setDefaults({
   customClass: 'starwars-sweetalert',
 });
 
-
 documentReady(() => {
-  if(verifyIE()){
-    // unsetLoading();
-    return;
-  }
+  verifyIE();
+  window.dispatchEvent(new Event('hashchange'));
 });

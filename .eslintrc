@@ -23,6 +23,7 @@
       "beforeAll": true,
       "beforeEach": true,
       "jest": true,
-      "afterEach": true
+      "afterEach": true,
+      "Event": true
     }
   }
