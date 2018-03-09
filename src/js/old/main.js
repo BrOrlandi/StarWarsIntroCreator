@@ -239,21 +239,6 @@ $(window).on('hashchange', function() {
     });
 });
 
-$(document).ready(function() {
-    if(getInternetExplorerVersion() !== -1){
-        sweetAlert("Internet Explorer Detected", "This website is not compatible with Internet Explorer, please use Chrome. Sorry for the inconvenience.", "error");
-        unsetLoading();
-        return;
-    }
-    defaultOpening = getOpeningFormValues(); // get the default opening from the default form values
-    window.dispatchEvent(new Event('hashchange'));
-
-    $('#f-center').change(function(){
-        var center = $(this).is(':checked');
-        $('#f-text').css('text-align', center == true ? 'center' : 'initial');
-    });
-});
-
 var calcTime = function(queue){
     var minutes = (queue+1)*30;
     var hours = Math.floor(minutes/60);

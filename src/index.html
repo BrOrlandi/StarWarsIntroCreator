@@ -17,9 +17,15 @@
 
     <meta name="theme-color" content="#000">
 
+    <style>
+      body {
+        display: none;
+      }
+    </style>
+
     <link rel="shortcut icon" href="./assets/favicon.png">
 </head>
-<body>
+<body class="loading">
   <!-- Facebook -->
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
@@ -34,20 +40,20 @@
   <!-- Configuration Form -->
   <div id="configForm">
     <form id="form-starwars">
+
       <h2 id="pageTitle">Star wars<br>intro CReator</h2>
+
       <button id="downloadButton" type="button">download</button>
-      <textarea id="f-intro" rows="2" spellcheck="false" maxlength="100">
-A long time ago in a galaxy far,
-far away....</textarea>
-      <textarea id="f-logo" rows="2" spellcheck="false" maxlength="100">Star
-wars</textarea>
-      <input id="f-episode" type="text" value="Episode VIII" spellcheck="false" maxlength="100">
-      <input id="f-title" type="text" value="THE LAST JEDI" spellcheck="false" maxlength="100">
-      <textarea id="f-text" spellcheck="false" maxlength="3000">
-The FIRST ORDER reigns. Having decimated the peaceful Republic, Supreme Leader Snoke now deploys his merciless legions to seize military control of the galaxy.
-Only General Leia Organa's band of RESISTANCE fighters stand against the rising tyranny, certain that Jedi Master Luke Skywalker will return and restore a spark of hope to the fight.
-But the Resistance has been exposed. As the First Order speeds toward the rebel base, the brave heroes mount a desperate escape....
-      </textarea>
+
+      <textarea id="f-intro" rows="2" spellcheck="false" maxlength="100"></textarea>
+
+      <textarea id="f-logo" rows="2" spellcheck="false" maxlength="100"></textarea>
+
+      <input id="f-episode" type="text" value="" spellcheck="false" maxlength="100">
+
+      <input id="f-title" type="text" value="" spellcheck="false" maxlength="100">
+
+      <textarea id="f-text" spellcheck="false" maxlength="3000"></textarea>
 
       <div class="center-checkbox">
         <input class="regular-checkbox" type="checkbox" id="f-center" />
@@ -72,7 +78,7 @@ But the Resistance has been exposed. As the First Order speeds toward the rebel 
   </audio>
 
   <!-- BB8 Loading -->
-  <div id="bb8-loading" class="verticalWrapper hide">
+  <div id="bb8-loading" class="verticalWrapper">
     <div class="inner">
         <div class="bb8">
           <div class="bb8-top">
