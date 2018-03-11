@@ -2,17 +2,24 @@ import swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 import '../styles/main.styl';
+import '../../.env';
 
-import { documentReady } from './utils';
-import { verifyIE } from './auxiliar';
-
-import './Router';
+import startApplication from './App';
 
 swal.setDefaults({
   customClass: 'starwars-sweetalert',
 });
 
-documentReady(() => {
-  verifyIE();
-  window.dispatchEvent(new Event('hashchange'));
-});
+
+(function _() {
+  if ('development' === process.env.NODE_ENV) {
+    startApplication();
+    return;
+  }
+
+  Raven.config(process.env.RAVEN).install();
+  Raven.context(() => {
+    startApplication();
+  });
+}());
+

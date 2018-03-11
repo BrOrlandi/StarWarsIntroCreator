@@ -24,6 +24,7 @@
       "beforeEach": true,
       "jest": true,
       "afterEach": true,
+      "Raven": true,
       "Event": true
     }
   }
