@@ -8,9 +8,9 @@ export const defaultOpening = {
 };
 
 export const firebases = {
-  initial: process.env.FIREBASE_INITIAL,
-  A: process.env.FIREBASE_A,
-  B: process.env.FIREBASE_B,
+  initial: 'https://firebaseINITIAL',
+  A: 'https://firebaseA',
+  B: 'https://firebaseB',
 };
 
 export const defaultFirebase = firebases.B;

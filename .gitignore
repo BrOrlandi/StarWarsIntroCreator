@@ -3,4 +3,4 @@ dist/*
 /.project
 *.log
 .cache/
-.env
+coverage/

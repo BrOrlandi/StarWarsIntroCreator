@@ -15,6 +15,7 @@ class ApplicationState {
   }
 
   setState(page, props) {
+    // previous state undo changes
     switch (this.state.page) {
       case LOADING:
         ViewControl.unsetLoading();
@@ -33,10 +34,18 @@ class ApplicationState {
   }
 
   renderState() {
+    const { opening } = this.state;
+
+    // next state changes
     switch (this.state.page) {
       case LOADING:
         ViewControl.setLoading();
         break;
+
+      case PLAYING:
+        console.log(opening);
+        break;
+
 
       default:
         ViewControl.unsetLoading();
