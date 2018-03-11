@@ -28,4 +28,4 @@ export const getIEVersion = () => {
 
 export const urlHashChange = (handler) => {
   window.addEventListener('hashchange', handler);
-}
+};

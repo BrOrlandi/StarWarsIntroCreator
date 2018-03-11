@@ -65,7 +65,8 @@ export const loadKey = async (initialKey) => {
   const url = _generateUrlWithKey(key);
   const opening = await http.get(url);
   if (!opening) {
-    throw new Error('Opening not found');
+    const error = new Error(`Opening not found: ${initialKey}`);
+    Raven.captureException(error);
   }
   return opening;
 };

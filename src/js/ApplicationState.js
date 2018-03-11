@@ -26,10 +26,11 @@ class ApplicationState {
     }
 
     this.state = {
+      ...this.state,
       page,
       ...props,
     };
-
+    console.log(this.state);
     this.renderState();
   }
 
