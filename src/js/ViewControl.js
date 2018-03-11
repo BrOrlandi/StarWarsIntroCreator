@@ -1,6 +1,8 @@
 
 import { defaultOpening } from './config';
 
+import StarWarsAnimation from './StarWarsAnimation';
+
 class ViewControl {
   constructor() {
     this.body = document.querySelector('body');
@@ -30,6 +32,14 @@ class ViewControl {
     this.body.classList.remove('loading');
   }
 
+  setRunningVideo() {
+    this.body.classList.add('runningVideo');
+  }
+
+  unsetRunningVideo() {
+    this.body.classList.remove('runningVideo');
+  }
+
   getFormValues = () => ({
     intro: this.form.intro.value,
     logo: this.form.logo.value,
@@ -46,6 +56,16 @@ class ViewControl {
     this.form.title.value = opening.title;
     this.form.text.value = opening.text;
     this.form.center.checked = opening.center;
+  }
+
+  playOpening(opening) {
+    const starWarsAnimation = new StarWarsAnimation();
+    starWarsAnimation.load(opening);
+    this.setRunningVideo();
+
+    starWarsAnimation.play(() => {
+      this.unsetRunningVideo();
+    });
   }
 }
 

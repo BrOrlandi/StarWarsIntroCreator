@@ -129,17 +129,14 @@ $(window).on('hashchange', function() {
             $.ajax({
               url: url,
               success: function(opening) {
-                if(opening == null){
-                    sweetAlert("Oops...", "Introduction not found!", "error");
-                    return;
-                }
-                StarWars.opening = opening;
-                OpeningKey = key;
-                $("#videoButton").show();
 
-                var intro = opening.intro.replace(/</g,"&lt;");
-                intro = intro.replace(/>/g,"&gt;");
-                intro = intro.replace(/\n/g,"<br>");
+                StarWars.opening = opening;
+                // OpeningKey = key;
+                // $("#videoButton").show();
+
+                // var intro = opening.intro.replace(/</g,"&lt;");
+                // intro = intro.replace(/>/g,"&gt;");
+                // intro = intro.replace(/\n/g,"<br>");
                 StarWars.animation.find("#intro").html(intro);
                 StarWars.animation.find("#episode").text(opening.episode);
 

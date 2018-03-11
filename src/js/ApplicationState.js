@@ -44,7 +44,7 @@ class ApplicationState {
         break;
 
       case PLAYING:
-        console.log(opening);
+        ViewControl.playOpening(opening);
         break;
 
 

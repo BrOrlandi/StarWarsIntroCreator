@@ -13,7 +13,7 @@ export const loadAndPlay = async (key) => {
     return;
   }
 
-  ApplicationState.setState(PLAYING, { opening });
+  ApplicationState.setState(PLAYING, { opening, key });
 };
 
 export const setEditMode = () => {
