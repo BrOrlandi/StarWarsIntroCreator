@@ -1,16 +1,9 @@
-
-import swal from 'sweetalert2';
 import { getIEVersion } from './utils';
 
-export const verifyIE = () => {
-  const isUsingIE = -1 !== getIEVersion();
-  if (isUsingIE) {
-    swal(
-      'internet explorer detected',
-      'This website is not compatible with Internet Explorer, please use Chrome. Sorry for the inconvenience.',
-      'error',
-    );
-    return true;
-  }
-  return false;
+export const usingIE = () => -1 !== getIEVersion();
+
+export const checkSWFontCompatibility = (title) => {
+  const supportedChars = ' qwertyuiopasdfghjklzxcvbnm0123456789!$'.split(''); // all supported supported chars
+  const chars = title.toLowerCase().split('');
+  return chars.every(char => supportedChars.indexOf(char) !== -1);
 };

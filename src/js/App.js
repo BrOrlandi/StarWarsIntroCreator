@@ -1,5 +1,5 @@
 import swal from 'sweetalert2';
-import { verifyIE } from './auxiliar';
+import { usingIE } from './auxiliar';
 import { documentReady, urlHashChange } from './utils';
 
 import UrlHandler from './UrlHandler';
@@ -23,7 +23,13 @@ const startApplication = () => {
 
 
   documentReady(() => {
-    verifyIE();
+    if (usingIE()) {
+      swal(
+        'internet explorer detected',
+        'This website is not compatible with Internet Explorer, please use Chrome. Sorry for the inconvenience.',
+        'error',
+      );
+    }
     window.dispatchEvent(new Event('hashchange'));
   });
 };
