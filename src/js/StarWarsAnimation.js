@@ -1,4 +1,5 @@
 import { checkSWFontCompatibility } from './auxiliar';
+import AudioController from './AudioController';
 
 class StarWarsAnimation {
   constructor() {
@@ -83,6 +84,7 @@ class StarWarsAnimation {
   }
 
   play() {
+    AudioController.play();
     this.animationContainer.appendChild(this.animation);
   }
 }

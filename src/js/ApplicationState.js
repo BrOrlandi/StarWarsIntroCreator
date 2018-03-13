@@ -1,4 +1,5 @@
 import ViewController from './ViewController';
+import AudioController from './AudioController';
 
 export const EDITING = 'EDITING';
 export const LOADING = 'LOADING';
@@ -11,6 +12,7 @@ class ApplicationState {
       page: LOADING,
     };
 
+    AudioController.loadAudio();
     this.renderState();
   }
 

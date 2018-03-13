@@ -10,27 +10,27 @@
 // var defaultOpening = null; // to check if user not edited the default opening
 
 // make audio load on mobile devices
-var audio = document.getElementsByTagName('audio')[0];
-var audioIsLoaded = false;
-var loadData = function () {
-    if(!audioIsLoaded){
-        audio.load();
-        audioIsLoaded = true;
-    }
-};
-document.body.addEventListener('touchstart', loadData);
+// var audio = document.getElementsByTagName('audio')[0];
+// var audioIsLoaded = false;
+// var loadData = function () {
+//     if(!audioIsLoaded){
+//         audio.load();
+//         audioIsLoaded = true;
+//     }
+// };
+// document.body.addEventListener('touchstart', loadData);
 
 
-// prevent arrow scrolling in firefox
-window.addEventListener("keydown", function(e) {
-    // space and arrow keys
-    var type = document.activeElement.type || '';
-    if(!type.startsWith('text')){
-        if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-            e.preventDefault();
-        }
-    }
-}, false);
+// // prevent arrow scrolling in firefox
+// window.addEventListener("keydown", function(e) {
+//     // space and arrow keys
+//     var type = document.activeElement.type || '';
+//     if(!type.startsWith('text')){
+//         if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+//             e.preventDefault();
+//         }
+//     }
+// }, false);
 
 var notPlayed = true;
 var showFooter = true;
