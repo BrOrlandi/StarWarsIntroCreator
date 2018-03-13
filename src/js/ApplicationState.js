@@ -1,4 +1,4 @@
-import ViewControl from './ViewControl';
+import ViewController from './ViewController';
 
 export const EDITING = 'EDITING';
 export const LOADING = 'LOADING';
@@ -18,11 +18,11 @@ class ApplicationState {
     // previous state undo changes
     switch (this.state.page) {
       case LOADING:
-        ViewControl.unsetLoading();
+        ViewController.unsetLoading();
         break;
 
       default:
-        ViewControl.unsetLoading();
+        ViewController.unsetLoading();
     }
 
     this.state = {
@@ -40,16 +40,16 @@ class ApplicationState {
     // next state changes
     switch (this.state.page) {
       case LOADING:
-        ViewControl.setLoading();
+        ViewController.setLoading();
         break;
 
       case PLAYING:
-        ViewControl.playOpening(opening);
+        ViewController.playOpening(opening);
         break;
 
 
       default:
-        ViewControl.unsetLoading();
+        ViewController.unsetLoading();
     }
   }
 }

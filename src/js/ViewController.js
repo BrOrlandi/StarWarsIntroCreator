@@ -3,7 +3,7 @@ import { defaultOpening } from './config';
 
 import StarWarsAnimation from './StarWarsAnimation';
 
-class ViewControl {
+class ViewController {
   constructor() {
     this.body = document.querySelector('body');
 
@@ -69,4 +69,4 @@ class ViewControl {
   }
 }
 
-export default new ViewControl();
+export default new ViewController();
