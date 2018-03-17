@@ -29,3 +29,18 @@ export const getIEVersion = () => {
 export const urlHashChange = (handler) => {
   window.addEventListener('hashchange', handler);
 };
+
+
+export const callOnFocus = (callback) => {
+  const listener = () => {
+    window.removeEventListener('focus', listener, true);
+    return callback();
+  };
+
+  if (document.hasFocus()) {
+    listener();
+    return;
+  }
+
+  window.addEventListener('focus', listener, true);
+};

@@ -81,3 +81,29 @@ body.loading {
     display: none;
   }
 }
+
+#requestFocusButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  > div {
+    @extend $actionButtonStyle;
+  }
+}
+
+body.requestFocus {
+  #requestFocusButton {
+    display: flex;
+  }
+
+  #configForm {
+    display: none;
+  }
+
+  footer {
+    display: none;
+  }
+}

@@ -6,7 +6,7 @@ class AudioController {
       this.audio.oncanplaythrough = () => resolve();
     });
 
-    document.body.addEventListener('touchstart', this.loadAudio);
+    this.audio.load();
   }
 
   loadAudio() {
@@ -16,8 +16,17 @@ class AudioController {
     }
   }
 
+  playPromise() {
+    return this.audioLoadPromise;
+  }
+
   play() {
     this.audio.play();
+  }
+
+  reset() {
+    this.audio.pause();
+    this.audio.currentTime = 0;
   }
 }
 

@@ -1,5 +1,7 @@
 
 import { defaultOpening } from './config';
+import { callOnFocus } from './utils';
+import AudioController from './AudioController';
 
 import StarWarsAnimation from './StarWarsAnimation';
 
@@ -40,6 +42,15 @@ class ViewController {
     this.body.classList.remove('runningVideo');
   }
 
+  setRequestWindowFocus() {
+    this.body.classList.add('requestFocus');
+  }
+
+  unsetRequestWindowFocus() {
+    this.body.classList.remove('requestFocus');
+  }
+
+
   getFormValues = () => ({
     intro: this.form.intro.value,
     logo: this.form.logo.value,
@@ -61,11 +72,20 @@ class ViewController {
   playOpening(opening) {
     const starWarsAnimation = new StarWarsAnimation();
     starWarsAnimation.load(opening);
-    this.setRunningVideo();
+    AudioController.reset();
+    this.setRequestWindowFocus();
 
-    starWarsAnimation.play(() => {
-      this.unsetRunningVideo();
+    callOnFocus(() => {
+      this.unsetRequestWindowFocus();
+      this.setRunningVideo();
+      AudioController.playPromise().then(() => {
+        AudioController.play();
+        starWarsAnimation.play(() => {
+          this.unsetRunningVideo();
+        });
+      });
     });
+
   }
 }
 

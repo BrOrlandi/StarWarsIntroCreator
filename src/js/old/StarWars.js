@@ -94,10 +94,10 @@ StarWarsOpening = (function() {
     $(window).trigger('resize'); // trigger resize to allow scrol in the config form
   };
 
-  StarWarsOpening.prototype.resetAudio = function() {
-    this.audio.pause();
-    this.audio.currentTime = 0;
-  };
+  // StarWarsOpening.prototype.resetAudio = function() {
+  //   this.audio.pause();
+  //   this.audio.currentTime = 0;
+  // };
 
   StarWarsOpening.prototype.play = function(){
       this.start.hide();
