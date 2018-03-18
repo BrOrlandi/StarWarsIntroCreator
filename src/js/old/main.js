@@ -102,15 +102,15 @@ $('#form-starwars').submit(function(event) {
 
 $(window).on('hashchange', function() {
 
-    var urlByKey = function(key){
-        var code = key.charAt(0);
-        if(code === "A"){
-            key = key.substr(1);
-            return 'https://starwarsopeninga.firebaseio.com/openings/-'+key+'.json';
-        }else{
-            return 'https://starwarsopening.firebaseio.com/openings/-'+key+'.json';
-        }
-    };
+    // var urlByKey = function(key){
+    //     var code = key.charAt(0);
+    //     if(code === "A"){
+    //         key = key.substr(1);
+    //         return 'https://starwarsopeninga.firebaseio.com/openings/-'+key+'.json';
+    //     }else{
+    //         return 'https://starwarsopening.firebaseio.com/openings/-'+key+'.json';
+    //     }
+    // };
 
 
     // $("#playBut").remove();
@@ -218,10 +218,10 @@ $(window).on('hashchange', function() {
             // },
             // error: ajaxErrorFunction('Error when try to load the intro '+key)
             // });
-        }catch(error){
-            location.hash = "";
-            setLoading();
-        }
+        // }catch(error){
+        //     location.hash = "";
+        //     setLoading();
+        // }
     }else{
         if(!notPlayed){
             StarWars.reset();

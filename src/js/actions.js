@@ -49,5 +49,6 @@ export const loadAndPlay = async (key) => {
   } catch (error) {
     ApplicationState.setState(ERROR);
     _apiError(`We could not load the introduction "${key}"`);
+    throw error;
   }
 };
