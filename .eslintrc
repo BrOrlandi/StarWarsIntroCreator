@@ -7,7 +7,8 @@
       "import/no-unresolved": 0,
       "yoda": ["error", "always", { "onlyEquality": true }],
       "no-underscore-dangle": 0,
-      "no-use-before-define": ["error", { "functions": false }]
+      "no-use-before-define": ["error", { "functions": false }],
+      "no-param-reassign": 0
     },
     "extends": "airbnb",
     "globals": {

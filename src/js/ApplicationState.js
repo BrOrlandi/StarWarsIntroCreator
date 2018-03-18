@@ -1,5 +1,6 @@
 import ViewController from './ViewController';
 import AudioController from './AudioController';
+import { setPaypalKey } from './paypal';
 
 export const EDITING = 'EDITING';
 export const LOADING = 'LOADING';
@@ -42,7 +43,7 @@ class ApplicationState {
   }
 
   renderState() {
-    const { opening } = this.state;
+    const { opening, key } = this.state;
 
     // next state changes
     switch (this.state.page) {
@@ -51,6 +52,7 @@ class ApplicationState {
         break;
 
       case PLAYING:
+        setPaypalKey(key);
         ViewController.playOpening(opening);
         break;
 
