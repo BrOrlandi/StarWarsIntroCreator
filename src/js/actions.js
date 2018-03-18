@@ -47,7 +47,7 @@ export const loadAndPlay = async (key) => {
 
     if (!opening) {
       setEditMode();
-      swal('ops...', `The introdution with the key "${key}" was not found.`, 'error');
+      swal('ops...', `The introduction with the key "${key}" was not found.`, 'error');
       return;
     }
 
