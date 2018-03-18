@@ -26,6 +26,10 @@ class ViewController {
     this.starWarsAnimation = new StarWarsAnimation();
 
     this.setFormValues(defaultOpening);
+
+    window.addEventListener('beforeunload', () => {
+      window.scrollTo(0, 0);
+    });
   }
 
   setLoading() {
