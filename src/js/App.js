@@ -1,13 +1,14 @@
 import swal from 'sweetalert2';
-import { usingIE } from './auxiliar';
-import { documentReady, urlHashChange } from './utils';
 
 import UrlHandler from './UrlHandler';
-
+import { usingIE } from './auxiliar';
+import { documentReady, urlHashChange } from './utils';
 import { loadAndPlay, setEditMode } from './actions';
+import { sendGAPageView } from './googleanalytics';
 
 const startApplication = () => {
   urlHashChange(() => {
+    sendGAPageView();
     swal.close();
 
     const { key, mode } = UrlHandler.getParams();

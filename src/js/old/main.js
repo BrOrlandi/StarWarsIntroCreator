@@ -179,31 +179,33 @@ $(window).on('hashchange', function() {
                 //     $('#logoimg',StarWars.animation).show();
                 // }
 
-                var play = function(){
-                    $.when(StarWars.audioDefer).then(function(){
-                        var buffered = StarWars.audio.buffered.end(StarWars.audio.buffered.length-1);
-                        if(buffered == 0 && !audioIsLoaded){
-                            unsetLoading();
-                            playbutton = $('<div class="verticalWrapper"><div class="playAudio"><button id="playBut" class="playButton" style="font-size: 80px">Play</button></div></div>');
-                            $('body').append(playbutton);
-                            $('#playBut',playbutton).click(function(){
-                                setLoading();
-                                playbutton.remove();
-                            });
-                            StarWars.audio.oncanplaythrough = function () {
-                                notPlayed = false;
-                                StarWars.play();
-                            };
-                        }else{
-                            notPlayed = false;
-                            StarWars.play();
-                        }
-                        if(edit){
-                            StarWars.audio.currentTime = 97;
-                            $('#form-starwars').show();
-                        }
-                    });
-                };
+                // TODO in new version, try to play audio on mobile.
+
+                // var play = function(){
+                //     $.when(StarWars.audioDefer).then(function(){
+                //         var buffered = StarWars.audio.buffered.end(StarWars.audio.buffered.length-1);
+                //         if(buffered == 0 && !audioIsLoaded){
+                //             unsetLoading();
+                //             playbutton = $('<div class="verticalWrapper"><div class="playAudio"><button id="playBut" class="playButton" style="font-size: 80px">Play</button></div></div>');
+                //             $('body').append(playbutton);
+                //             $('#playBut',playbutton).click(function(){
+                //                 setLoading();
+                //                 playbutton.remove();
+                //             });
+                //             StarWars.audio.oncanplaythrough = function () {
+                //                 notPlayed = false;
+                //                 StarWars.play();
+                //             };
+                //         }else{
+                //             notPlayed = false;
+                //             StarWars.play();
+                //         }
+                //         if(edit){
+                //             StarWars.audio.currentTime = 97;
+                //             $('#form-starwars').show();
+                //         }
+                //     });
+                // };
 
                 // if(document.hasFocus()){ // play if has focus
                 //         play();
@@ -222,18 +224,18 @@ $(window).on('hashchange', function() {
         //     location.hash = "";
         //     setLoading();
         // }
-    }else{
-        if(!notPlayed){
-            StarWars.reset();
-            StarWars.resetAudio();
-        }else{
-            unsetLoading();
-        }
+    // }else{
+    //     if(!notPlayed){
+    //         StarWars.reset();
+    //         StarWars.resetAudio();
+    //     }else{
+    //         unsetLoading();
+    //     }
 
-    }
-    ga('send', 'pageview', {
-        'page': location.pathname + location.search  + location.hash
-    });
+    // }
+    // ga('send', 'pageview', {
+    //     'page': location.pathname + location.search  + location.hash
+    // });
 });
 
 var calcTime = function(queue){
