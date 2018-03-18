@@ -8,6 +8,7 @@ import StarWarsAnimation from './StarWarsAnimation';
 class ViewController {
   constructor() {
     this.body = document.querySelector('body');
+    this.downloadButton = document.querySelector('#downloadButton');
 
     this.form = {
       intro: document.querySelector('#f-intro'),
@@ -59,6 +60,14 @@ class ViewController {
 
   unsetError() {
     this.body.classList.remove('error');
+  }
+
+  showDownloadButton() {
+    this.downloadButton.classList.add('show');
+  }
+
+  hideDownloadButton() {
+    this.downloadButton.classList.remove('show');
   }
 
 

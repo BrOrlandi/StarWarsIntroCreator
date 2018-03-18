@@ -33,6 +33,10 @@ class ApplicationState {
         ViewController.stopPlaying();
         break;
 
+      case DOWNLOAD:
+        ViewController.hideDownloadButton();
+        break;
+
       default:
         ViewController.unsetLoading();
     }
@@ -62,8 +66,8 @@ class ApplicationState {
         break;
 
       case DOWNLOAD:
-        // load form with opening
-        // show download button
+        ViewController.setFormValues(opening);
+        ViewController.showDownloadButton();
         break;
 
       case ERROR:
