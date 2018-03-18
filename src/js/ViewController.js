@@ -20,8 +20,7 @@ class ViewController {
     };
 
     this.form.center.addEventListener('change', (e) => {
-      const isCenteredText = e.target.checked;
-      this.form.text.style.textAlign = isCenteredText ? 'center' : 'initial';
+      this._setFormTextAlignment(e.target.checked);
     });
 
     this.starWarsAnimation = new StarWarsAnimation();
@@ -87,6 +86,12 @@ class ViewController {
     this.form.title.value = opening.title;
     this.form.text.value = opening.text;
     this.form.center.checked = opening.center;
+
+    this._setFormTextAlignment(opening.center);
+  }
+
+  _setFormTextAlignment(centralizedText) {
+    this.form.text.style.textAlign = centralizedText ? 'center' : 'initial';
   }
 
   playOpening(opening) {
