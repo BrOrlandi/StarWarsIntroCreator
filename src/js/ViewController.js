@@ -23,6 +23,8 @@ class ViewController {
       this.form.text.style.textAlign = isCenteredText ? 'center' : 'initial';
     });
 
+    this.starWarsAnimation = new StarWarsAnimation();
+
     this.setFormValues(defaultOpening);
   }
 
@@ -40,6 +42,7 @@ class ViewController {
 
   unsetRunningVideo() {
     this.body.classList.remove('runningVideo');
+    this.body.classList.remove('showForm');
   }
 
   setRequestWindowFocus() {
@@ -78,22 +81,32 @@ class ViewController {
   }
 
   playOpening(opening) {
-    const starWarsAnimation = new StarWarsAnimation();
-    starWarsAnimation.load(opening);
+    this.starWarsAnimation.load(opening);
     AudioController.reset();
     this.setRequestWindowFocus();
 
-    callOnFocus(() => {
-      this.unsetRequestWindowFocus();
-      this.setRunningVideo();
-      AudioController.playPromise().then(() => {
-        AudioController.play();
-        starWarsAnimation.play(() => {
-          this.unsetRunningVideo();
-        });
+    return new Promise((resolve) => {
+      callOnFocus(async () => {
+        this.unsetRequestWindowFocus();
+        this.setRunningVideo();
+        await AudioController.canPlay();
+
+        this.starWarsAnimation.play();
+
+        await AudioController.play();
+        resolve();
       });
     });
+  }
 
+  stopPlaying() {
+    setTimeout(() => {
+      this.body.classList.add('showForm');
+      setTimeout(() => {
+        this.unsetRunningVideo();
+        this.starWarsAnimation.reset();
+      }, 6000);
+    }, 2000);
   }
 }
 

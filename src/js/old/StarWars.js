@@ -109,27 +109,27 @@ StarWarsOpening = (function() {
       this.audio.play();
       this.el.append(this.animation);
 
-      // adjust animation speed
-      var titles = $('.titles > div',this.animation)[0];
-      if(titles.offsetHeight > 1977) // 1997 is year of the first Star Wars movie.
-      {
-          var exceedSize = titles.offsetHeight - 1977;
-          var animConstant = 0.04041570438799076;
-          var animDist = 20 - exceedSize*animConstant;
-          var cssRule;
-          var ss = document.styleSheets;
-            for (var i = 0; i < ss.length; ++i) {
-                // loop through all the rules!
-                for (var x = 0; x < ss[i].cssRules.length; ++x) {
-                    var rule = ss[i].cssRules[x];
-                    if (rule.name == "titles" && rule.type == CSSRule.KEYFRAMES_RULE) {
-                        cssRule = rule;
-                    }
-                }
-            }
-            if(cssRule)
-                cssRule.appendRule("100% { top: "+ animDist +"% }");
-      }
+      // // adjust animation speed
+      // var titles = $('.titles > div',this.animation)[0];
+      // if(titles.offsetHeight > 1977) // 1997 is year of the first Star Wars movie.
+      // {
+      //     var exceedSize = titles.offsetHeight - 1977;
+      //     var animConstant = 0.04041570438799076;
+      //     var animDist = 20 - exceedSize*animConstant;
+      //     var cssRule;
+      //     var ss = document.styleSheets;
+      //       for (var i = 0; i < ss.length; ++i) {
+      //           // loop through all the rules!
+      //           for (var x = 0; x < ss[i].cssRules.length; ++x) {
+      //               var rule = ss[i].cssRules[x];
+      //               if (rule.name == "titles" && rule.type == CSSRule.KEYFRAMES_RULE) {
+      //                   cssRule = rule;
+      //               }
+      //           }
+      //       }
+      //       if(cssRule)
+      //           cssRule.appendRule("100% { top: "+ animDist +"% }");
+      // }
   }
 
   return StarWarsOpening;

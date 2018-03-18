@@ -16,12 +16,20 @@ class AudioController {
     }
   }
 
-  playPromise() {
+  canPlay() {
     return this.audioLoadPromise;
   }
 
   play() {
-    this.audio.play();
+    return new Promise((resolve) => {
+      this.audio.currentTime = 92;
+      this.audio.play();
+
+      const endedListener = () => {
+        resolve();
+      };
+      this.audio.addEventListener('ended', endedListener);
+    });
   }
 
   reset() {

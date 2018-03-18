@@ -29,6 +29,10 @@ class ApplicationState {
         ViewController.unsetError();
         break;
 
+      case PLAYING:
+        ViewController.stopPlaying();
+        break;
+
       default:
         ViewController.unsetLoading();
     }
@@ -42,7 +46,7 @@ class ApplicationState {
     this.renderState();
   }
 
-  renderState() {
+  renderState = async () => {
     const { opening, key } = this.state;
 
     // next state changes
@@ -53,7 +57,13 @@ class ApplicationState {
 
       case PLAYING:
         setPaypalKey(key);
-        ViewController.playOpening(opening);
+        await ViewController.playOpening(opening);
+        this.setState(DOWNLOAD, { opening, key });
+        break;
+
+      case DOWNLOAD:
+        // load form with opening
+        // show download button
         break;
 
       case ERROR:
