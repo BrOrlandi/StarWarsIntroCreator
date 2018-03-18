@@ -32,19 +32,19 @@
 //     }
 // }, false);
 
-var notPlayed = true;
-var showFooter = true;
-window.setLoading = function (){
-    $('#loader').show();
-    $('#form-starwars').hide();
-}
+// var notPlayed = true;
+// var showFooter = true;
+// window.setLoading = function (){
+//     $('#loader').show();
+//     $('#form-starwars').hide();
+// }
 
-window.unsetLoading = function (){
-    $('#loader').hide();
-    $('#form-starwars').show();
-}
+// window.unsetLoading = function (){
+//     $('#loader').hide();
+//     $('#form-starwars').show();
+// }
 
-setLoading();
+// setLoading();
 
 $('#form-starwars').submit(function(event) {
   event.preventDefault();
@@ -403,16 +403,16 @@ $("#videoButton").click(function(){
 
 });
 
-function getOpeningFormValues(){ // read the opening from form and create the object
-    return {
-        intro: $("#f-intro").val(),
-        logo: $("#f-logo").val(),
-        episode: $("#f-episode").val(),
-        title: $("#f-title").val(),
-        text: $("#f-text").val(),
-        center: $("#f-center").prop('checked')
-    };
-};
+// function getOpeningFormValues(){ // read the opening from form and create the object
+//     return {
+//         intro: $("#f-intro").val(),
+//         logo: $("#f-logo").val(),
+//         episode: $("#f-episode").val(),
+//         title: $("#f-title").val(),
+//         text: $("#f-text").val(),
+//         center: $("#f-center").prop('checked')
+//     };
+// };
 
 function isOpeningsDifferents(a,b){ // compare two openings texts to see if they are different
     var changes =[];
@@ -431,12 +431,12 @@ function isOpeningsDifferents(a,b){ // compare two openings texts to see if they
     },false);
 };
 
-function parseSpecialKeys(key){
-    switch (key) {
-        case "Episode7": // Episode7 is a special key for URL, it plays the Episode 7 opening
-            return "AKcKeYMPogupSU_r1I_g";
-        // TODO other eps
-        default:
-            return key;
-    }
-}
+// function parseSpecialKeys(key){
+//     switch (key) {
+//         case "Episode7": // Episode7 is a special key for URL, it plays the Episode 7 opening
+//             return "AKcKeYMPogupSU_r1I_g";
+//         // TODO other eps
+//         default:
+//             return key;
+//     }
+// }
