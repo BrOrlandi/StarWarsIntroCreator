@@ -1,4 +1,5 @@
 import { checkSWFontCompatibility } from './auxiliar';
+import { appendKeyframesRule } from './utils';
 
 class StarWarsAnimation {
   constructor() {
@@ -83,7 +84,19 @@ class StarWarsAnimation {
   }
 
   play() {
+    const DEFAULT_LENGTH = 1977;
+    const ANIMATION_CONSTANT = 0.04041570438799076;
+    const FINAL_POSITION = 20;
+
     this.animationContainer.appendChild(this.animation);
+
+    // adjust animation speed
+    const titlesContainer = this.animation.querySelector('#titles > div');
+    if (titlesContainer.offsetHeight > DEFAULT_LENGTH) {
+      const exceedSize = titlesContainer.offsetHeight - DEFAULT_LENGTH;
+      const animationFinalPosition = FINAL_POSITION - (exceedSize * ANIMATION_CONSTANT);
+      appendKeyframesRule('titlesAnimation', `100% { top: ${animationFinalPosition}% }`);
+    }
   }
 }
 
