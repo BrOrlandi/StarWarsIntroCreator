@@ -50,6 +50,14 @@ class ViewController {
     this.body.classList.remove('requestFocus');
   }
 
+  setError() {
+    this.body.classList.add('error');
+  }
+
+  unsetError() {
+    this.body.classList.remove('error');
+  }
+
 
   getFormValues = () => ({
     intro: this.form.intro.value,

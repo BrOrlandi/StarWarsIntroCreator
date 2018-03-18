@@ -1,6 +1,5 @@
-import axios from 'axios';
 import { firebases, defaultFirebase } from './config';
-
+import Http from './Http';
 
 export const _parseFirebasekey = (key) => {
   const result = {
@@ -23,23 +22,6 @@ export const _parseFirebasekey = (key) => {
   return result;
 };
 
-export const _getHttp = (baseURL) => {
-  const http = axios.create({
-    baseURL,
-    timeout: 3000,
-  });
-
-  const successInterceptor = res => res.data;
-  const errorInterceptor = (error) => {
-    Raven.captureException(error);
-    return Promise.reject(error);
-  };
-
-  http.interceptors.response.use(successInterceptor, errorInterceptor);
-
-  return http;
-};
-
 export const _parseSpecialKeys = (key) => {
   switch (key) {
     case 'Episode7':
@@ -57,13 +39,16 @@ export const _generateUrlWithKey = (key) => {
   return `${openingPrefix}-${key}.json`;
 };
 
+
 export const loadKey = async (initialKey) => {
   const rawkey = _parseSpecialKeys(initialKey);
   const { baseURL, key } = _parseFirebasekey(rawkey);
-  const http = _getHttp(baseURL);
+  const http = Http(baseURL);
 
   const url = _generateUrlWithKey(key);
-  const opening = await http.get(url);
+
+  const response = await http.get(url);
+  const opening = response.data;
   if (!opening) {
     const error = new Error(`Opening not found: ${initialKey}`);
     Raven.captureException(error);

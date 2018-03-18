@@ -5,6 +5,7 @@ export const EDITING = 'EDITING';
 export const LOADING = 'LOADING';
 export const PLAYING = 'PLAYING';
 export const DOWNLOAD = 'DOWNLOAD';
+export const ERROR = 'ERROR';
 
 class ApplicationState {
   constructor() {
@@ -21,6 +22,10 @@ class ApplicationState {
     switch (this.state.page) {
       case LOADING:
         ViewController.unsetLoading();
+        break;
+
+      case ERROR:
+        ViewController.unsetError();
         break;
 
       default:
@@ -47,6 +52,10 @@ class ApplicationState {
 
       case PLAYING:
         ViewController.playOpening(opening);
+        break;
+
+      case ERROR:
+        ViewController.setError();
         break;
 
 

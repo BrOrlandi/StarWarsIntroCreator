@@ -113,24 +113,24 @@ $(window).on('hashchange', function() {
     };
 
 
-    $("#playBut").remove();
-    var params = location.hash.replace('#!/', '').split('/');
-    var key = params[0];
-    var edit = false;
-    try{
-        edit = params[1] === "edit";
-    }catch(e){}
-    $('body').removeClass('running');
-    if(key != ""){
-        $('[name=custom]').val(key);
-        try{
-            key = parseSpecialKeys(key);
-            var url = urlByKey(key);
-            $.ajax({
-              url: url,
-              success: function(opening) {
+    // $("#playBut").remove();
+    // var params = location.hash.replace('#!/', '').split('/');
+    // var key = params[0];
+    // var edit = false;
+    // try{
+    //     edit = params[1] === "edit";
+    // }catch(e){}
+    // $('body').removeClass('running');
+    // if(key != ""){
+        // $('[name=custom]').val(key);
+        // try{
+        //     key = parseSpecialKeys(key);
+        //     var url = urlByKey(key);
+        //     $.ajax({
+        //       url: url,
+        //       success: function(opening) {
 
-                StarWars.opening = opening;
+        //         StarWars.opening = opening;
                 // OpeningKey = key;
                 // $("#videoButton").show();
 
@@ -205,19 +205,19 @@ $(window).on('hashchange', function() {
                     });
                 };
 
-                if(document.hasFocus()){ // play if has focus
-                        play();
-                }else{
-                    $(window).focus(function(){ // play when got focus
-                        if(notPlayed){
-                            play();
-                        }
-                    });
-                }
+                // if(document.hasFocus()){ // play if has focus
+                //         play();
+                // }else{
+                //     $(window).focus(function(){ // play when got focus
+                //         if(notPlayed){
+                //             play();
+                //         }
+                //     });
+                // }
 
-            },
-            error: ajaxErrorFunction('Error when try to load the intro '+key)
-            });
+            // },
+            // error: ajaxErrorFunction('Error when try to load the intro '+key)
+            // });
         }catch(error){
             location.hash = "";
             setLoading();

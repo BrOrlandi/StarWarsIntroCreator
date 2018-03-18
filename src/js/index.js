@@ -20,7 +20,9 @@ swal.setDefaults({
     return;
   }
 
-  Raven.config(process.env.RAVEN).install();
+  Raven.config(process.env.RAVEN, {
+    release: '0e4fdef81448dcfa0e16ecc4433ff3997aa53572',
+  }).install();
   Raven.context(() => {
     startApplication();
   });
