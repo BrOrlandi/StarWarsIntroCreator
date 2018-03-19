@@ -2,6 +2,7 @@ import swal from 'sweetalert2';
 
 import UrlHandler from './UrlHandler';
 import { usingIE } from './auxiliar';
+import { defaultOpening, defaultKey } from './config';
 import { documentReady, urlHashChange } from './utils';
 import { loadAndPlay, setEditMode } from './actions';
 import { sendGAPageView } from './googleanalytics';
@@ -19,7 +20,7 @@ const startApplication = () => {
       }
       console.log(mode);
     }
-    setEditMode();
+    setEditMode(defaultOpening, defaultKey);
   });
 
 

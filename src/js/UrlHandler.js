@@ -7,4 +7,14 @@ export default class UrlHandler {
       page: params[1] ? params[1] : null,
     };
   }
+
+  static setKeyToPlay(key) {
+    const hashBefore = window.location.hash.substr(1);
+    const newHash = `!/${key}`;
+    window.location.hash = newHash;
+    // if is the same hash as before, reload the page to replay animation.
+    if (hashBefore === newHash) {
+      window.location.reload();
+    }
+  }
 }

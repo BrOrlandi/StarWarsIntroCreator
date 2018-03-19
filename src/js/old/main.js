@@ -47,35 +47,35 @@
 // setLoading();
 
 $('#form-starwars').submit(function(event) {
-  event.preventDefault();
-  var opening = getOpeningFormValues();
-  var before = StarWars.opening;
-  if(!isOpeningsDifferents(opening, before)){ // User replay the same intro without modification, doesn't need to create a new one
-      var hashbefore = location.hash;
-      var hashnow = '!/'+OpeningKey;
-      location.hash = hashnow;
-      if(hashbefore !== hashnow){ // if user is in edit form but not in /edit url, force hashchange because the hash will be the same.
-          window.dispatchEvent(new Event('hashchange'));
-      }
-    return;
-  }
+//   event.preventDefault();
+//   var opening = getOpeningFormValues();
+//   var before = StarWars.opening;
+//   if(!isOpeningsDifferents(opening, before)){ // User replay the same intro without modification, doesn't need to create a new one
+//       var hashbefore = location.hash;
+//       var hashnow = '!/'+OpeningKey;
+//       location.hash = hashnow;
+//       if(hashbefore !== hashnow){ // if user is in edit form but not in /edit url, force hashchange because the hash will be the same.
+//           window.dispatchEvent(new Event('hashchange'));
+//       }
+//     return;
+//   }
 
-  if(!isOpeningsDifferents(opening,defaultOpening)){
-      setLoading();
-      location.hash = '!/Episode7'; // the default is Episode7 opening, TODO change this in 2018 after Episode 8
-      return;
-  }
+//   if(!isOpeningsDifferents(opening,defaultOpening)){
+//       setLoading();
+//       location.hash = '!/Episode7'; // the default is Episode7 opening, TODO change this in 2018 after Episode 8
+//       return;
+//   }
 
-  var aLogo = opening.logo.split('\n');
-  if(aLogo.length > 2){
-      sweetAlert("Oops...", "Logo can't have more than 2 lines.", "warning");
-      return;
-  }
-  var aIntro = opening.intro.split('\n');
-  if(aIntro.length > 2){
-      sweetAlert("Oops...", "Intro text can't have more than 2 lines.", "warning");
-      return;
-  }
+//   var aLogo = opening.logo.split('\n');
+//   if(aLogo.length > 2){
+//       sweetAlert("Oops...", "Logo can't have more than 2 lines.", "warning");
+//       return;
+//   }
+//   var aIntro = opening.intro.split('\n');
+//   if(aIntro.length > 2){
+//       sweetAlert("Oops...", "Intro text can't have more than 2 lines.", "warning");
+//       return;
+//   }
 
 
     for(var key in opening){
@@ -85,7 +85,7 @@ $('#form-starwars').submit(function(event) {
         }
     }
 
-  setLoading();
+//   setLoading();
   $.ajax({
       url: "https://starwarsopeninga.firebaseio.com/openings.json",
       method: "POST",

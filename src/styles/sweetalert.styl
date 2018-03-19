@@ -3,6 +3,7 @@ $buttonFocusColor = lighten($formBackgroundColor, 40%);
 
 $errorRed = #ab0000;
 $alertTextColor = #d0ad3e;
+$warningYellow = $alertTextColor;
 
 .starwars-sweetalert {
   border: 2px solid $alertTextColor;
@@ -41,6 +42,13 @@ $alertTextColor = #d0ad3e;
         span {
           background-color: $errorRed;
         }
+      }
+    }
+
+    &.swal2-warning {
+      border-color: $warningYellow;
+      .swal2-icon-text{
+        color: $warningYellow;
       }
     }
   }

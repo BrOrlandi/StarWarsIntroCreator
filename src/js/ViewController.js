@@ -1,7 +1,7 @@
-
 import { defaultOpening } from './config';
 import { callOnFocus } from './utils';
 import AudioController from './AudioController';
+import { playButton, downloadButton } from './actions';
 
 import StarWarsAnimation from './StarWarsAnimation';
 
@@ -9,8 +9,9 @@ class ViewController {
   constructor() {
     this.body = document.querySelector('body');
     this.downloadButton = document.querySelector('#downloadButton');
+    this.form = document.querySelector('#configForm > form');
 
-    this.form = {
+    this.formFields = {
       intro: document.querySelector('#f-intro'),
       logo: document.querySelector('#f-logo'),
       episode: document.querySelector('#f-episode'),
@@ -19,7 +20,7 @@ class ViewController {
       center: document.querySelector('#f-center'),
     };
 
-    this.form.center.addEventListener('change', (e) => {
+    this.formFields.center.addEventListener('change', (e) => {
       this._setFormTextAlignment(e.target.checked);
     });
 
@@ -29,6 +30,17 @@ class ViewController {
 
     window.addEventListener('beforeunload', () => {
       window.scrollTo(0, 0);
+    });
+
+    this.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const opening = this.getFormValues();
+      playButton(opening);
+    });
+
+    this.downloadButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      downloadButton();
     });
   }
 
@@ -75,30 +87,31 @@ class ViewController {
 
 
   getFormValues = () => ({
-    intro: this.form.intro.value,
-    logo: this.form.logo.value,
-    episode: this.form.episode.value,
-    title: this.form.title.value,
-    text: this.form.text.value,
-    center: this.form.center.checked,
+    intro: this.formFields.intro.value,
+    logo: this.formFields.logo.value,
+    episode: this.formFields.episode.value,
+    title: this.formFields.title.value,
+    text: this.formFields.text.value,
+    center: this.formFields.center.checked,
   });
 
   setFormValues(opening) {
-    this.form.intro.value = opening.intro;
-    this.form.logo.value = opening.logo;
-    this.form.episode.value = opening.episode;
-    this.form.title.value = opening.title;
-    this.form.text.value = opening.text;
-    this.form.center.checked = opening.center;
+    this.formFields.intro.value = opening.intro;
+    this.formFields.logo.value = opening.logo;
+    this.formFields.episode.value = opening.episode;
+    this.formFields.title.value = opening.title;
+    this.formFields.text.value = opening.text;
+    this.formFields.center.checked = opening.center;
 
     this._setFormTextAlignment(opening.center);
   }
 
   _setFormTextAlignment(centralizedText) {
-    this.form.text.style.textAlign = centralizedText ? 'center' : 'initial';
+    this.formFields.text.style.textAlign = centralizedText ? 'center' : 'initial';
   }
 
   playOpening(opening) {
+    // window.scrollTo(0, 0);
     this.starWarsAnimation.load(opening);
     AudioController.reset();
     this.setRequestWindowFocus();

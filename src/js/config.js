@@ -7,6 +7,8 @@ export const defaultOpening = {
   title: 'THE LAST JEDI',
 };
 
+export const defaultKey = 'Episode8';
+
 export const firebases = {
   initial: process.env.FIREBASE_INITIAL,
   A: process.env.FIREBASE_A,

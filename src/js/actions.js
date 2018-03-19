@@ -1,10 +1,12 @@
 import swal from 'sweetalert2';
+import isEqual from 'lodash.isequal';
 
-import ApplicationState, { EDITING, ERROR, DOWNLOAD, PLAYING, LOADING } from './ApplicationState';
+import UrlHandler from './UrlHandler';
+import ApplicationState, { EDITING, ERROR, PLAYING, LOADING } from './ApplicationState';
 import { loadKey } from './api';
 
-export const setEditMode = () => {
-  ApplicationState.setState(EDITING);
+export const setEditMode = (opening, key) => {
+  ApplicationState.setState(EDITING, { opening, key });
 };
 
 const _apiError = (message, reloadPage) => {
@@ -57,4 +59,42 @@ export const loadAndPlay = async (key) => {
     _apiError(`We could not load the introduction "${key}"`, true);
     throw error;
   }
+};
+
+export const _openingIsValid = (opening) => {
+  const introLines = opening.intro.split('\n');
+  if (introLines.length > 2) {
+    swal('ops...', "The blue introduction text can't have more than 2 lines. Please, make your text in 2 lines. ;)", 'warning');
+    return false;
+  }
+
+  const logoLines = opening.logo.split('\n');
+  if (logoLines.length > 2) {
+    swal('ops...', "The Star Wars logo text can't have more than 2 lines. Please, make your text in 2 lines. ;)", 'warning');
+    return false;
+  }
+
+  return true;
+};
+
+export const playButton = (opening) => {
+  const lastOpening = ApplicationState.state.opening;
+  const lastKey = ApplicationState.state.key;
+
+  const isOpeningChanged = !isEqual(lastOpening, opening);
+  if (!isOpeningChanged) {
+    UrlHandler.setKeyToPlay(lastKey);
+    return;
+  }
+
+  if (!_openingIsValid(opening)) {
+    return;
+  }
+
+  ApplicationState.setState(LOADING);
+  // TODO submit new intro
+};
+
+export const downloadButton = () => {
+  console.log("downloadButton");
 };
