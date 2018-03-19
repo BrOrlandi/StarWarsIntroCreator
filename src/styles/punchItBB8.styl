@@ -1,0 +1,69 @@
+
+punchItBB8() {
+  .bb8 {
+    animation: puchItAnimation .5s cubic-bezier(0, .2, 0, 1) 0s forwards,
+      bump .1s infinite linear alternate;
+
+    .bb8-head {
+      animation: bb8HeadAnimation .5s linear 0s forwards;
+    }
+
+    .bb8-antena {
+      animation: bb8AntenaAnimation .5s linear 0s forwards;
+    }
+
+    .bb8-antena-2 {
+      animation: bb8Antena2Animation .5s linear 0s forwards;
+    }
+  }
+}
+
+@keyframes puchItAnimation {
+  from {
+    left: -50%;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes bb8HeadAnimation {
+  from {
+    top: 3.6em;
+    left: 7em;
+    transform: rotate(35deg);
+  }
+  to {
+    top: 1.6em;
+    left: 0;
+    transform: rotate(0);
+  }
+}
+
+@keyframes bb8AntenaAnimation {
+  from {
+    top: 2.4em;
+    margin-left: 9em;
+    transform: rotate(35deg);
+  }
+
+  to {
+    top: 0;
+    margin-left: -.5em;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bb8Antena2Animation {
+  from {
+    top: 1em;
+    left: 16em;
+    transform: rotate(35deg);
+  }
+
+  to {
+    top: -2em;
+    left: 50%;
+    transform: rotate(0deg);
+  }
+}
