@@ -1,4 +1,4 @@
-import { firebases, defaultFirebase } from './config';
+import { firebases, defaultFirebase, defaultFirebasePrefix } from './config';
 import Http from './Http';
 
 export const _parseFirebasekey = (key) => {
@@ -49,6 +49,7 @@ export const loadKey = async (initialKey) => {
 
   const response = await http.get(url);
   const opening = response.data;
+  // const opening = {"center":true,"episode":"Episode VIII","intro":"Kassel Labs","logo":"kassel\nlabs","text":"Kassel Labs\n\nkassel\nlabs\n\nKASSEL LABS\n\nKASSEL\nLABS\n\nkassel labs","title":"KASSEL LABS"};
   if (!opening) {
     const error = new Error(`Opening not found: ${initialKey}`);
     Raven.captureException(error);
@@ -56,3 +57,11 @@ export const loadKey = async (initialKey) => {
   return opening;
 };
 
+
+export const saveOpening = async (opening) => {
+  const http = Http(defaultFirebase);
+
+  const response = await http.post('/openings.json', opening);
+  const key = `${defaultFirebasePrefix}${response.data.name.substr(1)}`;
+  return key;
+};

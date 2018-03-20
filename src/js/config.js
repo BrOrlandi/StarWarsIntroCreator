@@ -16,3 +16,4 @@ export const firebases = {
 };
 
 export const defaultFirebase = firebases.B;
+export const defaultFirebasePrefix = 'B';

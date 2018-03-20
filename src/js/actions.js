@@ -3,13 +3,13 @@ import isEqual from 'lodash.isequal';
 
 import UrlHandler from './UrlHandler';
 import ApplicationState, { EDITING, ERROR, PLAYING, LOADING } from './ApplicationState';
-import { loadKey } from './api';
+import { loadKey, saveOpening } from './api';
 
 export const setEditMode = (props = {}) => {
   ApplicationState.setState(EDITING, props);
 };
 
-const _apiError = (message, reloadPage) => {
+const _apiError = (message, reloadPage = false) => {
   const bodyMessage = encodeURI(`Hi, the SWIC website didn't work as expected.
 The following error message is showed:
 
@@ -44,21 +44,21 @@ I want to provide the following details:
 
 export const loadAndPlay = async (key) => {
   ApplicationState.setState(LOADING);
+  let opening;
   try {
-    const opening = await loadKey(key);
-
-    if (!opening) {
-      setEditMode();
-      swal('ops...', `The introduction with the key "${key}" was not found.`, 'error');
-      return;
-    }
-
-    ApplicationState.setState(PLAYING, { opening, key });
+    opening = await loadKey(key);
   } catch (error) {
     ApplicationState.setState(ERROR);
     _apiError(`We could not load the introduction "${key}"`, true);
-    throw error;
   }
+
+  if (!opening) {
+    setEditMode();
+    swal('ops...', `The introduction with the key "${key}" was not found.`, 'error');
+    return;
+  }
+
+  ApplicationState.setState(PLAYING, { opening, key });
 };
 
 export const _openingIsValid = (opening) => {
@@ -77,7 +77,7 @@ export const _openingIsValid = (opening) => {
   return true;
 };
 
-export const playButton = (opening) => {
+export const playButton = async (opening) => {
   const lastOpening = ApplicationState.state.opening;
   const lastKey = ApplicationState.state.key;
 
@@ -92,7 +92,22 @@ export const playButton = (opening) => {
   }
 
   ApplicationState.setState(LOADING);
-  // TODO submit new intro
+
+  Raven.captureBreadcrumb({
+    message: 'Saving new intro',
+    category: 'action',
+    data: opening,
+  });
+
+  let key;
+  try {
+    key = await saveOpening(opening);
+  } catch (error) {
+    ApplicationState.setState(ERROR);
+    _apiError('There was an error creating your intro.');
+  }
+
+  UrlHandler.setKeyToPlay(key);
 };
 
 export const downloadButton = () => {

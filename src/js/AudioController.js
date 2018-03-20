@@ -22,7 +22,7 @@ class AudioController {
 
   play() {
     return new Promise((resolve) => {
-      this.audio.currentTime = 92;
+      // this.audio.currentTime = 92;
       this.audio.play();
 
       const endedListener = () => {
