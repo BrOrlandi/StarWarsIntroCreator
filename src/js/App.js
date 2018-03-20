@@ -2,10 +2,11 @@ import swal from 'sweetalert2';
 
 import UrlHandler from './UrlHandler';
 import { usingIE } from './auxiliar';
-import { defaultOpening, defaultKey } from './config';
 import { documentReady, urlHashChange } from './utils';
 import { loadAndPlay, setEditMode } from './actions';
 import { sendGAPageView } from './googleanalytics';
+import { defaultOpening, defaultKey } from './config';
+import ApplicationState, { PLAYING } from './ApplicationState';
 
 const startApplication = () => {
   urlHashChange(() => {
@@ -20,7 +21,16 @@ const startApplication = () => {
       }
       console.log(mode);
     }
-    setEditMode(defaultOpening, defaultKey);
+
+    if (ApplicationState.state.page === PLAYING) {
+      setEditMode({ interruptAnimation: true });
+      return;
+    }
+
+    setEditMode({
+      opening: defaultOpening,
+      key: defaultKey,
+    });
   });
 
 

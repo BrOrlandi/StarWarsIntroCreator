@@ -30,7 +30,7 @@ class ApplicationState {
         break;
 
       case PLAYING:
-        ViewController.stopPlaying();
+        ViewController.stopPlaying(props.interruptAnimation);
         break;
 
       case DOWNLOAD:

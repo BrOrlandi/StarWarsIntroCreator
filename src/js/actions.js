@@ -5,8 +5,8 @@ import UrlHandler from './UrlHandler';
 import ApplicationState, { EDITING, ERROR, PLAYING, LOADING } from './ApplicationState';
 import { loadKey } from './api';
 
-export const setEditMode = (opening, key) => {
-  ApplicationState.setState(EDITING, { opening, key });
+export const setEditMode = (props = {}) => {
+  ApplicationState.setState(EDITING, props);
 };
 
 const _apiError = (message, reloadPage) => {

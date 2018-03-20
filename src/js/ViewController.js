@@ -130,12 +130,27 @@ class ViewController {
     });
   }
 
-  stopPlaying() {
-    setTimeout(() => {
+  stopPlaying(interruptAnimation) {
+    const showForm = () => {
       this.body.classList.add('showForm');
+    };
+
+    const resetAnimation = () => {
+      this.unsetRunningVideo();
+      this.starWarsAnimation.reset();
+    };
+
+    if (interruptAnimation) {
+      showForm();
+      resetAnimation();
+      AudioController.reset();
+      return;
+    }
+
+    setTimeout(() => {
+      showForm();
       setTimeout(() => {
-        this.unsetRunningVideo();
-        this.starWarsAnimation.reset();
+        resetAnimation();
       }, 6000);
     }, 2000);
   }
