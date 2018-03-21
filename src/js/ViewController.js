@@ -40,7 +40,8 @@ class ViewController {
 
     this.downloadButton.addEventListener('click', (e) => {
       e.preventDefault();
-      downloadButton();
+      const opening = this.getFormValues();
+      downloadButton(opening);
     });
   }
 

@@ -86,18 +86,18 @@ $('#form-starwars').submit(function(event) {
     }
 
 //   setLoading();
-  $.ajax({
-      url: "https://starwarsopeninga.firebaseio.com/openings.json",
-      method: "POST",
-      data: JSON.stringify(opening),
-      dataType: "json",
-      success: function(data){
-          var key = 'A'+data.name.substring(1);
-          CreatedIntros.save(key,opening);
-          location.hash = '!/'+key;
-      },
-      error: ajaxErrorFunction('Error when creating the intro.\n\n'+JSON.stringify(opening))
-  });
+//   $.ajax({
+//       url: "https://starwarsopeninga.firebaseio.com/openings.json",
+//       method: "POST",
+//       data: JSON.stringify(opening),
+//       dataType: "json",
+//       success: function(data){
+//           var key = 'A'+data.name.substring(1);
+//           CreatedIntros.save(key,opening);
+//           location.hash = '!/'+key;
+//       },
+//       error: ajaxErrorFunction('Error when creating the intro.\n\n'+JSON.stringify(opening))
+//   });
 });
 
 $(window).on('hashchange', function() {

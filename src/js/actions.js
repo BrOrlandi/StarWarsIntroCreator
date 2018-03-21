@@ -2,6 +2,7 @@ import swal from 'sweetalert2';
 import isEqual from 'lodash.isequal';
 
 import UrlHandler from './UrlHandler';
+import ViewController from './ViewController';
 import ApplicationState, { EDITING, ERROR, PLAYING, DOWNLOAD, LOADING } from './ApplicationState';
 import { loadKey, saveOpening } from './api';
 
@@ -120,6 +121,25 @@ export const playButton = async (opening) => {
   UrlHandler.setKeyToPlay(key);
 };
 
-export const downloadButton = () => {
-  console.log("downloadButton");
+export const downloadButton = async (opening) => {
+  const lastOpening = ApplicationState.state.opening;
+  if (!isEqual(lastOpening, opening)) {
+    return swal({
+      title: 'Text was modified',
+      text: 'You have changed some of the text fields. You need to play the your new intro to save and request a download. Do you want to restore your intro or play the new one?',
+      showCancelButton: true,
+      cancelButtonText: 'PLAY IT',
+      confirmButtonText: 'RESTORE MY INTRO',
+      animation: 'slide-from-top',
+    }).then((response) => {
+      if (response.value) {
+        ViewController.setFormValues(lastOpening);
+        return;
+      }
+      if (response.dismiss === swal.DismissReason.cancel) {
+        playButton(opening);
+        return;
+      }
+    });
+  }
 };
