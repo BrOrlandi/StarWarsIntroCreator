@@ -1,8 +1,8 @@
-import { _parseFirebasekey, _parseSpecialKeys, _generateUrlWithKey } from './api';
+import { _parseFirebasekey, _parseSpecialKeys, _generateUrlWithKey } from './firebaseApi';
 
 jest.mock('./config');
 
-describe('api.js', () => {
+describe('firebaseApi.js', () => {
   it('should parse special keys', () => {
     const key1 = 'Episode7';
     expect(_parseSpecialKeys(key1)).toBe('AKcKeYMPogupSU_r1I_g');

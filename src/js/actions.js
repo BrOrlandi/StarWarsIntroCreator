@@ -4,7 +4,7 @@ import isEqual from 'lodash.isequal';
 import UrlHandler from './UrlHandler';
 import ViewController from './ViewController';
 import ApplicationState, { EDITING, ERROR, PLAYING, DOWNLOAD, LOADING } from './ApplicationState';
-import { loadKey, saveOpening } from './api';
+import { loadKey, saveOpening } from './firebaseApi';
 
 export const setEditMode = (props = {}) => {
   ApplicationState.setState(EDITING, props);
