@@ -1,5 +1,6 @@
 import ViewController from './ViewController';
 import AudioController from './AudioController';
+import UrlHandler from './UrlHandler';
 import { setPaypalKey } from './paypal';
 
 export const EDITING = 'EDITING';
@@ -18,7 +19,7 @@ class ApplicationState {
     this.renderState();
   }
 
-  setState(page, props) {
+  setState(page, props = {}) {
     // previous state undo changes
     switch (this.state.page) {
       case LOADING:
@@ -62,7 +63,7 @@ class ApplicationState {
       case PLAYING:
         setPaypalKey(key);
         await ViewController.playOpening(opening);
-        this.setState(DOWNLOAD, { opening, key });
+        UrlHandler.goToDownloadPage(key);
         break;
 
       case DOWNLOAD:

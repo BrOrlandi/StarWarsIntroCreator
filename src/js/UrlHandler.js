@@ -17,4 +17,9 @@ export default class UrlHandler {
       window.location.reload();
     }
   }
+
+  static goToDownloadPage(key) {
+    const newHashUrl = `!/${key}/edit`;
+    window.location.hash = newHashUrl;
+  }
 }

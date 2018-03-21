@@ -1,25 +1,36 @@
 import swal from 'sweetalert2';
 
 import UrlHandler from './UrlHandler';
+import AudioController from './AudioController';
 import { usingIE } from './auxiliar';
 import { documentReady, urlHashChange } from './utils';
-import { loadAndPlay, setEditMode } from './actions';
+import { loadAndPlay, setEditMode, loadAndDownload } from './actions';
 import { sendGAPageView } from './googleanalytics';
 import { defaultOpening, defaultKey } from './config';
-import ApplicationState, { PLAYING } from './ApplicationState';
+import ApplicationState, { PLAYING, DOWNLOAD } from './ApplicationState';
 
 const startApplication = () => {
   urlHashChange(() => {
     sendGAPageView();
     swal.close();
 
-    const { key, mode } = UrlHandler.getParams();
+    const { key, page } = UrlHandler.getParams();
     if (key) {
-      if (!mode) {
+      if (!page) {
         loadAndPlay(key);
         return;
       }
-      console.log(mode);
+      if ('edit' === page) {
+        if (ApplicationState.state.key === key) {
+          // interrupt animation if it's playing
+          const interruptAnimation = !AudioController.audio.paused;
+          ApplicationState.setState(DOWNLOAD, { interruptAnimation });
+          return;
+        }
+
+        loadAndDownload(key);
+        return;
+      }
     }
 
     if (ApplicationState.state.page === PLAYING) {

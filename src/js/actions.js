@@ -2,7 +2,7 @@ import swal from 'sweetalert2';
 import isEqual from 'lodash.isequal';
 
 import UrlHandler from './UrlHandler';
-import ApplicationState, { EDITING, ERROR, PLAYING, LOADING } from './ApplicationState';
+import ApplicationState, { EDITING, ERROR, PLAYING, DOWNLOAD, LOADING } from './ApplicationState';
 import { loadKey, saveOpening } from './api';
 
 export const setEditMode = (props = {}) => {
@@ -42,8 +42,7 @@ I want to provide the following details:
   });
 };
 
-export const loadAndPlay = async (key) => {
-  ApplicationState.setState(LOADING);
+const loadOpening = async (key) => {
   let opening;
   try {
     opening = await loadKey(key);
@@ -55,10 +54,21 @@ export const loadAndPlay = async (key) => {
   if (!opening) {
     setEditMode();
     swal('ops...', `The introduction with the key "${key}" was not found.`, 'error');
-    return;
   }
 
+  return opening;
+};
+
+export const loadAndPlay = async (key) => {
+  ApplicationState.setState(LOADING);
+  const opening = await loadOpening(key);
   ApplicationState.setState(PLAYING, { opening, key });
+};
+
+export const loadAndDownload = async (key) => {
+  ApplicationState.setState(LOADING);
+  const opening = await loadOpening(key);
+  ApplicationState.setState(DOWNLOAD, { opening, key });
 };
 
 export const _openingIsValid = (opening) => {
