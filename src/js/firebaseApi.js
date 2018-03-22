@@ -34,6 +34,8 @@ export const _parseSpecialKeys = (key) => {
   }
 };
 
+const openingsCache = {};
+
 export const _generateUrlWithKey = (key) => {
   const openingPrefix = '/openings/';
   return `${openingPrefix}-${key}.json`;
@@ -41,12 +43,27 @@ export const _generateUrlWithKey = (key) => {
 
 
 export const loadKey = async (initialKey) => {
+  const openingFromCache = openingsCache[initialKey];
+  if (openingFromCache) {
+    Raven.captureBreadcrumb({
+      message: 'Getting intro from cache.',
+      category: 'info',
+      data: openingFromCache,
+    });
+    return openingFromCache;
+  }
+
   const rawkey = _parseSpecialKeys(initialKey);
   const { baseURL, key } = _parseFirebasekey(rawkey);
   const http = Http(baseURL);
 
   const url = _generateUrlWithKey(key);
 
+  Raven.captureBreadcrumb({
+    message: 'Loading intro from Firebase.',
+    category: 'info',
+    data: { initialKey },
+  });
   const response = await http.get(url);
   const opening = response.data;
   // const opening = {"center":true,"episode":"Episode VIII","intro":"Kassel Labs","logo":"kassel\nlabs","text":"Kassel Labs\n\nkassel\nlabs\n\nKASSEL LABS\n\nKASSEL\nLABS\n\nkassel labs","title":"KASSEL LABS"};
@@ -54,6 +71,7 @@ export const loadKey = async (initialKey) => {
     const error = new Error(`Opening not found: ${initialKey}`);
     Raven.captureException(error);
   }
+  openingsCache[initialKey] = opening;
   return opening;
 };
 
