@@ -112,7 +112,7 @@ class ViewController {
   }
 
   playOpening(opening) {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     this.starWarsAnimation.load(opening);
     this.setRequestWindowFocus();
 
