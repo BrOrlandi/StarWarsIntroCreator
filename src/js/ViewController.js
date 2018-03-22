@@ -114,7 +114,6 @@ class ViewController {
   playOpening(opening) {
     // window.scrollTo(0, 0);
     this.starWarsAnimation.load(opening);
-    AudioController.reset();
     this.setRequestWindowFocus();
 
     return new Promise((resolve) => {

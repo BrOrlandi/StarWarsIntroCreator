@@ -46,7 +46,7 @@
 
 // setLoading();
 
-$('#form-starwars').submit(function(event) {
+// $('#form-starwars').submit(function(event) {
 //   event.preventDefault();
 //   var opening = getOpeningFormValues();
 //   var before = StarWars.opening;
@@ -78,12 +78,12 @@ $('#form-starwars').submit(function(event) {
 //   }
 
 
-    for(var key in opening){
-        if(opening[key] == "string" && opening[key].indexOf("??") > -1){
-            sweetAlert("Oops...", "Your text can't contain the sequence \"??\", please fix it and submit again.", "error");
-            return;
-        }
-    }
+    // for(var key in opening){
+    //     if(opening[key] == "string" && opening[key].indexOf("??") > -1){
+    //         sweetAlert("Oops...", "Your text can't contain the sequence \"??\", please fix it and submit again.", "error");
+    //         return;
+    //     }
+    // }
 
 //   setLoading();
 //   $.ajax({
@@ -98,9 +98,9 @@ $('#form-starwars').submit(function(event) {
 //       },
 //       error: ajaxErrorFunction('Error when creating the intro.\n\n'+JSON.stringify(opening))
 //   });
-});
+// });
 
-$(window).on('hashchange', function() {
+// $(window).on('hashchange', function() {
 
     // var urlByKey = function(key){
     //     var code = key.charAt(0);
@@ -236,7 +236,7 @@ $(window).on('hashchange', function() {
     // ga('send', 'pageview', {
     //     'page': location.pathname + location.search  + location.hash
     // });
-});
+// });
 
 var calcTime = function(queue){
     var minutes = (queue+1)*30;
@@ -309,23 +309,23 @@ $("#videoButton").click(function(){
     var now = getOpeningFormValues();
     var before = StarWars.opening;
 
-    if(isOpeningsDifferents(now, before)){ // prevent user to request download without save the edited intro
-        swal({
-            html: true,
-            title: '<h2 style="font-family: StarWars;">Text modified</h2>',
-            text: '<p style="text-align: justify">'+
-            'You have changed some of the text inputs. You need to play the new intro to save and request a download.',
-            showCancelButton: true,
-            confirmButtonText: "Ok, play it!",
-            confirmButtonColor: "#807300",
-            animation: "slide-from-top"
-        },function(ok){
-            if(ok){
-                $('#form-starwars').submit();
-            }
-        });
-        return;
-    }
+    // if(isOpeningsDifferents(now, before)){ // prevent user to request download without save the edited intro
+    //     swal({
+    //         html: true,
+    //         title: '<h2 style="font-family: StarWars;">Text modified</h2>',
+    //         text: '<p style="text-align: justify">'+
+    //         'You have changed some of the text inputs. You need to play the new intro to save and request a download.',
+    //         showCancelButton: true,
+    //         confirmButtonText: "Ok, play it!",
+    //         confirmButtonColor: "#807300",
+    //         animation: "slide-from-top"
+    //     },function(ok){
+    //         if(ok){
+    //             $('#form-starwars').submit();
+    //         }
+    //     });
+    //     return;
+    // }
     // swal({
     //     html: true,
     //     title: '<h2 style="font-family: StarWars;">loading</h2>',
@@ -416,22 +416,22 @@ $("#videoButton").click(function(){
 //     };
 // };
 
-function isOpeningsDifferents(a,b){ // compare two openings texts to see if they are different
-    var changes =[];
-    if(a === null || b == null ){
-        return true;
-    }
-    changes.push(a.intro !== b.intro);
-    changes.push(a.logo !== b.logo);
-    changes.push(a.episode !== b.episode);
-    changes.push(a.title !== b.title);
-    changes.push(a.text !== b.text);
-    changes.push(a.center !== b.center && b.center !== undefined);
+// function isOpeningsDifferents(a,b){ // compare two openings texts to see if they are different
+//     var changes =[];
+//     if(a === null || b == null ){
+//         return true;
+//     }
+//     changes.push(a.intro !== b.intro);
+//     changes.push(a.logo !== b.logo);
+//     changes.push(a.episode !== b.episode);
+//     changes.push(a.title !== b.title);
+//     changes.push(a.text !== b.text);
+//     changes.push(a.center !== b.center && b.center !== undefined);
 
-    return changes.reduce(function(c,e){
-        return c || e;
-    },false);
-};
+//     return changes.reduce(function(c,e){
+//         return c || e;
+//     },false);
+// };
 
 // function parseSpecialKeys(key){
 //     switch (key) {
