@@ -10,43 +10,31 @@ hideAllPages() {
 }
 
 body.loading {
+  hideAllPages();
+
   #bb8-loading {
     display: block;
     punchItBB8();
   }
-
-  #configForm {
-    display: none;
-  }
-
-  footer {
-    display: none;
-  }
 }
 
 body.requestFocus {
+  hideAllPages();
+
   #requestFocusButton {
     display: flex;
-  }
-
-  #configForm {
-    display: none;
-  }
-
-  footer {
-    display: none;
   }
 }
 
 body.runningVideo {
+  hideAllPages();
   overflow: hidden;
 
-  #configForm > form {
-    display: none;
-  }
-
-  footer {
-    display: none;
+  #configForm {
+    display: flex;
+    > form {
+      display: none;
+    }
   }
 
   &.showForm {
