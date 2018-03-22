@@ -7,6 +7,7 @@ export const CREATING = 'CREATING';
 export const LOADING = 'LOADING';
 export const PLAYING = 'PLAYING';
 export const EDITING = 'EDITING';
+export const DOWNLOAD = 'DOWNLOAD';
 
 class ApplicationState {
   constructor() {
@@ -36,6 +37,10 @@ class ApplicationState {
           ViewController.killTimers();
           break;
 
+        case DOWNLOAD:
+          ViewController.unsetDownloadPage();
+          break;
+
         default:
           ViewController.unsetLoading();
       }
@@ -62,12 +67,16 @@ class ApplicationState {
       case PLAYING:
         setPaypalKey(key);
         await ViewController.playOpening(opening);
-        UrlHandler.goToDownloadPage(key);
+        UrlHandler.goToEditPage(key);
         break;
 
       case EDITING:
         ViewController.setFormValues(opening);
         ViewController.showDownloadButton();
+        break;
+
+      case DOWNLOAD:
+        ViewController.setDownloadPage();
         break;
 
       default:

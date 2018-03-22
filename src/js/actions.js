@@ -3,7 +3,7 @@ import isEqual from 'lodash.isequal';
 
 import UrlHandler from './UrlHandler';
 import ViewController from './ViewController';
-import ApplicationState, { CREATING, PLAYING, EDITING, LOADING } from './ApplicationState';
+import ApplicationState, { CREATING, PLAYING, EDITING, LOADING, DOWNLOAD } from './ApplicationState';
 import { loadKey, saveOpening } from './firebaseApi';
 
 export const setCreateMode = (props = {}) => {
@@ -91,7 +91,7 @@ export const _openingIsValid = (opening) => {
   return true;
 };
 
-export const playButton = async (opening) => {
+export const playButtonHandler = async (opening) => {
   const lastOpening = ApplicationState.state.opening;
   const lastKey = ApplicationState.state.key;
 
@@ -123,8 +123,9 @@ export const playButton = async (opening) => {
   UrlHandler.setKeyToPlay(key);
 };
 
-export const downloadButton = async (opening) => {
+export const downloadButtonHandler = async (opening) => {
   const lastOpening = ApplicationState.state.opening;
+  const { key } = ApplicationState.state;
   if (!isEqual(lastOpening, opening)) {
     return swal({
       title: 'Text was modified',
@@ -138,10 +139,20 @@ export const downloadButton = async (opening) => {
         ViewController.setFormValues(lastOpening);
         return;
       }
+
       if (response.dismiss === swal.DismissReason.cancel) {
-        playButton(opening);
-        return;
+        playButtonHandler(opening);
       }
     });
   }
+  UrlHandler.goToDownloadPage(key);
+};
+
+export const loadDownloadPage = async (key) => {
+  ApplicationState.setState(LOADING);
+  const opening = await loadOpening(key);
+  if (!opening) {
+    return;
+  }
+  ApplicationState.setState(DOWNLOAD, { opening, key });
 };

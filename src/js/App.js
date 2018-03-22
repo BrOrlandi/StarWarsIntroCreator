@@ -4,7 +4,7 @@ import UrlHandler from './UrlHandler';
 import AudioController from './AudioController';
 import { usingIE } from './auxiliar';
 import { documentReady, urlHashChange } from './utils';
-import { loadAndPlay, setCreateMode, loadAndEdit } from './actions';
+import { loadAndPlay, loadDownloadPage, setCreateMode, loadAndEdit } from './actions';
 import { sendGAPageView } from './googleanalytics';
 import { defaultOpening, defaultKey } from './config';
 import ApplicationState, { PLAYING, EDITING } from './ApplicationState';
@@ -20,6 +20,7 @@ const startApplication = () => {
         loadAndPlay(key);
         return;
       }
+
       if ('edit' === page) {
         if (ApplicationState.state.key === key) {
           // interrupt animation if it's playing
@@ -29,6 +30,11 @@ const startApplication = () => {
         }
 
         loadAndEdit(key);
+        return;
+      }
+
+      if ('download' === page) {
+        loadDownloadPage(key);
         return;
       }
     }

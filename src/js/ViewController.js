@@ -1,7 +1,7 @@
 import { defaultOpening } from './config';
 import { callOnFocus } from './utils';
 import AudioController from './AudioController';
-import { playButton, downloadButton } from './actions';
+import { playButtonHandler, downloadButtonHandler } from './actions';
 
 import StarWarsAnimation from './StarWarsAnimation';
 
@@ -35,13 +35,13 @@ class ViewController {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const opening = this.getFormValues();
-      playButton(opening);
+      playButtonHandler(opening);
     });
 
     this.downloadButton.addEventListener('click', (e) => {
       e.preventDefault();
       const opening = this.getFormValues();
-      downloadButton(opening);
+      downloadButtonHandler(opening);
     });
   }
 
@@ -70,6 +70,14 @@ class ViewController {
     this.body.classList.remove('requestFocus');
   }
 
+  setDownloadPage() {
+    this.body.classList.add('downloadPage');
+  }
+
+  unsetDownloadPage() {
+    this.body.classList.remove('downloadPage');
+  }
+
   showDownloadButton() {
     this.downloadButton.classList.add('show');
   }
@@ -77,7 +85,6 @@ class ViewController {
   hideDownloadButton() {
     this.downloadButton.classList.remove('show');
   }
-
 
   getFormValues = () => ({
     intro: this.formFields.intro.value,
