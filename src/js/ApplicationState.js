@@ -3,10 +3,10 @@ import AudioController from './AudioController';
 import UrlHandler from './UrlHandler';
 import { setPaypalKey } from './paypal';
 
-export const EDITING = 'EDITING';
+export const CREATING = 'CREATING';
 export const LOADING = 'LOADING';
 export const PLAYING = 'PLAYING';
-export const DOWNLOAD = 'DOWNLOAD';
+export const EDITING = 'EDITING';
 export const ERROR = 'ERROR';
 
 class ApplicationState {
@@ -21,25 +21,27 @@ class ApplicationState {
 
   setState(page, props = {}) {
     // previous state undo changes
-    switch (this.state.page) {
-      case LOADING:
-        ViewController.unsetLoading();
-        break;
+    if (this.state.page !== page) {
+      switch (this.state.page) {
+        case LOADING:
+          ViewController.unsetLoading();
+          break;
 
-      case ERROR:
-        ViewController.unsetError();
-        break;
+        case ERROR:
+          ViewController.unsetError();
+          break;
 
-      case PLAYING:
-        ViewController.stopPlaying(props.interruptAnimation);
-        break;
+        case PLAYING:
+          ViewController.stopPlaying(props.interruptAnimation);
+          break;
 
-      case DOWNLOAD:
-        ViewController.hideDownloadButton();
-        break;
+        case EDITING:
+          ViewController.hideDownloadButton();
+          break;
 
-      default:
-        ViewController.unsetLoading();
+        default:
+          ViewController.unsetLoading();
+      }
     }
 
     this.state = {
@@ -66,7 +68,7 @@ class ApplicationState {
         UrlHandler.goToDownloadPage(key);
         break;
 
-      case DOWNLOAD:
+      case EDITING:
         ViewController.setFormValues(opening);
         ViewController.showDownloadButton();
         break;

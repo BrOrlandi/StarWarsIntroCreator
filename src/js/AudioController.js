@@ -23,6 +23,8 @@ class AudioController {
   play() {
     return new Promise((resolve) => {
       // this.audio.currentTime = 92;
+      // this.audio.playbackRate = 3;
+      this.reset();
       this.audio.play();
 
       const endedListener = () => {

@@ -3,11 +3,11 @@ import isEqual from 'lodash.isequal';
 
 import UrlHandler from './UrlHandler';
 import ViewController from './ViewController';
-import ApplicationState, { EDITING, ERROR, PLAYING, DOWNLOAD, LOADING } from './ApplicationState';
+import ApplicationState, { CREATING, ERROR, PLAYING, EDITING, LOADING } from './ApplicationState';
 import { loadKey, saveOpening } from './firebaseApi';
 
-export const setEditMode = (props = {}) => {
-  ApplicationState.setState(EDITING, props);
+export const setCreateMode = (props = {}) => {
+  ApplicationState.setState(CREATING, props);
 };
 
 const _apiError = (message, reloadPage = false) => {
@@ -39,7 +39,7 @@ I want to provide the following details:
     if (result.dismiss === swal.DismissReason.cancel && reloadPage) {
       window.location.reload();
     }
-    setEditMode();
+    setCreateMode();
   });
 };
 
@@ -53,7 +53,7 @@ const loadOpening = async (key) => {
   }
 
   if (!opening) {
-    setEditMode();
+    setCreateMode();
     swal('ops...', `The introduction with the key "${key}" was not found.`, 'error');
   }
 
@@ -66,10 +66,10 @@ export const loadAndPlay = async (key) => {
   ApplicationState.setState(PLAYING, { opening, key });
 };
 
-export const loadAndDownload = async (key) => {
+export const loadAndEdit = async (key) => {
   ApplicationState.setState(LOADING);
   const opening = await loadOpening(key);
-  ApplicationState.setState(DOWNLOAD, { opening, key });
+  ApplicationState.setState(EDITING, { opening, key });
 };
 
 export const _openingIsValid = (opening) => {
