@@ -36,7 +36,9 @@ class ApplicationState {
           break;
 
         case EDITING:
+          ViewController.unsetRunningVideo();
           ViewController.hideDownloadButton();
+          ViewController.killTimers();
           break;
 
         default:

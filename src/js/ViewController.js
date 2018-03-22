@@ -130,6 +130,11 @@ class ViewController {
     });
   }
 
+  killTimers() {
+    clearTimeout(this.showFormTimeout);
+    clearTimeout(this.resetAnimationTimeout);
+  }
+
   stopPlaying(interruptAnimation) {
     const showForm = () => {
       this.body.classList.add('showForm');
@@ -147,9 +152,9 @@ class ViewController {
       return;
     }
 
-    setTimeout(() => {
+    this.showFormTimeout = setTimeout(() => {
       showForm();
-      setTimeout(() => {
+      this.resetAnimationTimeout = setTimeout(() => {
         resetAnimation();
       }, 6000);
     }, 2000);
