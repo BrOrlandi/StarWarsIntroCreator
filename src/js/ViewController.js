@@ -70,14 +70,6 @@ class ViewController {
     this.body.classList.remove('requestFocus');
   }
 
-  setError() {
-    this.body.classList.add('error');
-  }
-
-  unsetError() {
-    this.body.classList.remove('error');
-  }
-
   showDownloadButton() {
     this.downloadButton.classList.add('show');
   }

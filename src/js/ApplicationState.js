@@ -7,7 +7,6 @@ export const CREATING = 'CREATING';
 export const LOADING = 'LOADING';
 export const PLAYING = 'PLAYING';
 export const EDITING = 'EDITING';
-export const ERROR = 'ERROR';
 
 class ApplicationState {
   constructor() {
@@ -25,10 +24,6 @@ class ApplicationState {
       switch (this.state.page) {
         case LOADING:
           ViewController.unsetLoading();
-          break;
-
-        case ERROR:
-          ViewController.unsetError();
           break;
 
         case PLAYING:
@@ -74,11 +69,6 @@ class ApplicationState {
         ViewController.setFormValues(opening);
         ViewController.showDownloadButton();
         break;
-
-      case ERROR:
-        ViewController.setError();
-        break;
-
 
       default:
         ViewController.unsetLoading();

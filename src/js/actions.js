@@ -3,7 +3,7 @@ import isEqual from 'lodash.isequal';
 
 import UrlHandler from './UrlHandler';
 import ViewController from './ViewController';
-import ApplicationState, { CREATING, ERROR, PLAYING, EDITING, LOADING } from './ApplicationState';
+import ApplicationState, { CREATING, PLAYING, EDITING, LOADING } from './ApplicationState';
 import { loadKey, saveOpening } from './firebaseApi';
 
 export const setCreateMode = (props = {}) => {
@@ -48,7 +48,6 @@ const loadOpening = async (key) => {
   try {
     opening = await loadKey(key);
   } catch (error) {
-    ApplicationState.setState(ERROR);
     _apiError(`We could not load the introduction "${key}"`, true);
   }
 
@@ -63,13 +62,17 @@ const loadOpening = async (key) => {
 export const loadAndPlay = async (key) => {
   ApplicationState.setState(LOADING);
   const opening = await loadOpening(key);
-  ApplicationState.setState(PLAYING, { opening, key });
+  if (opening) {
+    ApplicationState.setState(PLAYING, { opening, key });
+  }
 };
 
 export const loadAndEdit = async (key) => {
   ApplicationState.setState(LOADING);
   const opening = await loadOpening(key);
-  ApplicationState.setState(EDITING, { opening, key });
+  if (opening) {
+    ApplicationState.setState(EDITING, { opening, key });
+  }
 };
 
 export const _openingIsValid = (opening) => {
@@ -114,7 +117,6 @@ export const playButton = async (opening) => {
   try {
     key = await saveOpening(opening);
   } catch (error) {
-    ApplicationState.setState(ERROR);
     _apiError('There was an error creating your intro.');
   }
 
