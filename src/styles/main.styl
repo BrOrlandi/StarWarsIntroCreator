@@ -24,8 +24,18 @@ $HD = '(max-height: 720px)';
 
 // variables
 $timeFactor = 1;
+$timeFactor = 1/16;
 $introColor = #4bd5ee;
 $titlesColor = #ffd54e;
+
+$formBackgroundColor = lighten(black, 2%)
+
+$buttonHoverColor = lighten($formBackgroundColor, 20%);
+$buttonFocusColor = lighten($formBackgroundColor, 40%);
+
+$errorRed = #ab0000;
+$alertTextColor = #d0ad3e;
+$warningYellow = $alertTextColor;
 
 html,
 body {
@@ -36,6 +46,18 @@ body {
     background: url('../assets/bg-stars.png') repeat;
     background-color: black;
     color: $titlesColor;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+iframe{
+    border: none;
 }
 
 .verticalWrapper{
@@ -111,6 +133,11 @@ fadeOut($delay = 0s, $fadeDuration = 500ms) {
   > div {
     @extend $actionButtonStyle;
   }
+}
+
+.pageTitle {
+  starWarsFontStyle();
+  text-align: center;
 }
 
 @import './bodyStates.styl';

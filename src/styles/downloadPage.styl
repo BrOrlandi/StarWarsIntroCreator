@@ -1,3 +1,22 @@
 #downloadPage {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .panel {
+    display: flex;
+    padding: 10px 50px;
+    max-width: 600px;
+    width: 60%;
+  align-items: center;
+    flex-direction: column;
+    border: 2px solid $alertTextColor;
+    border-radius: 3px;
+    background-color: $formBackgroundColor;
+
+    h2 {
+      starWarsFontStyle();
+    }
+  }
 }
