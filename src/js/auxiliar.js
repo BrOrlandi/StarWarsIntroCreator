@@ -43,3 +43,31 @@ I want to provide the following details:
     ApplicationState.setState(CREATING);
   });
 };
+
+export const calculateTimeToRender = (queuePosition) => {
+  const totalMinutes = queuePosition * 30;
+  const totalHours = Math.floor(totalMinutes / 60);
+  const partialDays = Math.floor(totalHours / 24);
+  const totalDays = Math.ceil(totalHours / 24);
+  let time = '';
+
+  if (queuePosition < 3) {
+    return ' 1 hour';
+  }
+  if (partialDays >= 3) {
+    return ` ${totalDays} days`;
+  }
+  if (partialDays > 0) {
+    time += ` ${partialDays} day${1 !== partialDays ? 's' : ''}`;
+  }
+
+  const hours = totalHours % 24;
+  const minutes = totalMinutes % 60;
+  if (hours > 0) {
+    time += `${partialDays ? ',' : ''} ${hours} hour${1 !== hours ? 's' : ''}`;
+  }
+  if (minutes > 0) {
+    time += ` and ${minutes} minutes`;
+  }
+  return time;
+};
