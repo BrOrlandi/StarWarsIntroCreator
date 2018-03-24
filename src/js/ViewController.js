@@ -4,6 +4,7 @@ import AudioController from './AudioController';
 import { playButtonHandler, downloadButtonHandler } from './actions';
 
 import StarWarsAnimation from './StarWarsAnimation';
+import { mountDownloadPage, unmountDownloadPage } from './mountDownloadPage';
 
 class ViewController {
   constructor() {
@@ -71,11 +72,13 @@ class ViewController {
   }
 
   setDownloadPage() {
+    mountDownloadPage();
     this.body.classList.add('downloadPage');
   }
 
   unsetDownloadPage() {
     this.body.classList.remove('downloadPage');
+    unmountDownloadPage();
   }
 
   showDownloadButton() {

@@ -96,7 +96,7 @@ export const downloadButtonHandler = async (opening) => {
   const lastOpening = ApplicationState.state.opening;
   const { key } = ApplicationState.state;
   if (!isEqual(lastOpening, opening)) {
-    return swal({
+    swal({
       title: 'Text was modified',
       text: 'You have changed some of the text fields. You need to play the your new intro to save and request a download. Do you want to restore your intro or play the new one?',
       showCancelButton: true,
@@ -113,6 +113,7 @@ export const downloadButtonHandler = async (opening) => {
         playButtonHandler(opening);
       }
     });
+    return;
   }
   UrlHandler.goToDownloadPage(key);
 };
