@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "handlebars": "^4.0.11",
     "lodash.isequal": "^4.5.0",
     "preact": "^8.2.7",
     "sweetalert2": "^7.15.1"
