@@ -18,5 +18,7 @@ export const firebases = {
 export const defaultFirebase = firebases.B;
 export const defaultFirebasePrefix = 'B';
 
-// export const serverApi = process.env.SERVER_API;
-export const serverApi = 'https://5mitidksxm7xfn4g4-mock.stoplight-proxy.io/';
+export const serverApi = process.env.SERVER_API;
+
+// MOCK Api
+// export const serverApi = 'https://5mitidksxm7xfn4g4-mock.stoplight-proxy.io/';

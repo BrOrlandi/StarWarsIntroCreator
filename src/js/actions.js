@@ -119,13 +119,32 @@ export const downloadButtonHandler = async (opening) => {
 };
 
 const _loadStatus = async (key) => {
-  let status;
+  let statusObject;
   try {
-    status = await fetchStatus(key);
+    const response = await fetchStatus(key);
+    const queuePosition = response.queue;
+
+    // TODO remove for new API
+    const responseFake = await fetchStatus('x');
+    const queueSize = responseFake.queue;
+    statusObject = {
+      queueSize,
+      queuePosition,
+    };
+
+    let statusType = queuePosition === queueSize ?
+      'not_queued' :
+      'queued';
+
+    statusType = queuePosition < 20 ? 'bumped' : statusType;
+    statusType = 0 === queuePosition ? 'rendering' : statusType;
+
+    statusObject.status = statusType;
+    // end TODO
   } catch (error) {
     apiError(`We could not contact our servers for the download of ID: "${key}"`, true);
   }
-  return status;
+  return statusObject;
 };
 
 export const loadDownloadPage = async (key) => {
