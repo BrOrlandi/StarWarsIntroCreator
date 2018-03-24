@@ -10,7 +10,8 @@
       "no-use-before-define": ["error", { "functions": false }],
       "no-param-reassign": 0,
       "react/jsx-filename-extension": 0,
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "jsx-quotes": ["error", "prefer-double"]
     },
     "extends": ["airbnb", "standard-preact"],
     "globals": {

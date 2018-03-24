@@ -9,15 +9,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 50px;
+    padding: 10px 50px 35px;
     max-width: 600px;
     width: 60%;
     border: 2px solid $alertTextColor;
     border-radius: 3px;
     background-color: $formBackgroundColor;
+    letter-spacing: .05em;
 
     h2 {
       starWarsFontStyle();
+    }
+
+    a {
+      color: $titlesColor;
+    }
+
+    button {
+      buttonStyle();
+    }
+
+    .donateOrNotDonateButtons {
+      display: flex;
+      justify-content: center;
     }
   }
 }
