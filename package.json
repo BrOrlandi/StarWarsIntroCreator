@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "parcel build ./src/index.html --public-url /StarWarsIntroCreator/",
-    "start": "parcel ./src/index.html -p 8080",
+    "start": "parcel ./src/index.html -p 8080 --no-hmr",
     "test": "jest",
     "test:watch": "yarn test --watchAll",
     "test:coverage": "yarn test --coverage",
@@ -19,8 +19,10 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-preact": "^1.1.0",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-standard-preact": "^1.1.6",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
@@ -33,6 +35,7 @@
     "axios": "^0.18.0",
     "handlebars": "^4.0.11",
     "lodash.isequal": "^4.5.0",
+    "preact": "^8.2.7",
     "sweetalert2": "^7.15.1"
   }
 }
