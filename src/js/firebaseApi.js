@@ -42,7 +42,7 @@ export const _generateUrlWithKey = (key) => {
 };
 
 
-export const loadKey = async (initialKey) => {
+export const fetchKey = async (initialKey) => {
   const openingFromCache = openingsCache[initialKey];
   if (openingFromCache) {
     Raven.captureBreadcrumb({

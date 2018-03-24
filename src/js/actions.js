@@ -4,51 +4,20 @@ import isEqual from 'lodash.isequal';
 import UrlHandler from './UrlHandler';
 import ViewController from './ViewController';
 import ApplicationState, { CREATING, PLAYING, EDITING, LOADING, DOWNLOAD } from './ApplicationState';
-import { loadKey, saveOpening } from './firebaseApi';
+import { fetchKey, saveOpening } from './firebaseApi';
+import { fetchStatus } from './serverApi';
+import { apiError } from './auxiliar';
 
 export const setCreateMode = (props = {}) => {
   ApplicationState.setState(CREATING, props);
 };
 
-const _apiError = (message, reloadPage = false) => {
-  const bodyMessage = encodeURI(`Hi, the SWIC website didn't work as expected.
-The following error message is showed:
-
-${message}
-
-I want to provide the following details:
-
-  `);
-
-  const cancelButtonText = reloadPage ? 'RELOAD PAGE' : 'CLOSE';
-
-  swal({
-    title: 'an unexpected error occured',
-    text: `${message}.
-    The empire may have intercepted our transmission.
-    The alliance has already been informed and is working on correcting this.
-    Please try again and if the problem persists, contact us to give more details clicking on the button below.`,
-    type: 'error',
-    showCancelButton: true,
-    cancelButtonText,
-    confirmButtonText: 'CONTACT SUPPORT',
-  }).then((result) => {
-    if (result.value) {
-      window.open(`mailto:kassellabs+starwars@gmail.com?Subject=SWIC%20Error&Body=${bodyMessage}`);
-    }
-    if (result.dismiss === swal.DismissReason.cancel && reloadPage) {
-      window.location.reload();
-    }
-    setCreateMode();
-  });
-};
-
-const loadOpening = async (key) => {
+const _loadOpening = async (key) => {
   let opening;
   try {
-    opening = await loadKey(key);
+    opening = await fetchKey(key);
   } catch (error) {
-    _apiError(`We could not load the introduction "${key}"`, true);
+    apiError(`We could not load the introduction "${key}"`, true);
   }
 
   if (!opening) {
@@ -61,7 +30,7 @@ const loadOpening = async (key) => {
 
 export const loadAndPlay = async (key) => {
   ApplicationState.setState(LOADING);
-  const opening = await loadOpening(key);
+  const opening = await _loadOpening(key);
   if (opening) {
     ApplicationState.setState(PLAYING, { opening, key });
   }
@@ -69,7 +38,7 @@ export const loadAndPlay = async (key) => {
 
 export const loadAndEdit = async (key) => {
   ApplicationState.setState(LOADING);
-  const opening = await loadOpening(key);
+  const opening = await _loadOpening(key);
   if (opening) {
     ApplicationState.setState(EDITING, { opening, key });
   }
@@ -117,7 +86,7 @@ export const playButtonHandler = async (opening) => {
   try {
     key = await saveOpening(opening);
   } catch (error) {
-    _apiError('There was an error creating your intro.');
+    apiError('There was an error creating your intro.');
   }
 
   UrlHandler.setKeyToPlay(key);
@@ -148,11 +117,23 @@ export const downloadButtonHandler = async (opening) => {
   UrlHandler.goToDownloadPage(key);
 };
 
+const _loadStatus = async (key) => {
+  let status;
+  try {
+    status = await fetchStatus(key);
+  } catch (error) {
+    apiError(`We could not contact our servers for the download of ID: "${key}"`, true);
+  }
+  return status;
+};
+
 export const loadDownloadPage = async (key) => {
   ApplicationState.setState(LOADING);
-  const opening = await loadOpening(key);
+  const opening = await _loadOpening(key);
   if (!opening) {
     return;
   }
-  ApplicationState.setState(DOWNLOAD, { opening, key });
+
+  const downloadStatus = await _loadStatus(key);
+  ApplicationState.setState(DOWNLOAD, { opening, key, downloadStatus });
 };
