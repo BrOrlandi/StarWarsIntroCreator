@@ -2,9 +2,11 @@ import { h } from 'preact';
 import DonateOrNotDonate from './DonateOrNotDonate';
 import { calculateTimeToRender } from '../auxiliar';
 
-const NotQueuedPage = ({ status, ...props }) => {
+const NotQueuedPage = ({ status, openingKey, ...props }) => {
   const { queueSize } = status;
   const timeToRender = calculateTimeToRender(queueSize);
+  const urlToEdit = `#!/${openingKey}/edit`;
+
   return (
     <div>
       <p>
@@ -29,8 +31,15 @@ const NotQueuedPage = ({ status, ...props }) => {
       </p>
       <p>
         Donate at least <b>10 US Dollars</b> and you will get the in <b>Full HD Quality</b>.<br />
-        <b>Attention!</b> Make sure there are no typos in your text
-        to grant that your video will be with the right text.
+        The donation is made via PayPal and it&apos;s safe.
+        If you don&apos;t receive the video that we promise, you can request a refund on PayPal.
+      </p>
+      <p>
+        <b>Attention!</b> Before sending the download request make sure there are no typos in your text
+        to grant that your video will be with the correct text.&nbsp;
+        <a href={urlToEdit}>
+          Click here to go back and check your text.
+        </a>
       </p>
       <p>You want to receive your video faster by donating or wait in the queue?</p>
       <DonateOrNotDonate {...props} />

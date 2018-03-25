@@ -8,10 +8,13 @@ const dom = document.querySelector('#reactDownloadPage');
 let root;
 
 export const mountDownloadPage = async () => {
-  const { downloadStatus } = ApplicationState.state;
+  const { downloadStatus, key } = ApplicationState.state;
   // user fast foward and back page problems
   dom.innerHTML = '';
-  root = render((<DownloadPage status={downloadStatus} />), dom);
+  root = render((<DownloadPage
+    status={downloadStatus}
+    openingKey={key}
+  />), dom);
 };
 
 export const unmountDownloadPage = () => {

@@ -23,6 +23,7 @@ class DownloadPage extends Component {
 
   renderInitialPage() {
     const { status } = this.state;
+    const { openingKey } = this.props;
     const statusType = status.status;
     switch (statusType) {
       default:
@@ -30,6 +31,7 @@ class DownloadPage extends Component {
         return (
           <NotQueuedPage
             status={status}
+            openingKey={openingKey}
             yesDonateHandle={this.yesDonateHandle}
             noDonateHandle={this.noDonateHandle}
           />
