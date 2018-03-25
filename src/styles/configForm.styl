@@ -83,11 +83,13 @@ stroke($stroke, $color) {
       width: 97%;
       color: $titlesColor;
       word-break: break-word;
+      font-size: 14px;
 
       inputStyle();
     }
 
     textarea {
+      font-family: monospace;
       resize: none;
 
       &#f-logo {
@@ -105,6 +107,11 @@ stroke($stroke, $color) {
     #playButton {
       @extend $actionButtonStyle;
       z-index: 10;
+      margin-top: 20px;
+    }
+
+    #playButtonSpan {
+      margin-top: 20px;
     }
 
     #downloadButton {
