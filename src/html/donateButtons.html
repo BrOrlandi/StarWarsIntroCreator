@@ -1,4 +1,5 @@
-<div style="text-align:center">
+<div style="text-align:center; color: #ffd54e; font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.05em;">
+    <div style="margin-bottom: 5px;">Donate in US Dollars (US$)</div>
 <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="EA3ESE322GAJA">
@@ -7,21 +8,43 @@
     <input type="hidden" name="custom" value="">
     <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
 </form>
-
-<form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="AU6WSD3YHLGHY">
-    <input type="hidden" name="charset" value="utf-8">
-    <input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
-    <input type="hidden" name="custom" value="">
-    <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-</form>
+<div id="paypalDonateBRL" style="display: none;">
+  <div style="margin-bottom: 5px;">Doar em Reais (R$)</div>
+  <form target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="AU6WSD3YHLGHY">
+      <input type="hidden" name="charset" value="utf-8">
+      <input type="image" src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+      <input type="hidden" name="custom" value="">
+      <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+  </form>
+</div>
 </div>
 <script>
+  var isFromBrazil = () => {
+    var browserLanguage = navigator.language || navigator.userLanguage;
+    var ptBR = 'pt-BR';
+    if (ptBR === browserLanguage) {
+      return true;
+    }
+
+    var languages = navigator.languages || [];
+    if (languages.indexOf(ptBR) > -1) {
+      return true;
+    }
+
+    return false;
+  };
+
   var code = location.hash.split('#!/')[1];
   if (code) {
     Array.prototype.map.call(document.querySelectorAll('[name=custom]'), function(element) {
       element.value = code;
     });
+  }
+
+  if(isFromBrazil()) {
+    const form = document.querySelector('#paypalDonateBRL');
+    form.style.display = 'block';
   }
 </script>

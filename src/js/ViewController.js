@@ -1,5 +1,5 @@
 import { defaultOpening } from './config';
-import { callOnFocus } from './utils';
+import { callOnFocus, isFromBrazil } from './utils';
 import AudioController from './AudioController';
 import { playButtonHandler, downloadButtonHandler } from './actions';
 
@@ -44,6 +44,12 @@ class ViewController {
       const opening = this.getFormValues();
       downloadButtonHandler(opening);
     });
+
+    // paypal show Doar if is brazilian
+    const paypalButtons = document.querySelector('#paypalDonateBRL');
+    if (isFromBrazil()) {
+      paypalButtons.classList.add('show');
+    }
   }
 
   setLoading() {

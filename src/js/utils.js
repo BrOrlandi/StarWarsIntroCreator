@@ -64,3 +64,18 @@ export const appendKeyframesRule = (keyframeName, ruleToAppend) => {
     cssRuleToChange.appendRule(ruleToAppend);
   }
 };
+
+export const isFromBrazil = () => {
+  const browserLanguage = navigator.language || navigator.userLanguage;
+  const ptBR = 'pt-BR';
+  if (ptBR === browserLanguage) {
+    return true;
+  }
+
+  const languages = navigator.languages || [];
+  if (languages.indexOf(ptBR) > -1) {
+    return true;
+  }
+
+  return false;
+};
