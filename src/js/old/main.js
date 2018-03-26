@@ -238,33 +238,33 @@
     // });
 // });
 
-var calcTime = function(queue){
-    var minutes = (queue+1)*30;
-    var hours = Math.floor(minutes/60);
-    var days = Math.floor(hours/24);
-    var time = "";
-    if(days > 0){
-        time += days + " days";
-    }
-    if(days < 3){
-        hours = hours%24;
-        minutes = minutes%60;
-        if(hours > 0){
-            time += " " +hours + " hours";
-        }
-        if(minutes > 0){
-            time += " " +minutes + " minutes";
-        }
-    }
-    return time;
-};
+// var calcTime = function(queue){
+//     var minutes = (queue+1)*30;
+//     var hours = Math.floor(minutes/60);
+//     var days = Math.floor(hours/24);
+//     var time = "";
+//     if(days > 0){
+//         time += days + " days";
+//     }
+//     if(days < 3){
+//         hours = hours%24;
+//         minutes = minutes%60;
+//         if(hours > 0){
+//             time += " " +hours + " hours";
+//         }
+//         if(minutes > 0){
+//             time += " " +minutes + " minutes";
+//         }
+//     }
+//     return time;
+// };
 
-function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-}
+// function validateEmail(email) {
+//     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//     return re.test(email);
+// }
 
-var termsOfServiceText = 'By using this website you are agreeing to our <a style="color: #ffd54e;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.';
+// var termsOfServiceText = 'By using this website you are agreeing to our <a style="color: #ffd54e;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.';
 
 var requestVideo = function(donate, email){
     if(email === false) return false;

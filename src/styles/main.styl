@@ -24,7 +24,7 @@ $HD = '(max-height: 720px)';
 
 // variables
 $timeFactor = 1;
-$timeFactor = 1/16;
+// $timeFactor = 1/16;
 $introColor = #4bd5ee;
 $titlesColor = #ffd54e;
 
@@ -34,8 +34,8 @@ $buttonHoverColor = lighten($formBackgroundColor, 20%);
 $buttonFocusColor = lighten($formBackgroundColor, 40%);
 
 $errorRed = #ab0000;
-$alertTextColor = #d0ad3e;
-$warningYellow = $alertTextColor;
+$panelTextColor = #d0ad3e;
+$warningYellow = $panelTextColor;
 
 html,
 body {
@@ -107,12 +107,13 @@ fadeOut($delay = 0s, $fadeDuration = 500ms) {
 buttonStyle() {
   margin: 0 .3125em;
   padding: .625em 2em;
-  border: 2px solid $alertTextColor !important;
+  border: 2px solid $panelTextColor !important;
   border-radius: 3px !important;
   background-color: $formBackgroundColor !important;
-  color: $alertTextColor !important;
+  color: $panelTextColor !important;
   font-weight: 500;
   font-size: 1.0625em;
+  font-family: $defaultFontFamily;
   cursor: pointer;
 
   &:hover, &:active {

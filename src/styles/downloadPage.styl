@@ -12,10 +12,11 @@
     padding: 10px 50px 35px;
     max-width: 600px;
     width: 60%;
-    border: 2px solid $alertTextColor;
+    border: 2px solid $panelTextColor;
     border-radius: 3px;
     background-color: $formBackgroundColor;
     letter-spacing: .05em;
+    margin-bottom: 50px;
 
     h2 {
       starWarsFontStyle();
@@ -28,10 +29,47 @@
     button {
       buttonStyle();
     }
+  }
+}
 
-    .donateOrNotDonateButtons {
-      display: flex;
-      justify-content: center;
+.donateOrNotDonateButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.requestDownloadPage {
+  iframe {
+    margin-top: 5px;
+    width: 100%;
+
+    &.isBrazil {
+      height: 123px;
+    }
+  }
+}
+
+.termsOfServiceAcceptance,
+.contactButton {
+  a {
+    font-weight: bold;
+  }
+}
+
+#emailRequestField {
+  // display: flex;
+  // justify-content: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      inputStyle();
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 80%;
+      color: $titlesColor;
+      font-size: 1.2em;
     }
   }
 }

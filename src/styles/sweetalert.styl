@@ -1,21 +1,31 @@
+// $successGreen = #37c300;
+
 .starwars-sweetalert {
-  border: 2px solid $alertTextColor;
+  border: 2px solid $panelTextColor;
   background-color: $formBackgroundColor;
 
   .swal2-title {
     starWarsFontStyle();
     margin-bottom: 1em;
-    color: $alertTextColor;
   }
 
   .swal2-content{
     margin-bottom: 1em;
-    color: $alertTextColor;
+    color: $panelTextColor;
     font-family: $defaultFontFamily;
   }
 
-  button {
-    buttonStyle();
+  .swal2-actions:not(.swal2-loading) {
+    button {
+      buttonStyle();
+    }
+  }
+
+  .swal2-loading {
+    button {
+      border-right-color: $panelTextColor !important;
+      border-left-color: $panelTextColor !important;
+    }
   }
 
   .swal2-icon {
@@ -35,4 +45,19 @@
       }
     }
   }
+
+  // .swal2-success-circular-line-left,
+  // .swal2-success-circular-line-right,
+  // .swal2-success-fix {
+  //   background-color: transparent !important;
+  // }
+
+  // .swal2-success-line-tip,
+  // .swal2-success-line-long {
+  //   background-color: $successGreen !important;
+  // }
+
+  // .swal2-success-ring {
+  //   border-color: $successGreen !important;
+  // }
 }

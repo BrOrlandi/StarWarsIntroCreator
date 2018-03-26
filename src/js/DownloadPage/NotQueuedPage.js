@@ -1,6 +1,8 @@
 import { h } from 'preact';
 import DonateOrNotDonate from './DonateOrNotDonate';
 import { calculateTimeToRender } from '../auxiliar';
+import TermsOfServiceAcceptance from './TermsOfServiceAcceptance';
+import ContactButton from './ContactButton';
 
 const NotQueuedPage = ({ status, openingKey, ...props }) => {
   const { queueSize } = status;
@@ -41,6 +43,8 @@ const NotQueuedPage = ({ status, openingKey, ...props }) => {
           Click here to go back and check your text.
         </a>
       </p>
+      <TermsOfServiceAcceptance />
+      <ContactButton />
       <p>You want to receive your video faster by donating or wait in the queue?</p>
       <DonateOrNotDonate {...props} />
     </div>
