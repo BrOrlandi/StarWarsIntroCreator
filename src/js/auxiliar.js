@@ -11,7 +11,7 @@ export const checkSWFontCompatibility = (title) => {
   return chars.every(char => supportedChars.indexOf(char) !== -1);
 };
 
-export const apiError = (message, reloadPage = false) => {
+export const apiError = (message, reloadPage = false, keepPage = false) => {
   const bodyMessage = encodeURI(`Hi, the SWIC website didn't work as expected.
 The following error message is showed:
 
@@ -40,7 +40,10 @@ I want to provide the following details:
     if (result.dismiss === swal.DismissReason.cancel && reloadPage) {
       window.location.reload();
     }
-    ApplicationState.setState(CREATING);
+
+    if (!keepPage) {
+      ApplicationState.setState(CREATING);
+    }
   });
 };
 

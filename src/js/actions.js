@@ -5,7 +5,7 @@ import UrlHandler from './UrlHandler';
 import ViewController from './ViewController';
 import ApplicationState, { CREATING, PLAYING, EDITING, LOADING, DOWNLOAD } from './ApplicationState';
 import { fetchKey, saveOpening } from './firebaseApi';
-import { fetchStatus } from './serverApi';
+import { fetchStatus, requestDownload } from './serverApi';
 import { apiError } from './auxiliar';
 
 export const setCreateMode = (props = {}) => {
@@ -156,4 +156,14 @@ export const loadDownloadPage = async (key) => {
 
   const downloadStatus = await _loadStatus(key);
   ApplicationState.setState(DOWNLOAD, { opening, key, downloadStatus });
+};
+
+export const requestIntroDownload = async (key, email) => {
+  let statusObject = null;
+  try {
+    statusObject = await requestDownload(key, email);
+  } catch (error) {
+    apiError('We could not contact our servers to request the download your intro', false, true);
+  }
+  return statusObject;
 };

@@ -12,6 +12,12 @@ export const fetchStatus = async (key) => {
   return response.data;
 };
 
-export const requestDownload = (key, email) => {
-  // TODO
+export const requestDownload = async (key, email) => {
+  const response = await httpApi.get('/request', {
+    params: {
+      code: key,
+      email,
+    },
+  });
+  return response.data;
 };
