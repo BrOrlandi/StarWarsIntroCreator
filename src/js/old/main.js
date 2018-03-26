@@ -266,19 +266,19 @@
 
 // var termsOfServiceText = 'By using this website you are agreeing to our <a style="color: #ffd54e;font-weight:bold;" href="termsOfService.html" target="_blank">Terms of Service</a>.';
 
-var requestVideo = function(donate, email){
-    if(email === false) return false;
-    if (!validateEmail(email)) {
-        swal.showInputError("You need to type an e-mail!");
-        return false;
-    }
+// var requestVideo = function(donate, email){
+//     if(email === false) return false;
+//     if (!validateEmail(email)) {
+//         swal.showInputError("You need to type an e-mail!");
+//         return false;
+//     }
 
-    var url = "https://endor.nihey.org/request?code="+ OpeningKey +"&email=" + email;
-    $.ajax({
-        url: url,
-        type: 'GET',
-        crossDomain: true,
-        success: function(data){
+//     var url = "https://endor.nihey.org/request?code="+ OpeningKey +"&email=" + email;
+//     $.ajax({
+//         url: url,
+//         type: 'GET',
+//         crossDomain: true,
+//         success: function(data){
             var queue = data.queue;
             swal({
                 html: true,
@@ -299,15 +299,15 @@ var requestVideo = function(donate, email){
               ) +
               '<p style="text-align: justify;margin-top: 15px;">'+termsOfServiceText+'</p>'
             });
-        },
-        error: ajaxErrorFunction('Error when request video download.')
-    });
+//         },
+//         error: ajaxErrorFunction('Error when request video download.')
+//     });
 
-};
+// };
 
-$("#videoButton").click(function(){
-    var now = getOpeningFormValues();
-    var before = StarWars.opening;
+// $("#videoButton").click(function(){
+//     var now = getOpeningFormValues();
+//     var before = StarWars.opening;
 
     // if(isOpeningsDifferents(now, before)){ // prevent user to request download without save the edited intro
     //     swal({
@@ -347,63 +347,63 @@ $("#videoButton").click(function(){
                         '<a style="color: #ffd54e;" href="'+data.url+'">'+data.url+'</a></p>',
                     });
                 }else{
-                    swal({
-                        html: true,
-                        title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
-                        text: '<p style="text-align: left">'+
-                        'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>'+
-                        'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br><br>'+
-                        'Can\'t wait for it? Donate at least <b>5 US Dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
-                        'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
-                        '<a style="color: #ffd54e;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>.'+
-                        'Donate at least <b>10 US Dollars</b> and you will get the video in <b>Full HD resolution (1920x1080)</b><br><br>'+
-                        '<b>Attention!</b> Make sure there are no typos in your text, there will be no correction after the video rendering.<br>'+
-                        termsOfServiceText+
-                        '</p>'+
-                        '<iframe src="./atat.html" height="200px"></iframe>',
-                          showCancelButton: true,
-                          confirmButtonText: "Yes, donate!",
-                          confirmButtonColor: "#807300",
-                          cancelButtonText: "No, I'll get in the queue!",
-                          closeOnConfirm: false,
-                          closeOnCancel: false,
-                          animation: false
-                    },function(donate){
+                    // swal({
+                    //     html: true,
+                    //     title: '<h2 style="font-family: StarWars;">Donate and Download</h2>',
+                    //     text: '<p style="text-align: left">'+
+                    //     'We want to provide videos for free, but we have to use a server to render it, which costs money.<br>'+
+                    //     'There are <b>'+(queue+1)+' videos</b> in front of you and it will take <b>'+calcTime(queue)+'</b> to be processed.<br><br>'+
+                    //     'Can\'t wait for it? Donate at least <b>5 US Dollars</b>, you will jump the queue and your video will be ready in few hours.<br>'+
+                    //     'The video will be rendered in HD quality and MP4 file. To see a sample video click '+
+                    //     '<a style="color: #ffd54e;font-weight:bold;" href="https://www.youtube.com/watch?v=IQf8AN07T_E" target="_blank">here</a>.'+
+                    //     'Donate at least <b>10 US Dollars</b> and you will get the video in <b>Full HD resolution (1920x1080)</b><br><br>'+
+                    //     '<b>Attention!</b> Make sure there are no typos in your text, there will be no correction after the video rendering.<br>'+
+                    //     termsOfServiceText+
+                    //     '</p>'+
+                    //     '<iframe src="./atat.html" height="200px"></iframe>',
+                    //       showCancelButton: true,
+                    //       confirmButtonText: "Yes, donate!",
+                    //       confirmButtonColor: "#807300",
+                    //       cancelButtonText: "No, I'll get in the queue!",
+                    //       closeOnConfirm: false,
+                    //       closeOnCancel: false,
+                    //       animation: false
+                    // },function(donate){
 
-                        var generateAlert = {
-                            html: true,
-                            title: '<h2 style="font-family: StarWars;">Generate video</h2>',
-                            text: '<p style="text-align: justify">'+
-                            'Type your email below and you will receive a message with the URL to download your video when it\'s ready. We promise not to send spam!'+
-                            '</p>' + (donate ? [
-                              '<br><p style="text-align: justify">',
-                              '  Please, use the same email from you PayPal account.',
-                              "  If you want to receive in another e-mail too, click on download button again and add more e-mails. You don't need to donate again.",
-                              '  <br><br>',
-                              '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.<br><br>',
-                              '  '+termsOfServiceText,
-                              '</p>',
-                            ].join('') : ''),
-                            type: 'input',
-                            showCancelButton: true,
-                            inputPlaceholder: "Your e-mail...",
-                            closeOnConfirm: false,
-                            showLoaderOnConfirm: true,
-                        };
+                    //     var generateAlert = {
+                    //         html: true,
+                    //         title: '<h2 style="font-family: StarWars;">Generate video</h2>',
+                    //         text: '<p style="text-align: justify">'+
+                    //         'Type your email below and you will receive a message with the URL to download your video when it\'s ready. We promise not to send spam!'+
+                    //         '</p>' + (donate ? [
+                    //           '<br><p style="text-align: justify">',
+                    //           '  Please, use the same email from you PayPal account.',
+                    //           "  If you want to receive in another e-mail too, click on download button again and add more e-mails. You don't need to donate again.",
+                    //           '  <br><br>',
+                    //           '  Attention! Make sure there are no typos in your text, you will need to request a new video download and donate again.<br><br>',
+                    //           '  '+termsOfServiceText,
+                    //           '</p>',
+                    //         ].join('') : ''),
+                    //         type: 'input',
+                    //         showCancelButton: true,
+                    //         inputPlaceholder: "Your e-mail...",
+                    //         closeOnConfirm: false,
+                    //         showLoaderOnConfirm: true,
+                    //     };
 
-                        if(donate){
-                            generateAlert.title = '<h2 style="font-family: StarWars;">Donate</h2>';
-                            generateAlert.text = 'Click on the button below:'
-                            +'<br><iframe src="./donateButtons.html#!/' + OpeningKey + '" height="100"></iframe>'+generateAlert.text;
-                        }
-                        swal(generateAlert, requestVideo.bind(window, donate));
-                    });
-            }
-        },
-        error: ajaxErrorFunction('Error when request video information to download.')
-    });
+                    //     if(donate){
+                    //         generateAlert.title = '<h2 style="font-family: StarWars;">Donate</h2>';
+                    //         generateAlert.text = 'Click on the button below:'
+                    //         +'<br><iframe src="./donateButtons.html#!/' + OpeningKey + '" height="100"></iframe>'+generateAlert.text;
+                    //     }
+                    //     swal(generateAlert, requestVideo.bind(window, donate));
+                    // });
+    //         }
+    //     },
+    //     error: ajaxErrorFunction('Error when request video information to download.')
+    // });
 
-});
+// });
 
 // function getOpeningFormValues(){ // read the opening from form and create the object
 //     return {
