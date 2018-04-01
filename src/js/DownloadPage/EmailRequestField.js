@@ -27,7 +27,7 @@ class EmailRequestField extends Component {
     });
 
     if (requestDownloadStatus) {
-      finishRequestHandle(requestDownloadStatus);
+      finishRequestHandle(requestDownloadStatus, email);
     }
   }
 

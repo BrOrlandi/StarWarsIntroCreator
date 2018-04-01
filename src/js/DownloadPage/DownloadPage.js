@@ -18,7 +18,7 @@ class DownloadPage extends Component {
       status,
       openingKey,
       page: INITIAL_PAGE,
-      donate: true,
+      donate: false,
     };
   }
 
@@ -36,10 +36,11 @@ class DownloadPage extends Component {
     });
   };
 
-  finishRequestHandle = (requestStatus) => {
+  finishRequestHandle = (requestStatus, requestEmail) => {
     this.setState({
       page: FINAL_PAGE,
-      requestStatus, // TODO FINAL PAGE
+      requestStatus,
+      requestEmail,
     });
   }
 
@@ -61,7 +62,15 @@ class DownloadPage extends Component {
   }
 
   render() {
-    const { page, openingKey, donate } = this.state;
+    const {
+      page,
+      openingKey,
+      donate,
+      status,
+      requestStatus,
+      requestEmail,
+    } = this.state;
+
     switch (page) {
       default:
       case INITIAL_PAGE:
@@ -71,6 +80,7 @@ class DownloadPage extends Component {
         return (
           <RequestDownloadPage
             donate={donate}
+            status={status}
             openingKey={openingKey}
             yesDonateHandle={this.yesDonateHandle}
             finishRequestHandle={this.finishRequestHandle}
