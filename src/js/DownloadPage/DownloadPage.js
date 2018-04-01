@@ -15,6 +15,7 @@ import RequestDownloadPage from './RequestDownloadPage';
 import VideoQueuedPage from './VideoQueuedPage';
 import VideoRequestSent from './VideoRequestSent';
 import RenderingPage from './RenderingPage';
+import RenderedPage from './RenderedPage';
 
 class DownloadPage extends Component {
   constructor(props) {
@@ -83,6 +84,13 @@ class DownloadPage extends Component {
             statusType={statusType}
             openingKey={openingKey}
             finishRequestHandle={this.finishRequestHandle}
+          />
+        );
+
+      case RENDERED:
+        return (
+          <RenderedPage
+            status={status}
           />
         );
     }

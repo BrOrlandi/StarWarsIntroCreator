@@ -122,9 +122,19 @@ const _loadStatus = async (key) => {
   let statusObject;
   try {
     const response = await fetchStatus(key);
-    const queuePosition = response.queue;
 
     // TODO remove for new API
+    const { url } = response;
+    if (url) {
+      statusObject = {
+        status: 'rendered',
+        downloadUrl: url,
+      };
+
+      return statusObject;
+    }
+
+    const queuePosition = response.queue;
     const responseFake = await fetchStatus('x');
     const queueSize = responseFake.queue;
     statusObject = {
