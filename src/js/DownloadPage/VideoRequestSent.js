@@ -3,9 +3,14 @@ import { h, Component } from 'preact';
 import { calculateTimeToRender } from '../auxiliar';
 import TermsOfServiceAcceptance from './TermsOfServiceAcceptance';
 import ContactButton from './ContactButton';
-import OkButton from './OkButton';
+import UrlHandler from '../UrlHandler';
 
 class VideoRequestSent extends Component {
+  handleOkButton = () => {
+    const { openingKey } = this.props;
+    UrlHandler.goToEditPage(openingKey);
+  }
+
   renderEmail() {
     const { requestEmail } = this.props;
 
@@ -64,7 +69,9 @@ class VideoRequestSent extends Component {
       <div>
         {donate ? this.renderDonate() : this.renderDidNotDonate() }
         <TermsOfServiceAcceptance />
-        <OkButton />
+        <div className="center">
+          <button onClick={this.handleOkButton}>OK</button>
+        </div>
       </div>
     );
   }
