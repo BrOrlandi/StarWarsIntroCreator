@@ -35,7 +35,7 @@ I want to provide the following details:
     confirmButtonText: 'CONTACT SUPPORT',
   }).then((result) => {
     if (result.value) {
-      window.open(`mailto:kassellabs+starwars@gmail.com?Subject=SWIC%20Error&Body=${bodyMessage}`);
+      window.open(`mailto:kassellabs+starwars@googlegroups.com?Subject=SWIC%20Error&Body=${bodyMessage}`);
     }
     if (result.dismiss === swal.DismissReason.cancel && reloadPage) {
       window.location.reload();

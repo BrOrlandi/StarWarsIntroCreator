@@ -1,8 +1,8 @@
 {
-  "name": "star-wars-opening",
-  "version": "1.0.0",
-  "description": "A Star Wars Opening Creator",
-  "author": "Bruno Orlandi <brorlandi@gmail.com>",
+  "name": "star-wars-intro-creator",
+  "version": "2.0.0",
+  "description": "Star Wars Intro Creator by Kassel Labs",
+  "author": "Kassel Labs <kassellabs@googlegroups.com>",
   "license": "MIT",
   "scripts": {
     "build": "parcel build ./src/index.html --public-url /StarWarsIntroCreator/",

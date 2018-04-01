@@ -42,7 +42,6 @@ class EmailRequestField extends Component {
             id="email"
             placeholder="Insert your email here..."
             required
-            value="brorlandi@gmail.com"
           />
           <button>{buttonlabel}</button>
         </form>
