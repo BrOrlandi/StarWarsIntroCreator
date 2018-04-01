@@ -4,9 +4,9 @@ import AudioController from './AudioController';
 import ApplicationState from './ApplicationState';
 import UrlHandler from './UrlHandler';
 import { playButtonHandler, downloadButtonHandler } from './actions';
-
 import StarWarsAnimation from './StarWarsAnimation';
 import { mountDownloadPage, unmountDownloadPage } from './mountDownloadPage';
+import bitcoinEther from './bitcoinEther';
 
 class ViewController {
   constructor() {
@@ -61,6 +61,9 @@ class ViewController {
         e.preventDefault();
         UrlHandler.goToEditPage(ApplicationState.state.key);
       });
+
+    // bitcoin and ether button
+    document.querySelector('#btcether').addEventListener('click', bitcoinEther);
   }
 
   setLoading() {
