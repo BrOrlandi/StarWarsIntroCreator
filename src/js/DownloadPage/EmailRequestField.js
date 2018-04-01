@@ -32,6 +32,7 @@ class EmailRequestField extends Component {
   }
 
   render() {
+    const { buttonlabel = 'SUBMIT REQUEST' } = this.props;
     return (
       <div id="emailRequestField">
         <form onSubmit={this.handleSubmit}>
@@ -43,7 +44,7 @@ class EmailRequestField extends Component {
             required
             value="brorlandi@gmail.com"
           />
-          <button>SUBMIT REQUEST</button>
+          <button>{buttonlabel}</button>
         </form>
       </div>
     );

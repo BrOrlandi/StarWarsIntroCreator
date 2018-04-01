@@ -5,12 +5,16 @@ import {
   FINAL_PAGE,
   NOT_QUEUED,
   QUEUED,
+  BUMPED,
+  RENDERING,
+  RENDERED,
 } from './constants';
 
 import NotQueuedPage from './NotQueuedPage';
 import RequestDownloadPage from './RequestDownloadPage';
 import VideoQueuedPage from './VideoQueuedPage';
 import VideoRequestSent from './VideoRequestSent';
+import RenderingPage from './RenderingPage';
 
 class DownloadPage extends Component {
   constructor(props) {
@@ -69,6 +73,16 @@ class DownloadPage extends Component {
             openingKey={openingKey}
             yesDonateHandle={this.yesDonateHandle}
             noDonateHandle={this.noDonateHandle}
+          />
+        );
+
+      case RENDERING:
+      case BUMPED:
+        return (
+          <RenderingPage
+            statusType={statusType}
+            openingKey={openingKey}
+            finishRequestHandle={this.finishRequestHandle}
           />
         );
     }
