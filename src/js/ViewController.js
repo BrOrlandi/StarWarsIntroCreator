@@ -1,6 +1,8 @@
 import { defaultOpening } from './config';
 import { callOnFocus, isFromBrazil } from './utils';
 import AudioController from './AudioController';
+import ApplicationState from './ApplicationState';
+import UrlHandler from './UrlHandler';
 import { playButtonHandler, downloadButtonHandler } from './actions';
 
 import StarWarsAnimation from './StarWarsAnimation';
@@ -52,6 +54,13 @@ class ViewController {
       paypalButtons.classList.add('show');
       iframe.classList.add('isBrazil');
     }
+
+    // close download page button
+    document.querySelector('#closeButton')
+      .addEventListener('click', (e) => {
+        e.preventDefault();
+        UrlHandler.goToEditPage(ApplicationState.state.key);
+      });
   }
 
   setLoading() {
