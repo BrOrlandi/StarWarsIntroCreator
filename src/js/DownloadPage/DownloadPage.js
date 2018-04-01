@@ -4,10 +4,12 @@ import {
   REQUEST_PAGE,
   FINAL_PAGE,
   NOT_QUEUED,
+  QUEUED,
 } from './constants';
 
 import NotQueuedPage from './NotQueuedPage';
 import RequestDownloadPage from './RequestDownloadPage';
+import VideoQueuedPage from './VideoQueuedPage';
 import VideoRequestSent from './VideoRequestSent';
 
 class DownloadPage extends Component {
@@ -53,6 +55,16 @@ class DownloadPage extends Component {
       case NOT_QUEUED:
         return (
           <NotQueuedPage
+            status={status}
+            openingKey={openingKey}
+            yesDonateHandle={this.yesDonateHandle}
+            noDonateHandle={this.noDonateHandle}
+          />
+        );
+
+      case QUEUED:
+        return (
+          <VideoQueuedPage
             status={status}
             openingKey={openingKey}
             yesDonateHandle={this.yesDonateHandle}
