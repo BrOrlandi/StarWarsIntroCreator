@@ -8,6 +8,7 @@ import {
 
 import NotQueuedPage from './NotQueuedPage';
 import RequestDownloadPage from './RequestDownloadPage';
+import VideoRequestSent from './VideoRequestSent';
 
 class DownloadPage extends Component {
   constructor(props) {
@@ -84,6 +85,16 @@ class DownloadPage extends Component {
             openingKey={openingKey}
             yesDonateHandle={this.yesDonateHandle}
             finishRequestHandle={this.finishRequestHandle}
+          />
+        );
+
+      case FINAL_PAGE:
+        return (
+          <VideoRequestSent
+            requestStatus={requestStatus}
+            requestEmail={requestEmail}
+            openingKey={openingKey}
+            donate={donate}
           />
         );
     }

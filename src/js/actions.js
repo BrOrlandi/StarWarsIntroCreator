@@ -161,7 +161,18 @@ export const loadDownloadPage = async (key) => {
 export const requestIntroDownload = async (key, email) => {
   let statusObject = null;
   try {
-    statusObject = await requestDownload(key, email);
+    // TODO with new api
+    // statusObject = await requestDownload(key, email);
+
+    // TODO remove for new api
+    const responseFake = await requestDownload(key, email);
+    const queuePosition = responseFake.queue;
+    statusObject = {
+      queuePosition,
+    };
+
+    statusObject.status = 'queued';
+    // end TODO
   } catch (error) {
     apiError('We could not contact our servers to request the download your intro', false, true);
   }

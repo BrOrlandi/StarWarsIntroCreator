@@ -279,26 +279,26 @@
 //         type: 'GET',
 //         crossDomain: true,
 //         success: function(data){
-            var queue = data.queue;
-            swal({
-                html: true,
-                title: '<h2 style="font-family: StarWars;">video request sent</h2>',
-                text:'<p style="text-align: justify">'+
-                'Your video has been queued. Your current position on the queue is <b>'+
-                (queue+1) + '</b>, which will take up to <b>'+ calcTime(queue) +'</b>.<br>'+
-                'The link to download the video will be sent to the e-mail:<br>'+
-                '</p><span style="text-align: center; font-weight: bold">'+email+'</span>'+
-                (
-                  donate ?
-                  (
-                   '<p style="margin-top: 15px;text-align: justify">But as you donated, we will bump you up on the queue.'+
-                    '  Thank you so much for supporting us! You should receive the confirmation email within a few minutes.'+
-                   '</p>'
-                  ) :
-                  ''
-              ) +
-              '<p style="text-align: justify;margin-top: 15px;">'+termsOfServiceText+'</p>'
-            });
+            // var queue = data.queue;
+            // swal({
+            //     html: true,
+            //     title: '<h2 style="font-family: StarWars;">video request sent</h2>',
+            //     text:'<p style="text-align: justify">'+
+            //     'Your video has been queued. Your current position on the queue is <b>'+
+            //     (queue+1) + '</b>, which will take up to <b>'+ calcTime(queue) +'</b>.<br>'+
+            //     'The link to download the video will be sent to the e-mail:<br>'+
+            //     '</p><span style="text-align: center; font-weight: bold">'+email+'</span>'+
+            //     (
+            //       donate ?
+            //       (
+            //        '<p style="margin-top: 15px;text-align: justify">But as you donated, we will bump you up on the queue.'+
+            //         '  Thank you so much for supporting us! You should receive the confirmation email within a few minutes.'+
+            //        '</p>'
+            //       ) :
+            //       ''
+            //   ) +
+            //   '<p style="text-align: justify;margin-top: 15px;">'+termsOfServiceText+'</p>'
+            // });
 //         },
 //         error: ajaxErrorFunction('Error when request video download.')
 //     });
