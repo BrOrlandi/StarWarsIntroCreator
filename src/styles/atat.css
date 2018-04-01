@@ -5,7 +5,6 @@ body {
 }
 body {
   overflow:hidden;
-  background: black;
 }
 .at-at {
   position: absolute;
@@ -1354,20 +1353,13 @@ body {
     transform: rotate(-30deg);
   }
 }
-@media screen and (max-width: 1025px), screen and (max-height: 500px) {
-  .at-at {
-    margin-top: -120px;
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
-  }
+
+.at-at {
+  margin-top: -100px;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
 }
-@media screen and (max-width: 740px), screen and (max-height: 500px) {
-  .at-at {
-    margin-top: -60px;
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-}
+
 .c {
   *zoom: 1;
 }

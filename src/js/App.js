@@ -4,10 +4,10 @@ import UrlHandler from './UrlHandler';
 import AudioController from './AudioController';
 import { usingIE } from './auxiliar';
 import { documentReady, urlHashChange } from './utils';
-import { loadAndPlay, setEditMode, loadAndDownload } from './actions';
+import { loadAndPlay, loadDownloadPage, setCreateMode, loadAndEdit } from './actions';
 import { sendGAPageView } from './googleanalytics';
 import { defaultOpening, defaultKey } from './config';
-import ApplicationState, { PLAYING, DOWNLOAD } from './ApplicationState';
+import ApplicationState, { PLAYING, EDITING } from './ApplicationState';
 
 const startApplication = () => {
   urlHashChange(() => {
@@ -20,25 +20,31 @@ const startApplication = () => {
         loadAndPlay(key);
         return;
       }
+
       if ('edit' === page) {
         if (ApplicationState.state.key === key) {
           // interrupt animation if it's playing
           const interruptAnimation = !AudioController.audio.paused;
-          ApplicationState.setState(DOWNLOAD, { interruptAnimation });
+          ApplicationState.setState(EDITING, { interruptAnimation });
           return;
         }
 
-        loadAndDownload(key);
+        loadAndEdit(key);
+        return;
+      }
+
+      if ('download' === page) {
+        loadDownloadPage(key);
         return;
       }
     }
 
     if (ApplicationState.state.page === PLAYING) {
-      setEditMode({ interruptAnimation: true });
+      setCreateMode({ interruptAnimation: true });
       return;
     }
 
-    setEditMode({
+    setCreateMode({
       opening: defaultOpening,
       key: defaultKey,
     });

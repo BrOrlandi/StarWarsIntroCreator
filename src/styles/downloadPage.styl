@@ -1,0 +1,101 @@
+#downloadPage {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 10px 50px 35px;
+    max-width: 600px;
+    width: 60%;
+    border: 2px solid $panelTextColor;
+    border-radius: 3px;
+    background-color: $formBackgroundColor;
+    letter-spacing: .05em;
+
+    h2 {
+      starWarsFontStyle();
+    }
+
+    a {
+      color: $titlesColor;
+    }
+
+    button {
+      buttonStyle();
+    }
+
+    p.email {
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+
+    #closeButton {
+      position: absolute;
+      align-self: flex-end;
+      margin-left: 39px;
+      padding: 6px;
+      line-height: 6px;
+    }
+
+    #downloadVideoButton {
+      buttonStyle();
+      margin: 20px 0;
+      text-decoration: none;
+      font-size: 1.3em;
+    }
+  }
+}
+
+.donateOrNotDonateButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.requestDownloadPage {
+  iframe {
+    margin-top: 5px;
+    width: 100%;
+
+    &.isBrazil {
+      height: 123px;
+    }
+  }
+}
+
+.termsOfServiceAcceptance {
+  a {
+    font-weight: bold;
+  }
+}
+
+.contactButton {
+  font-weight: bold;
+}
+
+#emailRequestField {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      inputStyle();
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 80%;
+      color: $titlesColor;
+      font-size: 1.2em;
+    }
+  }
+}

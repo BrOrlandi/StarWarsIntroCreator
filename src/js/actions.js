@@ -3,57 +3,25 @@ import isEqual from 'lodash.isequal';
 
 import UrlHandler from './UrlHandler';
 import ViewController from './ViewController';
-import ApplicationState, { EDITING, ERROR, PLAYING, DOWNLOAD, LOADING } from './ApplicationState';
-import { loadKey, saveOpening } from './firebaseApi';
+import ApplicationState, { CREATING, PLAYING, EDITING, LOADING, DOWNLOAD } from './ApplicationState';
+import { fetchKey, saveOpening } from './firebaseApi';
+import { fetchStatus, requestDownload } from './serverApi';
+import { apiError } from './auxiliar';
 
-export const setEditMode = (props = {}) => {
-  ApplicationState.setState(EDITING, props);
+export const setCreateMode = (props = {}) => {
+  ApplicationState.setState(CREATING, props);
 };
 
-const _apiError = (message, reloadPage = false) => {
-  const bodyMessage = encodeURI(`Hi, the SWIC website didn't work as expected.
-The following error message is showed:
-
-${message}
-
-I want to provide the following details:
-
-  `);
-
-  const cancelButtonText = reloadPage ? 'RELOAD PAGE' : 'CLOSE';
-
-  swal({
-    title: 'an unexpected error occured',
-    text: `${message}.
-    The empire may have intercepted our transmission.
-    The alliance has already been informed and is working on correcting this.
-    Please try again and if the problem persists, contact us to give more details clicking on the button below.`,
-    type: 'error',
-    showCancelButton: true,
-    cancelButtonText,
-    confirmButtonText: 'CONTACT SUPPORT',
-  }).then((result) => {
-    if (result.value) {
-      window.open(`mailto:kassellabs+starwars@gmail.com?Subject=SWIC%20Error&Body=${bodyMessage}`);
-    }
-    if (result.dismiss === swal.DismissReason.cancel && reloadPage) {
-      window.location.reload();
-    }
-    setEditMode();
-  });
-};
-
-const loadOpening = async (key) => {
+const _loadOpening = async (key) => {
   let opening;
   try {
-    opening = await loadKey(key);
+    opening = await fetchKey(key);
   } catch (error) {
-    ApplicationState.setState(ERROR);
-    _apiError(`We could not load the introduction "${key}"`, true);
+    apiError(`We could not load the introduction "${key}"`, true);
   }
 
   if (!opening) {
-    setEditMode();
+    setCreateMode();
     swal('ops...', `The introduction with the key "${key}" was not found.`, 'error');
   }
 
@@ -62,14 +30,18 @@ const loadOpening = async (key) => {
 
 export const loadAndPlay = async (key) => {
   ApplicationState.setState(LOADING);
-  const opening = await loadOpening(key);
-  ApplicationState.setState(PLAYING, { opening, key });
+  const opening = await _loadOpening(key);
+  if (opening) {
+    ApplicationState.setState(PLAYING, { opening, key });
+  }
 };
 
-export const loadAndDownload = async (key) => {
+export const loadAndEdit = async (key) => {
   ApplicationState.setState(LOADING);
-  const opening = await loadOpening(key);
-  ApplicationState.setState(DOWNLOAD, { opening, key });
+  const opening = await _loadOpening(key);
+  if (opening) {
+    ApplicationState.setState(EDITING, { opening, key });
+  }
 };
 
 export const _openingIsValid = (opening) => {
@@ -88,7 +60,7 @@ export const _openingIsValid = (opening) => {
   return true;
 };
 
-export const playButton = async (opening) => {
+export const playButtonHandler = async (opening) => {
   const lastOpening = ApplicationState.state.opening;
   const lastKey = ApplicationState.state.key;
 
@@ -114,17 +86,17 @@ export const playButton = async (opening) => {
   try {
     key = await saveOpening(opening);
   } catch (error) {
-    ApplicationState.setState(ERROR);
-    _apiError('There was an error creating your intro.');
+    apiError('There was an error creating your intro.');
   }
 
   UrlHandler.setKeyToPlay(key);
 };
 
-export const downloadButton = async (opening) => {
+export const downloadButtonHandler = async (opening) => {
   const lastOpening = ApplicationState.state.opening;
+  const { key } = ApplicationState.state;
   if (!isEqual(lastOpening, opening)) {
-    return swal({
+    swal({
       title: 'Text was modified',
       text: 'You have changed some of the text fields. You need to play the your new intro to save and request a download. Do you want to restore your intro or play the new one?',
       showCancelButton: true,
@@ -136,10 +108,83 @@ export const downloadButton = async (opening) => {
         ViewController.setFormValues(lastOpening);
         return;
       }
+
       if (response.dismiss === swal.DismissReason.cancel) {
-        playButton(opening);
-        return;
+        playButtonHandler(opening);
       }
     });
+    return;
   }
+  UrlHandler.goToDownloadPage(key);
+};
+
+const _loadStatus = async (key) => {
+  let statusObject;
+  try {
+    const response = await fetchStatus(key);
+
+    // TODO remove for new API
+    const { url } = response;
+    if (url) {
+      statusObject = {
+        status: 'rendered',
+        downloadUrl: url,
+      };
+
+      return statusObject;
+    }
+
+    const queuePosition = response.queue;
+    const responseFake = await fetchStatus('x');
+    const queueSize = responseFake.queue;
+    statusObject = {
+      queueSize,
+      queuePosition,
+    };
+
+    let statusType = queuePosition === queueSize ?
+      'not_queued' :
+      'queued';
+
+    statusType = queuePosition < 20 ? 'bumped' : statusType;
+    statusType = 0 === queuePosition ? 'rendering' : statusType;
+
+    statusObject.status = statusType;
+    // end TODO
+  } catch (error) {
+    apiError(`We could not contact our servers for the download of ID: "${key}"`, true);
+  }
+  return statusObject;
+};
+
+export const loadDownloadPage = async (key) => {
+  ApplicationState.setState(LOADING);
+  const opening = await _loadOpening(key);
+  if (!opening) {
+    return;
+  }
+
+  const downloadStatus = await _loadStatus(key);
+  ApplicationState.setState(DOWNLOAD, { opening, key, downloadStatus });
+};
+
+export const requestIntroDownload = async (key, email) => {
+  let statusObject = null;
+  try {
+    // TODO with new api
+    // statusObject = await requestDownload(key, email);
+
+    // TODO remove for new api
+    const responseFake = await requestDownload(key, email);
+    const queuePosition = responseFake.queue;
+    statusObject = {
+      queuePosition,
+    };
+
+    statusObject.status = 'queued';
+    // end TODO
+  } catch (error) {
+    apiError('We could not contact our servers to request the download your intro', false, true);
+  }
+  return statusObject;
 };

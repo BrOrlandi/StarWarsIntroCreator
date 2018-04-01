@@ -1,7 +1,5 @@
 $greenShadow = #45f500;
 
-$formBackgroundColor = lighten(black, 2%)
-
 $inputBorderColor = alpha($titlesColor, .2);
 $inputBorderColorHover = alpha($titlesColor, .5);
 $inputBorderColorFocus = $titlesColor;
@@ -70,12 +68,6 @@ stroke($stroke, $color) {
   justify-content: center;
   color: $titlesColor;
 
-  #pageTitle {
-    starWarsFontStyle();
-    text-align: center;
-    font-size: 48px;
-  }
-
   form {
     z-index: 1;
     display: flex;
@@ -91,11 +83,13 @@ stroke($stroke, $color) {
       width: 97%;
       color: $titlesColor;
       word-break: break-word;
+      font-size: 14px;
 
       inputStyle();
     }
 
     textarea {
+      font-family: monospace;
       resize: none;
 
       &#f-logo {
@@ -113,6 +107,11 @@ stroke($stroke, $color) {
     #playButton {
       @extend $actionButtonStyle;
       z-index: 10;
+      margin-top: 20px;
+    }
+
+    #playButtonSpan {
+      margin-top: 20px;
     }
 
     #downloadButton {
@@ -185,7 +184,7 @@ stroke($stroke, $color) {
           position: relative;
           top: -4px;
           color: $titlesColor;
-          content: '\274C';
+          content: '\25A0';
           letter-spacing: 0;
           font-size: 14px;
           cursor: pointer;

@@ -24,8 +24,18 @@ $HD = '(max-height: 720px)';
 
 // variables
 $timeFactor = 1;
+// $timeFactor = 1/16;
 $introColor = #4bd5ee;
 $titlesColor = #ffd54e;
+
+$formBackgroundColor = lighten(black, 2%)
+
+$buttonHoverColor = lighten($formBackgroundColor, 20%);
+$buttonFocusColor = lighten($formBackgroundColor, 40%);
+
+$errorRed = #ab0000;
+$panelTextColor = #d0ad3e;
+$warningYellow = $panelTextColor;
 
 html,
 body {
@@ -36,6 +46,18 @@ body {
     background: url('../assets/bg-stars.png') repeat;
     background-color: black;
     color: $titlesColor;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+iframe{
+    border: none;
 }
 
 .verticalWrapper{
@@ -82,6 +104,27 @@ fadeOut($delay = 0s, $fadeDuration = 500ms) {
   animation: fadeoutAnimation $fadeDuration linear $delay forwards;
 }
 
+buttonStyle() {
+  margin: 0 .3125em;
+  padding: .625em 2em;
+  border: 2px solid $panelTextColor !important;
+  border-radius: 3px !important;
+  background-color: $formBackgroundColor !important;
+  color: $panelTextColor !important;
+  font-weight: 500;
+  font-size: 1.0625em;
+  font-family: $defaultFontFamily;
+  cursor: pointer;
+
+  &:hover, &:active {
+    background-color: $buttonHoverColor !important;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px $buttonFocusColor !important;
+  }
+}
+
 @import './configForm.styl';
 @import './bb8.css';
 @import './punchItBB8.styl';
@@ -113,62 +156,18 @@ fadeOut($delay = 0s, $fadeDuration = 500ms) {
   }
 }
 
-body.loading {
-  #bb8-loading {
+.pageTitle {
+  starWarsFontStyle();
+  text-align: center;
+}
+
+@import './bodyStates.styl';
+@import './downloadPage.styl';
+
+#paypalDonateBRL {
+  display: none;
+
+  &.show {
     display: block;
-    punchItBB8();
-  }
-
-  #configForm {
-    display: none;
-  }
-
-  footer {
-    display: none;
-  }
-}
-
-body.requestFocus {
-  #requestFocusButton {
-    display: flex;
-  }
-
-  #configForm {
-    display: none;
-  }
-
-  footer {
-    display: none;
-  }
-}
-
-body.error {
-  #configForm {
-    fadeOut();
-  }
-}
-
-body.runningVideo {
-  overflow: hidden;
-
-  #configForm > form {
-    display: none;
-  }
-
-  &.showForm {
-    overflow-y:  auto;
-    #configForm > form {
-      display: flex;
-      fadeIn();
-    }
-
-    #deathstar {
-      fadeOut(4s, 2s);
-    }
-
-    footer {
-      display: block;
-      fadeIn();
-    }
   }
 }

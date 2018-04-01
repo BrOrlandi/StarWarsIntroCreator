@@ -1,0 +1,68 @@
+hideAllPages() {
+
+  #configForm {
+    display: none;
+  }
+
+  footer {
+    display: none;
+  }
+}
+
+body.loading {
+  hideAllPages();
+
+  #bb8-loading {
+    display: block;
+    punchItBB8();
+  }
+}
+
+body.requestFocus {
+  hideAllPages();
+
+  #requestFocusButton {
+    display: flex;
+  }
+}
+
+body.runningVideo {
+  hideAllPages();
+  overflow: hidden;
+
+  #configForm {
+    display: flex;
+    > form {
+      display: none;
+    }
+  }
+
+  &.showForm {
+    overflow-y:  auto;
+    #configForm > form {
+      display: flex;
+      fadeIn();
+    }
+
+    #deathstar {
+      fadeOut(4s, 2s);
+    }
+
+    footer {
+      display: block;
+      fadeIn();
+    }
+  }
+}
+
+body.downloadPage {
+  hideAllPages();
+
+  footer {
+    display: block;
+  }
+
+  #downloadPage {
+    display: flex;
+  }
+}

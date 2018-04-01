@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Counter from './Counter';
 
-const REQUEST_TIMEOUT = 5000;
+const REQUEST_TIMEOUT = 10000;
 const MAX_TRIES = 3;
 
 const Tries = new Counter(MAX_TRIES);

@@ -3,11 +3,11 @@ import AudioController from './AudioController';
 import UrlHandler from './UrlHandler';
 import { setPaypalKey } from './paypal';
 
-export const EDITING = 'EDITING';
+export const CREATING = 'CREATING';
 export const LOADING = 'LOADING';
 export const PLAYING = 'PLAYING';
+export const EDITING = 'EDITING';
 export const DOWNLOAD = 'DOWNLOAD';
-export const ERROR = 'ERROR';
 
 class ApplicationState {
   constructor() {
@@ -21,25 +21,29 @@ class ApplicationState {
 
   setState(page, props = {}) {
     // previous state undo changes
-    switch (this.state.page) {
-      case LOADING:
-        ViewController.unsetLoading();
-        break;
+    if (this.state.page !== page) {
+      switch (this.state.page) {
+        case LOADING:
+          ViewController.unsetLoading();
+          break;
 
-      case ERROR:
-        ViewController.unsetError();
-        break;
+        case PLAYING:
+          ViewController.stopPlaying(props.interruptAnimation);
+          break;
 
-      case PLAYING:
-        ViewController.stopPlaying(props.interruptAnimation);
-        break;
+        case EDITING:
+          ViewController.unsetRunningVideo();
+          ViewController.hideDownloadButton();
+          ViewController.killTimers();
+          break;
 
-      case DOWNLOAD:
-        ViewController.hideDownloadButton();
-        break;
+        case DOWNLOAD:
+          ViewController.unsetDownloadPage();
+          break;
 
-      default:
-        ViewController.unsetLoading();
+        default:
+          ViewController.unsetLoading();
+      }
     }
 
     this.state = {
@@ -63,18 +67,17 @@ class ApplicationState {
       case PLAYING:
         setPaypalKey(key);
         await ViewController.playOpening(opening);
-        UrlHandler.goToDownloadPage(key);
+        UrlHandler.goToEditPage(key);
         break;
 
-      case DOWNLOAD:
+      case EDITING:
         ViewController.setFormValues(opening);
         ViewController.showDownloadButton();
         break;
 
-      case ERROR:
-        ViewController.setError();
+      case DOWNLOAD:
+        ViewController.setDownloadPage();
         break;
-
 
       default:
         ViewController.unsetLoading();

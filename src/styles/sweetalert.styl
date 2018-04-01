@@ -1,37 +1,28 @@
-$buttonHoverColor = lighten($formBackgroundColor, 20%);
-$buttonFocusColor = lighten($formBackgroundColor, 40%);
-
-$errorRed = #ab0000;
-$alertTextColor = #d0ad3e;
-$warningYellow = $alertTextColor;
-
 .starwars-sweetalert {
-  border: 2px solid $alertTextColor;
+  border: 2px solid $panelTextColor;
   background-color: $formBackgroundColor;
 
   .swal2-title {
     starWarsFontStyle();
     margin-bottom: 1em;
-    color: $alertTextColor;
   }
 
   .swal2-content{
     margin-bottom: 1em;
-    color: $alertTextColor;
+    color: $panelTextColor;
     font-family: $defaultFontFamily;
   }
 
-  button {
-    border: 2px solid $alertTextColor !important;
-    background-color: $formBackgroundColor !important;
-    color: $alertTextColor !important;
-
-    &:hover, &:active {
-      background-color: $buttonHoverColor !important;
+  .swal2-actions:not(.swal2-loading) {
+    button {
+      buttonStyle();
     }
+  }
 
-    &:focus {
-      box-shadow: 0 0 0 2px $buttonFocusColor  !important;
+  .swal2-loading {
+    button {
+      border-right-color: $panelTextColor !important;
+      border-left-color: $panelTextColor !important;
     }
   }
 

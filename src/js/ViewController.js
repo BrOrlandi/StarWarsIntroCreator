@@ -1,9 +1,12 @@
 import { defaultOpening } from './config';
-import { callOnFocus } from './utils';
+import { callOnFocus, isFromBrazil } from './utils';
 import AudioController from './AudioController';
-import { playButton, downloadButton } from './actions';
-
+import ApplicationState from './ApplicationState';
+import UrlHandler from './UrlHandler';
+import { playButtonHandler, downloadButtonHandler } from './actions';
 import StarWarsAnimation from './StarWarsAnimation';
+import { mountDownloadPage, unmountDownloadPage } from './mountDownloadPage';
+import bitcoinEther from './bitcoinEther';
 
 class ViewController {
   constructor() {
@@ -35,14 +38,32 @@ class ViewController {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       const opening = this.getFormValues();
-      playButton(opening);
+      playButtonHandler(opening);
     });
 
     this.downloadButton.addEventListener('click', (e) => {
       e.preventDefault();
       const opening = this.getFormValues();
-      downloadButton(opening);
+      downloadButtonHandler(opening);
     });
+
+    // paypal show Doar if is brazilian
+    if (isFromBrazil()) {
+      const paypalButtons = document.querySelector('#paypalDonateBRL');
+      const iframe = document.querySelector('#paypalDonateIframe');
+      paypalButtons.classList.add('show');
+      iframe.classList.add('isBrazil');
+    }
+
+    // close download page button
+    document.querySelector('#closeButton')
+      .addEventListener('click', (e) => {
+        e.preventDefault();
+        UrlHandler.goToEditPage(ApplicationState.state.key);
+      });
+
+    // bitcoin and ether button
+    document.querySelector('#btcether').addEventListener('click', bitcoinEther);
   }
 
   setLoading() {
@@ -70,12 +91,14 @@ class ViewController {
     this.body.classList.remove('requestFocus');
   }
 
-  setError() {
-    this.body.classList.add('error');
+  setDownloadPage() {
+    mountDownloadPage();
+    this.body.classList.add('downloadPage');
   }
 
-  unsetError() {
-    this.body.classList.remove('error');
+  unsetDownloadPage() {
+    this.body.classList.remove('downloadPage');
+    unmountDownloadPage();
   }
 
   showDownloadButton() {
@@ -85,7 +108,6 @@ class ViewController {
   hideDownloadButton() {
     this.downloadButton.classList.remove('show');
   }
-
 
   getFormValues = () => ({
     intro: this.formFields.intro.value,
@@ -112,9 +134,8 @@ class ViewController {
   }
 
   playOpening(opening) {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     this.starWarsAnimation.load(opening);
-    AudioController.reset();
     this.setRequestWindowFocus();
 
     return new Promise((resolve) => {
@@ -129,6 +150,11 @@ class ViewController {
         resolve();
       });
     });
+  }
+
+  killTimers() {
+    clearTimeout(this.showFormTimeout);
+    clearTimeout(this.resetAnimationTimeout);
   }
 
   stopPlaying(interruptAnimation) {
@@ -148,9 +174,9 @@ class ViewController {
       return;
     }
 
-    setTimeout(() => {
+    this.showFormTimeout = setTimeout(() => {
       showForm();
-      setTimeout(() => {
+      this.resetAnimationTimeout = setTimeout(() => {
         resetAnimation();
       }, 6000);
     }, 2000);

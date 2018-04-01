@@ -1,5 +1,5 @@
 {
-  "presets": ["env"],
+  "presets": ["env", "preact"],
   "plugins": [
     "transform-object-rest-spread",
     ["transform-runtime", {
@@ -8,6 +8,7 @@
       "regenerator": true,
       "moduleName": "babel-runtime"
     }],
-    "transform-class-properties"
+    "transform-class-properties",
+    ["transform-react-jsx", { "pragma":"h" }]
   ]
 }

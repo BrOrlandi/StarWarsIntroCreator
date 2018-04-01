@@ -18,8 +18,13 @@ export default class UrlHandler {
     }
   }
 
-  static goToDownloadPage(key) {
+  static goToEditPage(key) {
     const newHashUrl = `!/${key}/edit`;
+    window.location.hash = newHashUrl;
+  }
+
+  static goToDownloadPage(key) {
+    const newHashUrl = `!/${key}/download`;
     window.location.hash = newHashUrl;
   }
 }
