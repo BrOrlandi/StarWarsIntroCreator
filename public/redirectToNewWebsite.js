@@ -19,7 +19,7 @@ function randomShouldRedirect() {
 }
 
 $(document).ready(function() {
-  let redirectInfo =  localStorage.KasselLabsRedirect;
+  var redirectInfo =  localStorage.KasselLabsRedirect;
   redirectInfo = redirectInfo && JSON.parse(redirectInfo);
 
   checkRedirect(redirectInfo);
@@ -28,7 +28,7 @@ $(document).ready(function() {
 function checkRedirect(redirectInfo) {
   if (!redirectInfo || (redirectInfo.stage < stageNow && !redirectInfo.redirect)) {
     const shouldRedirect = randomShouldRedirect();
-    let redirect = false;
+    var redirect = false;
     if (shouldRedirect) {
       redirect = true;
     }
