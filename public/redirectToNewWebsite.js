@@ -19,10 +19,10 @@ function randomShouldRedirect() {
 }
 
 $(document).ready(function() {
-  var redirectInfo =  localStorage.KasselLabsRedirect;
-  redirectInfo = redirectInfo && JSON.parse(redirectInfo);
+  var redirectInfoFromStorage =  localStorage.KasselLabsRedirect;
+  redirectInfoFromStorage = redirectInfoFromStorage && JSON.parse(redirectInfoFromStorage);
 
-  checkRedirect(redirectInfo);
+  checkRedirect(redirectInfoFromStorage);
 });
 
 function checkRedirect(redirectInfo) {
@@ -49,8 +49,8 @@ function checkRedirect(redirectInfo) {
 
   saveRedirect(redirectInfo);
 
-  const redirect = redirectInfo.redirect;
-  if (redirect && redirectActive) {
+  const redirectNow = redirectInfo.redirect;
+  if (redirectNow && redirectActive) {
     redirectToNewWebsite();
   }
 }
