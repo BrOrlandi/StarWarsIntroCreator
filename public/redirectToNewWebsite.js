@@ -1,5 +1,5 @@
-const stageNow = 1;
-const redirectPercentage = 0.2;
+const stageNow = 2;
+const redirectPercentage = 0.5;
 const redirectActive = true;
 
 function saveRedirect(redirectInfo) {
