@@ -1,5 +1,5 @@
-const stageNow = 2;
-const redirectPercentage = 0.5;
+const stageNow = 3;
+const redirectPercentage = 1;
 const redirectActive = true;
 
 function saveRedirect(redirectInfo) {
@@ -15,7 +15,8 @@ function redirectToNewWebsite(){
 }
 
 function randomShouldRedirect() {
-  return Math.random() < redirectPercentage;
+  // return Math.random() < redirectPercentage;
+  return true;
 }
 
 $(document).ready(function() {
